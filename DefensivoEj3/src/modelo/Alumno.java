@@ -13,6 +13,12 @@ public class Alumno {
 	private ArrayList<Materia> materias = new ArrayList<>();
 	private String condicion;
 	
+	/**
+	 * Crea los alumnos con referencia a cada materia
+	 * POST: se crea una instancia de la clase
+	 * @param nombre
+	 * @param apellido
+	 */
 	public Alumno(String nombre, String apellido) {
 		this.nombre = nombre;
 		this.apellido = apellido;
@@ -20,16 +26,18 @@ public class Alumno {
 		this.materias.add(new Materia("Matematica"));
 		this.materias.add(new Materia("Literatura"));
 		this.materias.add(new Materia("Fisica"));
+		this.invariante();
+		
 	}
 	
-	public void cursaMateria(int nro) {
-		this.materias.get(nro).setEstado("Cursada");
-	}
-	
-	public void ApruebaMateria(int nro, int nota) {
-		this.materias.get(nro).setEstado("Aprobada");
-		this.materias.get(nro).setNota(nota);
-	}
+//	public void cursaMateria(int nro) {
+//		this.materias.get(nro).setEstado("Cursada");
+//	}
+//	
+//	public void ApruebaMateria(int nro, int nota) {
+//		this.materias.get(nro).setEstado("Aprobada");
+//		this.materias.get(nro).setNota(nota);
+//	}
 
 	@Override
 	public String toString() {
@@ -48,6 +56,10 @@ public class Alumno {
 		return materias;
 	}
 	
-	
+	public void invariante() {
+		assert this.apellido!=null : "El apellido no puede ser nulo";
+		assert this.nombre!=null : "El nombre no puede ser nulo";
+		assert this.materias!=null : "No posee referencia a las materias";
+	}
 	
 }

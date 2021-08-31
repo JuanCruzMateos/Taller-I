@@ -21,10 +21,10 @@ public class Vista {
 	 * @param mensaje
 	 */
 	public void informaMensaje(String mensaje) {
-		assert this.invariante() : "No se cumple el invariante de clase";
+		this.invariante();
 		assert mensaje!=null : "El mensaje a informar es nulo";
 		System.out.println(mensaje);
-		assert this.invariante() : "No se cumple el invariante de clase";
+		this.invariante();
 	}
 	
 	/**
@@ -32,11 +32,11 @@ public class Vista {
 	 * @return
 	 */
 	public String pedirCertificado() {
-		assert this.invariante() : "No se cumple el invariante de clase";
+		this.invariante();
 		String legajo;
 		System.out.println("Ingrese el legajo");
 		legajo = scanner.nextLine();
-		assert this.invariante() : "No se cumple el invariante de clase";
+		this.invariante();
 		return legajo;
 	}
 	
@@ -46,16 +46,16 @@ public class Vista {
 	 * @param c
 	 */
 	public void mostrarCertificado(Alumno a) {
-		assert this.invariante() : "No se cumple el invariante de clase";
+		this.invariante();
 		System.out.println("El alumno " + a.getNombre() + " " + a.getApellido() + " obtuvo las siguientes notas");
 		Iterator<Materia> it = a.getMaterias().iterator();
 		while(it.hasNext()) {
 			System.out.println(it.next().toString());
 		}
-		assert this.invariante() : "No se cumple el invariante de clase";
+		this.invariante();
 	}
 	
-	private boolean invariante() {
-		return this.scanner!=null;
+	private void invariante() {
+		assert this.scanner!=null : "No se cumple el invariante de clase";
 	}
 }

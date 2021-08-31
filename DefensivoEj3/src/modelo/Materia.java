@@ -16,6 +16,7 @@ public class Materia {
 		this.nombre = nombre;
 		this.nota = nota;
 		this.estado = estado;
+		this.invariantes();
 	}
 	
 	
@@ -24,6 +25,7 @@ public class Materia {
 		super();
 		this.nombre = nombre;
 		this.estado = "A cursar";
+		this.invariantes();
 	}
 
 
@@ -60,6 +62,9 @@ public class Materia {
 	}
 	
 	
-	
+	public void invariantes(){
+		assert this.nombre!=null && !this.nombre.equalsIgnoreCase("") : "El nombre no puede ser vacio ni nulo";
+		assert this.estado!=null : "El estado no puede ser nunca nulo";
+	}
 	
 }
