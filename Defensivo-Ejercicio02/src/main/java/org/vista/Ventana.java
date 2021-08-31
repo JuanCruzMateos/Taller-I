@@ -20,7 +20,7 @@ public class Ventana extends JFrame implements IVistaMain {
         this.add(this.root_jpane);
         this.setTitle("Surtidor");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setBounds(100, 100, 650, 400);
+        this.setBounds(375, 200, 650, 400);
         this.setVisible(true);
     }
 
@@ -67,5 +67,10 @@ public class Ventana extends JFrame implements IVistaMain {
     @Override
     public double getUltimaVentaManguera2() {
         return 0;
+    }
+
+    @Override
+    public void visible(boolean b) {
+
     }
 }

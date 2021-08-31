@@ -18,4 +18,6 @@ public interface IVistaMain {
     double getUltimaVentaManguera1();
 
     double getUltimaVentaManguera2();
+
+    void visible(boolean b);
 }

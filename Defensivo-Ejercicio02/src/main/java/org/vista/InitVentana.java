@@ -1,5 +1,7 @@
 package org.vista;
 
+import org.controlador.Controlador;
+
 import javax.swing.*;
 
 public class InitVentana extends JFrame implements IVistaInit {
@@ -10,12 +12,20 @@ public class InitVentana extends JFrame implements IVistaInit {
     public InitVentana() {
         this.add(this.root_jpanel);
         this.setTitle("Inicializar Surtidor");
+        this.btn_inicializar.addActionListener(Controlador.getInstance());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setBounds(500, 300, 400, 120);
         this.setVisible(true);
     }
 
     @Override
-    public double inicializaSurtidor() {
-        return Double.parseDouble(this.textField1.getText());
+    public String inicializaSurtidor() {
+        return this.textField1.getText();
     }
+
+    @Override
+    public void visible(boolean b) {
+        this.setVisible(b);
+    }
+
 }

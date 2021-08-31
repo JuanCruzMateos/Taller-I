@@ -1,5 +1,7 @@
 package org.vista;
 
 public interface IVistaInit {
-    double inicializaSurtidor();
+    String inicializaSurtidor();
+
+    void visible(boolean b);
 }

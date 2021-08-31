@@ -20,6 +20,8 @@ public class Surtidor {
     public void inicializarSurtidor(double carga) {
         assert carga >= 1: "Inicializacion del surtidor invalida, debe ser >= 1";
         this.cantCombustible = carga;
+        this.manguera1Disponible = true;
+        this.manguera2Disponible = true;
     }
 
     /**
@@ -36,7 +38,8 @@ public class Surtidor {
         if (this.cantCombustible == 0)
             throw new DescargaImposibleException();
         else {
-            while (this.cantCombustible > 0 && this.manguera1Disponible) {
+            this.manguera1Disponible = false;
+            while (this.cantCombustible > 0 && !this.manguera1Disponible) {
                 this.cantCombustible -= 1;
                 try {
                     Thread.sleep(1000);
@@ -47,8 +50,20 @@ public class Surtidor {
         }
     }
 
-    public void descargaManguera2() {
-
+    public void descargaManguera2() throws DescargaImposibleException {
+        if (this.cantCombustible == 0)
+            throw new DescargaImposibleException();
+        else {
+            this.manguera2Disponible = false;
+            while (this.cantCombustible > 0 && !this.manguera2Disponible) {
+                this.cantCombustible -= 1;
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     public void setManguera1Disponible(boolean manguera1Disponible) {

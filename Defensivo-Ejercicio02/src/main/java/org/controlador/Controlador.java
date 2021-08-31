@@ -3,7 +3,9 @@ package org.controlador;
 import org.modelo.Surtidor;
 import org.vista.IVistaInit;
 import org.vista.IVistaMain;
+import org.vista.Ventana;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,12 +33,21 @@ public class Controlador implements ActionListener {
         this.vistaInit = vistaInit;
     }
 
-    public void setVistaMain(IVistaMain vistaMain) {
-        this.vistaMain = vistaMain;
-    }
-
-    public void inicializarSurtidor(double carga) {
-
+    public void inicializarSurtidor() {
+        try {
+            double cantida = Double.parseDouble(this.vistaInit.inicializaSurtidor());
+            if (cantida >= 1) {
+                this.surtidor = new Surtidor();
+                this.surtidor.inicializarSurtidor(cantida);
+                this.vistaMain = new Ventana();
+                this.vistaMain.visible(true);
+                this.vistaInit.visible(false);
+            } else {
+                JOptionPane.showMessageDialog(null, "Ingrese una cantidad mayor a 0.");
+            }
+        } catch (NumberFormatException numberFormatException) {
+            JOptionPane.showMessageDialog(null, "Ingrese una cantidad numerica.");
+        }
     }
 
     public void cargarSurtidor(double carga) {
@@ -73,6 +84,8 @@ public class Controlador implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        switch (e.getActionCommand()) {
+            case "Inicializar" -> this.inicializarSurtidor();
+        }
     }
 }
