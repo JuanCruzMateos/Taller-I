@@ -1,23 +1,27 @@
 package org.vista;
 
 public interface IVistaMain {
-    void inicializarSurtidor(double carga);
+    double cargarSurtidor();
 
-    void cargarSurtidor(double carga);
+    void activaManguera1();
 
-    void desgargaManguera1();
+    void activaManguera2();
 
-    void desgargaManguera2();
+    void desactivaManguera1();
 
-    double getExistenciaDeposito();
+    void desactivaManguera2();
 
-    double getAcumuladoManguera1();
+    void setCombustible(double cantidad);
 
-    double getAcumuladoManguera2();
+    void setAcumuladoM1(double cantidad);
 
-    double getUltimaVentaManguera1();
-
-    double getUltimaVentaManguera2();
+    void setAcumuladoM2(double cantidad);
 
     void visible(boolean b);
+
+    void refreshTotal(double total);
+
+    void setUltimaVentaM2(double ultimaVentaMG2);
+
+    void setUltimaVentaM1(double ultimaVentaMG1);
 }

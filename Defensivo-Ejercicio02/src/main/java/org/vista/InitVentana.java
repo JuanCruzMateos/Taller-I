@@ -12,6 +12,7 @@ public class InitVentana extends JFrame implements IVistaInit {
     public InitVentana() {
         this.add(this.root_jpanel);
         this.setTitle("Inicializar Surtidor");
+        this.btn_inicializar.setActionCommand("inicializar");
         this.btn_inicializar.addActionListener(Controlador.getInstance());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setBounds(500, 300, 400, 120);

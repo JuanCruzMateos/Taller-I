@@ -1,4 +1,4 @@
-package org.progdefensiva;
+package org.cerveceria;
 
 import static org.junit.Assert.assertTrue;
 
