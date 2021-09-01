@@ -3,102 +3,74 @@ package org.modelo;
 import org.excepciones.DescargaImposibleException;
 
 public class Surtidor {
-    private static final double CAPACIDAD = 2000.0;
-    private double cantCombustible;
-    private double acumuladoManguera1;
-    private double acumuladoManguera2;
-    private double ultimaVentaManguera1;
-    private double ultimaVentaManguera2;
-    private boolean manguera1Disponible;
-    private boolean manguera2Disponible;
+    private static Surtidor instance = null;
+    private Deposito deposito;
+    private Manguera manguera1 = new Manguera();
+    private Manguera manguera2 = new Manguera();
 
-    /**
-     * <b>Pre:</b> carga mayor o igual a 1.<br>
-     * <b>Post:</b> cantCombustible igual a carga.<br>
-     * @param carga mayor o igual a 1.
-     */
-    public void inicializarSurtidor(double carga) {
-        assert carga >= 1: "Inicializacion del surtidor invalida, debe ser >= 1";
-        this.cantCombustible = carga;
-        this.manguera1Disponible = true;
-        this.manguera2Disponible = true;
+    private Surtidor() {
+
     }
 
-    /**
-     * <b>Pre:</b> carga mayor o igual a 0.<br>
-     * <b>Post:</b> cantCombustible aumenta en una cantidad igual carga.<br>
-     * @param carga mayor o igual a 0.
-     */
-    public void cargarSurtidor(double carga) {
-        assert carga > 0: "Carga no pertmitida, debe ser mayor a cero";
-        this.cantCombustible += carga;
+    public static Surtidor getInstance() {
+        if (Surtidor.instance == null)
+            Surtidor.instance = new Surtidor();
+        return Surtidor.instance;
     }
 
-    public void descargaManguera1() throws DescargaImposibleException {
-        if (this.cantCombustible == 0)
-            throw new DescargaImposibleException();
-        else {
-            this.manguera1Disponible = false;
-            while (this.cantCombustible > 0 && !this.manguera1Disponible) {
-                this.cantCombustible -= 1;
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+    public void inicializarSurtidor(double cantidad) {
+        this.deposito = new Deposito(cantidad);
     }
 
-    public void descargaManguera2() throws DescargaImposibleException {
-        if (this.cantCombustible == 0)
-            throw new DescargaImposibleException();
-        else {
-            this.manguera2Disponible = false;
-            while (this.cantCombustible > 0 && !this.manguera2Disponible) {
-                this.cantCombustible -= 1;
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+    public void cargarSurtidor(double cantidad) {
+        this.deposito.cargar(cantidad);
     }
 
-    public void setManguera1Disponible(boolean manguera1Disponible) {
-        this.manguera1Disponible = manguera1Disponible;
+    public void descargarManguera1() throws DescargaImposibleException {
+        new Thread(this.manguera1).start();
     }
 
-    public void setManguera2Disponible(boolean manguera2Disponible) {
-        this.manguera2Disponible = manguera2Disponible;
+    public void descargarManguera2() throws DescargaImposibleException {
+        new Thread(this.manguera2).start();
     }
 
-    public boolean isManguera1Disponible() {
-        return manguera1Disponible;
+    public void detenerManguera1() {
+        this.manguera1.desconectar();
     }
 
-    public boolean isManguera2Disponible() {
-        return manguera2Disponible;
+    public void detenerManguera2() {
+        this.manguera2.desconectar();
+    }
+
+    public void retirarCombustible() throws DescargaImposibleException {
+        this.deposito.retirarCombustible();
     }
 
     public double getExistenciaDeposito() {
-        return cantCombustible;
+        return this.deposito.getCantCombustible();
     }
 
     public double getAcumuladoManguera1() {
-        return acumuladoManguera1;
+        return this.manguera1.getAcumulado();
     }
 
     public double getAcumuladoManguera2() {
-        return acumuladoManguera2;
+        return this.manguera2.getAcumulado();
     }
 
-    public double getUltimaVentaManguera1() {
-        return ultimaVentaManguera1;
+    public double getUltimaVentaMG1() {
+        return this.manguera1.getUltimaVenta();
     }
 
-    public double getUltimaVentaManguera2() {
-        return ultimaVentaManguera2;
+    public double getUltimaVentaMG2() {
+        return this.manguera2.getUltimaVenta();
+    }
+
+    public Manguera getManguera1() {
+        return manguera1;
+    }
+
+    public Manguera getManguera2() {
+        return manguera2;
     }
 }

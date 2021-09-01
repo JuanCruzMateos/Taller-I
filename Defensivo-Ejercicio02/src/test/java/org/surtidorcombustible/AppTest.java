@@ -1,4 +1,4 @@
-package org.progdefensiva;
+package org.surtidorcombustible;
 
 import static org.junit.Assert.assertTrue;
 
