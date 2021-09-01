@@ -7,9 +7,13 @@ import java.util.Observable;
 import java.util.Observer;
 
 @SuppressWarnings("deprecation")
-public class ObservadorManguera extends JFrame implements Observer {
+public class ObservadorManguera extends JTextField implements Observer {
     private JTextField jTextField;
     private Manguera manguera;
+
+    public ObservadorManguera() {
+        // Necesario
+    }
 
     public ObservadorManguera(Manguera manguera) {
         this.jTextField = new JTextField();

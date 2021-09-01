@@ -11,12 +11,12 @@ public class Ventana extends JFrame implements IVistaMain {
     private JButton cargar_btn;
     private JButton btn_activarM1;
     private JButton btn_detenerM1;
-    //    private ObservadorManguera txt_acumuladoM1;
-    private JTextField txt_acumuladoM1;
+        private ObservadorManguera txt_acumuladoM1;
+//    private JTextField txt_acumuladoM1;
     private JButton btn_activarM2;
     private JButton btn_detenerM2;
-    private JTextField txt_acumuladoM2;
-    //    private ObservadorManguera txt_acumuladoM2;
+//    private JTextField txt_acumuladoM2;
+        private ObservadorManguera txt_acumuladoM2;
     private JTextField txt_ultimaM1;
     private JTextField txt_ultimaM2;
     private JPanel root_jpane;
