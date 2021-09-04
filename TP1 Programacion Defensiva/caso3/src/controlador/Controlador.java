@@ -3,6 +3,7 @@ package controlador;
 import modelo.AlumnoNoExistenteException;
 import modelo.Institucion;
 import modelo.MateriaInexistenteException;
+import modelo.MateriaYaCursadaException;
 import vista.Vista;
 
 /**
@@ -88,6 +89,8 @@ public class Controlador {
 					this.vista.informaMensaje(e.getMessage());
 				} catch (MateriaInexistenteException e) {
 					this.vista.informaMensaje(e.getMessage());;
+				} catch (MateriaYaCursadaException e) {
+					this.vista.informaMensaje(e.getMessage());
 				}
 		} catch (NumberFormatException e) {
 			this.vista.informaMensaje("Debe ingresar un numero");

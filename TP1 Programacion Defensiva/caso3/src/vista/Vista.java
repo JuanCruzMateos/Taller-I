@@ -65,6 +65,7 @@ public class Vista {
 		while(it.hasNext()) {
 			System.out.println(it.next().toString());
 		}
+		System.out.println("Y se encuentra en la condicion de " + a.getCondicion());
 		this.invariante();
 	}
 	
