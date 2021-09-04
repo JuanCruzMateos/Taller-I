@@ -28,16 +28,29 @@ public class Vista {
 	}
 	
 	/**
-	 * Devuelve el legajo de el alumno a hacerle el certificado
+	 * Devuelve el legajo de un alumno en formato string sin realizar ningun chequeo
 	 * @return
 	 */
-	public String pedirCertificado() {
+	public String pedirLegajo() {
 		this.invariante();
 		String legajo;
 		System.out.println("Ingrese el legajo");
 		legajo = scanner.nextLine();
 		this.invariante();
 		return legajo;
+	}
+	
+	/**
+	 * Devuelve el nombre de una materia en formato string sin realizar ningun chequeo
+	 * @return
+	 */
+	public String pedirMateria() {
+		this.invariante();
+		String materia;
+		System.out.println("Ingrese la materia");
+		materia = scanner.nextLine();
+		this.invariante();
+		return materia;
 	}
 	
 	/**
@@ -48,7 +61,7 @@ public class Vista {
 	public void mostrarCertificado(Alumno a) {
 		this.invariante();
 		System.out.println("El alumno " + a.getNombre() + " " + a.getApellido() + " obtuvo las siguientes notas");
-		Iterator<Materia> it = a.getMaterias().iterator();
+		Iterator<Materia> it = a.getIteratorMaterias();
 		while(it.hasNext()) {
 			System.out.println(it.next().toString());
 		}

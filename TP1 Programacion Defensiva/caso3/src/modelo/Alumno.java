@@ -1,6 +1,8 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * INV: apellido, nombre y materias !=null
@@ -10,7 +12,7 @@ import java.util.ArrayList;
 public class Alumno {
 	private String nombre;
 	private String apellido;
-	private ArrayList<Materia> materias = new ArrayList<>();
+	private HashMap<String, Materia> materias = new HashMap<>();
 	private String condicion;
 	
 	/**
@@ -22,22 +24,37 @@ public class Alumno {
 	public Alumno(String nombre, String apellido) {
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.materias.add(new Materia("Historia"));
-		this.materias.add(new Materia("Matematica"));
-		this.materias.add(new Materia("Literatura"));
-		this.materias.add(new Materia("Fisica"));
+		this.materias.put("Historia", new Materia("Historia"));
+		this.materias.put("Matematica", new Materia("Matematica"));
+		this.materias.put("Literatura", new Materia("Literatura"));
+		this.materias.put("Fisica", new Materia("Fisica"));
 		this.invariante();
 		
 	}
 	
-//	public void cursaMateria(int nro) {
-//		this.materias.get(nro).setEstado("Cursada");
-//	}
-//	
-//	public void ApruebaMateria(int nro, int nota) {
-//		this.materias.get(nro).setEstado("Aprobada");
-//		this.materias.get(nro).setNota(nota);
-//	}
+	/**
+	 * Setea una materia pasada por parametro como cursada
+	 * PRE != la materia es distinta de null y vacia
+	 * POST: setea como cursada una materia o lanza una excepcion que no existe la materia
+	 * @param materia
+	 * @throws MateriaInexistenteException 
+	 */
+	public void cursaMateria(String materia) throws MateriaInexistenteException {
+		this.invariante();
+		assert materia!=null && !materia.equalsIgnoreCase("") : "La materia debe ser distinto de null o vacio";		
+		
+		Materia m = this.materias.get(materia);
+		if(m==null)
+			throw new MateriaInexistenteException("No existe un nombre con esa materia");
+		m.setEstado("Cursada");
+		assert this.materias.get(materia).getEstado().equals("Cursada") : "Hubo error al setear el estado";
+		this.invariante();
+	}
+	
+	public void ApruebaMateria(int nro, int nota) {
+		this.materias.get(nro).setEstado("Aprobada");
+		this.materias.get(nro).setNota(nota);
+	}
 
 	@Override
 	public String toString() {
@@ -51,11 +68,23 @@ public class Alumno {
 	public String getApellido() {
 		return apellido;
 	}
-
-	public ArrayList<Materia> getMaterias() {
+	
+	public HashMap<String, Materia> getMaterias() {
 		return materias;
 	}
+
+	public String getCondicion() {
+		return condicion;
+	}
 	
+	public Iterator<Materia> getIteratorMaterias() {
+		ArrayList<Materia> aux = new ArrayList<Materia>();
+		for (String i : this.materias.keySet()) {
+			aux.add(this.materias.get(i));
+		}
+		return aux.iterator();
+	}
+
 	public void invariante() {
 		assert this.apellido!=null : "El apellido no puede ser nulo";
 		assert this.nombre!=null : "El nombre no puede ser nulo";

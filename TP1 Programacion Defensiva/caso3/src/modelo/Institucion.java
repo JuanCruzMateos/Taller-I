@@ -48,6 +48,24 @@ public class Institucion {
 		return this.alumnos.get(legajo);
 	}
 	
+	/**
+	 * Setea como cursada una materia para el alumno pasado por legajo
+	 * PRE : el legajo es un numero mayor que 0 y la cadena no es vacia ni nula
+	 * POST : la materia es seteada como cursada o lanza una excepcion si no existe la materia o el alumno
+	 * @param legajo
+	 * @param materia
+	 * @throws AlumnoNoExistenteException
+	 * @throws MateriaInexistenteException
+	 */
+	public void CursaMateria(int legajo, String materia) throws AlumnoNoExistenteException, MateriaInexistenteException{
+		assert legajo>0 : "El lagajo debe ser un numero positivo";
+		assert materia!=null && !materia.equalsIgnoreCase("") : "La materia no puede ser ni null ni vacio";
+		this.invariante();
+		if(!this.alumnos.containsKey(legajo))
+			throw new AlumnoNoExistenteException("No existe un alumno con el legajo " + legajo);
+		this.alumnos.get(legajo).cursaMateria(materia);
+	}
+	
 	private void invariante() {
 		assert this.alumnos !=null : "Se perdio la referencia a los alumnos";
 		assert Institucion.nroAlumnos>=0 : "El numero de alumnos no puede ser negativo";

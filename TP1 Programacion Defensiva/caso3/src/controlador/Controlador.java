@@ -2,6 +2,7 @@ package controlador;
 
 import modelo.AlumnoNoExistenteException;
 import modelo.Institucion;
+import modelo.MateriaInexistenteException;
 import vista.Vista;
 
 /**
@@ -24,7 +25,11 @@ public class Controlador {
 		this.menu();
 	}
 
+	/**
+	 * Metodo que controla y selecciona la accion a realizar
+	 */
 	private void menu() {
+		this.invariante();
 		int accion;
 		String cadena;
 		while (this.state) {
@@ -57,12 +62,37 @@ public class Controlador {
 				this.vista.informaMensaje("Ingrese por favor un numero valido");
 			}
 		}
-
+		this.invariante();
 	}
 
+	/**
+	 * Se pide un alumno y una materia y se cambia el estado de esa materia a "cursada" para ese alumno
+	 */
 	private void cursaMateria() {
-		// TODO Auto-generated method stub
+		this.invariante();
+		
+		String legajo = this.vista.pedirLegajo();
+		String materia = this.vista.pedirMateria();
 
+		try {
+			int nroLegajo = Integer.parseInt(legajo);
+			if (nroLegajo <= 0)
+				this.vista.informaMensaje("El legajo debe ser positivo");
+			else if(materia== null || materia.equalsIgnoreCase(""))
+				this.vista.informaMensaje("La materia ingresada no existe");
+			else
+				try {
+					this.modelo.CursaMateria(nroLegajo, materia);
+					this.vista.informaMensaje("El alumno ahora registra como cursante");
+				} catch (AlumnoNoExistenteException e) {
+					this.vista.informaMensaje(e.getMessage());
+				} catch (MateriaInexistenteException e) {
+					this.vista.informaMensaje(e.getMessage());;
+				}
+		} catch (NumberFormatException e) {
+			this.vista.informaMensaje("Debe ingresar un numero");
+		}
+		this.invariante();
 	}
 
 	private void agregarAlumno() {
@@ -78,7 +108,7 @@ public class Controlador {
 	 */
 	public void pedirCertificado() {
 		this.invariante();
-		String legajo = this.vista.pedirCertificado();
+		String legajo = this.vista.pedirLegajo();
 
 		try {
 			int nroLegajo = Integer.parseInt(legajo);

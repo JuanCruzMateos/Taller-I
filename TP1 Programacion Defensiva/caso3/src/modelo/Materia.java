@@ -18,8 +18,6 @@ public class Materia {
 		this.estado = estado;
 		this.invariantes();
 	}
-	
-	
 
 	public Materia(String nombre) {
 		super();
@@ -27,8 +25,6 @@ public class Materia {
 		this.estado = "A cursar";
 		this.invariantes();
 	}
-
-
 
 	public String getNombre() {
 		return nombre;
@@ -54,8 +50,6 @@ public class Materia {
 		this.estado = estado;
 	}
 
-
-
 	@Override
 	public String toString() {
 		return "Materia [nombre=" + nombre + ", nota=" + nota + ", estado=" + estado + "]";
@@ -66,5 +60,4 @@ public class Materia {
 		assert this.nombre!=null && !this.nombre.equalsIgnoreCase("") : "El nombre no puede ser vacio ni nulo";
 		assert this.estado!=null : "El estado no puede ser nunca nulo";
 	}
-	
 }
