@@ -58,4 +58,22 @@ public class Vista {
 	private void invariante() {
 		assert this.scanner!=null : "No se cumple el invariante de clase";
 	}
+
+	public String menu() {
+		this.invariante();
+		
+		String respuesta;
+		
+		this.informaMensaje("Ingrese la accion que desea realizar");
+		this.informaMensaje("1. Para agregar un alumno");
+		this.informaMensaje("2. Para realizar un certificado");
+		this.informaMensaje("3. Cambiar el estado de un alumno a cursado");
+		this.informaMensaje("4. Ingresar la nota de un alumno");
+		this.informaMensaje("0. Cerrar");
+		respuesta = this.scanner.nextLine();
+		
+		this.invariante();
+		
+		return respuesta;
+	}
 }
