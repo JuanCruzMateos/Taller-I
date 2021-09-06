@@ -1,7 +1,7 @@
-package prueba;
+package org.prueba;
 
-import controlador.Controlador;
-import vista.Vista;
+import org.controlador.Controlador;
+import org.vista.Vista;
 
 public class Prueba {
 

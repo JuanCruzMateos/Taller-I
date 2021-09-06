@@ -1,10 +1,11 @@
-package vista;
+package org.vista;
+
+import org.modelo.Alumno;
+import org.modelo.Materia;
 
 import java.util.Iterator;
 import java.util.Scanner;
 
-import modelo.Alumno;
-import modelo.Materia;
 
 /**
  * 
@@ -34,7 +35,7 @@ public class Vista {
 	public String pedirCertificado() {
 		assert this.invariante() : "No se cumple el invariante de clase";
 		String legajo;
-		System.out.println("Ingrese el legajo");
+		System.out.println("Ingrese el legajo: ");
 		legajo = scanner.nextLine();
 		assert this.invariante() : "No se cumple el invariante de clase";
 		return legajo;

@@ -37,15 +37,17 @@ public class Controlador implements ActionListener {
     public void inicializarSurtidor() {
         try {
             double cantida = Double.parseDouble(this.vistaInit.inicializaSurtidor());
-            if (cantida >= 1) {
-                this.surtidor = Surtidor.getInstance();
+            if (cantida < 1) {
+                JOptionPane.showMessageDialog(null, "Ingrese una cantidad mayor a 0.");
+            } else if (cantida > 2000) {
+                JOptionPane.showMessageDialog(null, "Ingrese una cantidad menor a 2000.");
+            } else {
+                this.surtidor = new Surtidor();
                 this.surtidor.inicializarSurtidor(cantida);
                 this.vistaMain = new Ventana(this.surtidor.getManguera1(), this.surtidor.getManguera2());
                 this.vistaMain.setCombustible(cantida);
                 this.vistaMain.visible(true);
                 this.vistaInit.visible(false);
-            } else {
-                JOptionPane.showMessageDialog(null, "Ingrese una cantidad mayor a 0.");
             }
         } catch (NumberFormatException numberFormatException) {
             JOptionPane.showMessageDialog(null, "Ingrese una cantidad numerica.");

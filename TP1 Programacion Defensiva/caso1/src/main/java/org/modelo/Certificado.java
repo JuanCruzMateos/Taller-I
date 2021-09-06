@@ -1,3 +1,5 @@
-package modelo;
+package org.modelo;
 
+public class Certificado {
 
+}

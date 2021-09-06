@@ -11,15 +11,16 @@ public class Ventana extends JFrame implements IVistaMain {
     private JButton cargar_btn;
     private JButton btn_activarM1;
     private JButton btn_detenerM1;
-        private ObservadorManguera txt_acumuladoM1;
-//    private JTextField txt_acumuladoM1;
+//    private ObservadorManguera txt_acumuladoM1;
+    private JTextField txt_acumuladoM1;
     private JButton btn_activarM2;
     private JButton btn_detenerM2;
-//    private JTextField txt_acumuladoM2;
-        private ObservadorManguera txt_acumuladoM2;
+    private JTextField txt_acumuladoM2;
+//    private ObservadorManguera txt_acumuladoM2;
     private JTextField txt_ultimaM1;
     private JTextField txt_ultimaM2;
     private JPanel root_jpane;
+
 
     public Ventana(Manguera m1, Manguera m2) {
         this.add(this.root_jpane);
@@ -28,6 +29,7 @@ public class Ventana extends JFrame implements IVistaMain {
 
 //        this.txt_acumuladoM1 = new ObservadorManguera(m1);
 //        this.txt_acumuladoM2 = new ObservadorManguera(m2);
+
         this.cargar_btn.setActionCommand("cargar");
         this.btn_activarM1.setActionCommand("activarM1");
         this.btn_activarM2.setActionCommand("activarM2");
@@ -39,7 +41,7 @@ public class Ventana extends JFrame implements IVistaMain {
         this.btn_detenerM2.addActionListener(Controlador.getInstance());
         this.cargar_btn.addActionListener(Controlador.getInstance());
 
-        this.setBounds(375, 200, 650, 400);
+        this.setBounds(375, 200, 400, 400);
         this.setVisible(true);
     }
 

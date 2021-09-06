@@ -35,7 +35,9 @@
             <preferred-size width="150" height="-1"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <horizontalAlignment value="0"/>
+        </properties>
       </component>
       <component id="8eba4" class="javax.swing.JButton" binding="btn_inicializar">
         <constraints>

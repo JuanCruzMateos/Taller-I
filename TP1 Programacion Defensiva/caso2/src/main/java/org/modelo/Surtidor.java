@@ -3,23 +3,15 @@ package org.modelo;
 import org.excepciones.DescargaImposibleException;
 
 public class Surtidor {
-    private static Surtidor instance = null;
     private Deposito deposito;
-    private Manguera manguera1 = new Manguera();
-    private Manguera manguera2 = new Manguera();
-
-    private Surtidor() {
-
-    }
-
-    public static Surtidor getInstance() {
-        if (Surtidor.instance == null)
-            Surtidor.instance = new Surtidor();
-        return Surtidor.instance;
-    }
+    private Manguera manguera1;
+    private Manguera manguera2;
 
     public void inicializarSurtidor(double cantidad) {
-        this.deposito = new Deposito(cantidad);
+        this.deposito = Deposito.getInstance();
+        this.deposito.setCantCombustible(cantidad);
+        this.manguera1 = new Manguera(this);
+        this.manguera2 = new Manguera(this);
     }
 
     public void cargarSurtidor(double cantidad) {

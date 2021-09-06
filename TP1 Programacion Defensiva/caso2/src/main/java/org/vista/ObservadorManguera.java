@@ -12,7 +12,7 @@ public class ObservadorManguera extends JTextField implements Observer {
     private Manguera manguera;
 
     public ObservadorManguera() {
-        // Necesario
+        // Necesario -> xq?
     }
 
     public ObservadorManguera(Manguera manguera) {

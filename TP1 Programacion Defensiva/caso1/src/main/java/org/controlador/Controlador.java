@@ -1,8 +1,8 @@
-package controlador;
+package org.controlador;
 
-import modelo.AlumnoNoExistenteException;
-import modelo.Institucion;
-import vista.Vista;
+import org.modelo.AlumnoNoExistenteException;
+import org.modelo.Institucion;
+import org.vista.Vista;
 
 public class Controlador {
 	private Vista vista;

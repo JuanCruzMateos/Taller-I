@@ -1,4 +1,4 @@
-package modelo;
+package org.modelo;
 
 public class AlumnoNoExistenteException extends Exception {
 
