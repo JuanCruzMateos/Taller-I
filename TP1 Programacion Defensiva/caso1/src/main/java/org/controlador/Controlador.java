@@ -1,45 +1,63 @@
 package org.controlador;
 
-import org.modelo.AlumnoNoExistenteException;
-import org.modelo.Institucion;
-import org.vista.Vista;
+import org.excepciones.CapacidadExcedidaException;
+import org.modelo.BeerHouse;
+import org.vista.IVista;
 
-public class Controlador {
-	private Vista vista;
-	private Institucion modelo;
-	
-	public Controlador(Vista vista) {
-		this.vista = vista;
-		this.modelo = new Institucion();
-		
-		this.modelo.agregaAlumno("Juan Carlos", "Gomez");
-		this.modelo.agregaAlumno("Maria", "Marta");
-		this.pedirCertificado();
-	}
-	
-	/**
-	 * Recibe el string proveniente de la vista, lo intenta convertir a int y llama al modelo 
-	 * para intentar hacer el certificado. Captura la excepcion del parse y las emitidas por el modelo
-	 * PRE : 
-	 * POST:
-	 * @param legajo
-	 */
-	public void pedirCertificado() {
-		String legajo = this.vista.pedirCertificado();
-		
-		try {
-			int nroLegajo = Integer.parseInt(legajo);
-			if(nroLegajo<=0)
-				this.vista.informaMensaje("El legajo debe ser positivo");
-			else
-				try {
-					this.vista.mostrarCertificado(this.modelo.pedirCertificado(nroLegajo));
-				} catch (AlumnoNoExistenteException e) {
-					this.vista.informaMensaje(e.getMessage());
-				}
-		} catch (NumberFormatException e) {
-			this.vista.informaMensaje("Debe ingresar un numero");
-		}
-		
-	}
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+/**
+ *
+ */
+public class Controlador implements ActionListener {
+    private static Controlador instance = null;
+    private IVista ventana;
+    private BeerHouse modelo;
+
+    private Controlador() {
+        // Singleton
+    }
+
+    public static Controlador getInstance() {
+        if (Controlador.instance == null)
+            Controlador.instance = new Controlador();
+        return Controlador.instance;
+    }
+
+    public void setVentana(IVista ventana) {
+        this.ventana = ventana;
+    }
+
+    public void setModelo(BeerHouse modelo) {
+        this.modelo = modelo;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        switch (e.getActionCommand()) {
+            case "Abrir" -> this.abrirLocal(this.ventana.abrirLocal());
+            case "Cerrar" -> this.cerrarMesa(this.ventana.cerrarMesa());
+            case "Ocupar" -> this.ocuparMesa(this.ventana.ocuparMesa());
+        }
+    }
+
+    private void ocuparMesa(int nroMesa) {
+        this.ventana.resetTextFieldOcupar();
+    }
+
+    private void cerrarMesa(int nroMesa) {
+        this.ventana.resetTextFieldCerrar();
+    }
+
+    private void abrirLocal(int cantMesas) {
+        try {
+            this.modelo.abrirLocal(cantMesas);
+        } catch (CapacidadExcedidaException e) {
+            JOptionPane.showMessageDialog(null, "Capacidad del local excedida!\n Limite = " + e.getCapacidad());
+        } finally {
+            this.ventana.resetTextFieldAbrir();
+        }
+    }
 }

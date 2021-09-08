@@ -1,13 +1,16 @@
 package org.cerveceria;
 
+import org.controlador.Controlador;
+import org.modelo.BeerHouse;
+import org.vista.Ventana;
+
 /**
- * Hello world!
- *
+ * Application.<br>
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+
+public class App {
+    public static void main(String[] args) {
+        Controlador.getInstance().setVentana(new Ventana());
+        Controlador.getInstance().setModelo(new BeerHouse(10));
     }
 }
