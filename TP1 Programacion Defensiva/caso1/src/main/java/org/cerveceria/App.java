@@ -11,6 +11,6 @@ import org.vista.Ventana;
 public class App {
     public static void main(String[] args) {
         Controlador.getInstance().setVentana(new Ventana());
-        Controlador.getInstance().setModelo(new BeerHouse(10));
+        Controlador.getInstance().setBeerHouse(new BeerHouse(10));
     }
 }

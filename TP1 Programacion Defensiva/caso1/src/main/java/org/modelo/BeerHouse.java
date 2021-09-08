@@ -81,7 +81,7 @@ public class BeerHouse {
         if (i == this.mesas.size())
             throw new MesaInexistenteException("La mesa no existe.");
         else if (this.mesas.get(i).isOcupada())
-            throw new MesaOcupadaException("Mesa ya ocupada");
+            throw new MesaOcupadaException("Mesa " + nroMesa + " ya esta ocupada!");
         else {
             this.mesas.get(i).ocupar();
             this.invariante();
@@ -107,9 +107,9 @@ public class BeerHouse {
             i += 1;
         }
         if (i == this.mesas.size())
-            throw new MesaInexistenteException("La mesa no existe.");
+            throw new MesaInexistenteException("La mesa " + nroMesa + " no existe.");
         else if (!this.mesas.get(i).isOcupada())
-            throw new MesaAbiertaException("Mesa abierta: no se puede cerrar.");
+            throw new MesaAbiertaException("Mesa " + nroMesa + " abierta: no se puede cerrar.");
         else {
             this.invariante();
             return this.mesas.get(i).cerrarMesa();

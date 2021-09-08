@@ -7,6 +7,9 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * Interfaz de usuario de la aplicacion.<br>
+ */
 public class Ventana extends JFrame implements IVista {
     private JTextField textField_cantMesas;
     private JButton abrirButton;
@@ -30,19 +33,34 @@ public class Ventana extends JFrame implements IVista {
         this.setVisible(true);
     }
 
+    /**
+     * Lee el dato ingresado por el usuario y retorna la cantidad de mesas a abrir.<br>
+     *
+     * @return la cantidad de mesas a abrir.<br>
+     */
     @Override
     public int abrirLocal() {
         return Integer.parseInt(this.textField_cantMesas.getText());
     }
 
+    /**
+     * Lee el dato ingresado por el usuario y retorna la mesa a cerrar.<br>
+     *
+     * @return nro de mesa a cerrar.<br>
+     */
     @Override
     public int cerrarMesa() {
         return Integer.parseInt(this.textField_nroMesaCerrar.getText());
     }
 
+    /**
+     * Lee el dato ingresado por el usuario y retorna la mesa a ocupar.<br>
+     *
+     * @return nro de mesa a ocupar.<br>
+     */
     @Override
     public int ocuparMesa() {
-        return Integer.parseInt(this.textField_nroMesaCerrar.getText());
+        return Integer.parseInt(this.textField_nroMesaOcupar.getText());
     }
 
     @Override

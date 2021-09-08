@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- *
+ * Modela una mesa del local.<br>
+ * <b>Invariante: </b><br>
  */
 public class Mesa {
     private static int sigNro = 0;
@@ -29,6 +30,13 @@ public class Mesa {
         this.ocupada = 'O';
     }
 
+    /**
+     * Cierra la mesa devolviendo el importe total consumido.<br>
+     * <b>pre: </b> la mesa debe estar ocupada.<br>
+     * <b>post: </b> devuelve el total consumido por la mesa y la marca como libre.<br>
+     *
+     * @return total consumido.<br>
+     */
     public double cerrarMesa() {
         ArrayList<String> listadoProd = Carta.getInstance().getListadoProductos();
         Random rand = new Random();
