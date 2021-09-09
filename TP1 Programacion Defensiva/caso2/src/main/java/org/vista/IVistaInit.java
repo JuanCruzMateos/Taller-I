@@ -1,7 +1,9 @@
 package org.vista;
 
 public interface IVistaInit {
-    String inicializaSurtidor();
+    double inicializaSurtidor();
+
+    void resetField();
 
     void visible(boolean b);
 }

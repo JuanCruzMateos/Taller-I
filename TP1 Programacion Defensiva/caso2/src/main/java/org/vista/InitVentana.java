@@ -2,7 +2,10 @@ package org.vista;
 
 import org.controlador.Controlador;
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JPanel;
 
 public class InitVentana extends JFrame implements IVistaInit {
     private JTextField textField1;
@@ -20,13 +23,17 @@ public class InitVentana extends JFrame implements IVistaInit {
     }
 
     @Override
-    public String inicializaSurtidor() {
-        return this.textField1.getText();
+    public double inicializaSurtidor() {
+        return Double.parseDouble(this.textField1.getText());
+    }
+
+    @Override
+    public void resetField() {
+        this.textField1.setText(null);
     }
 
     @Override
     public void visible(boolean b) {
         this.setVisible(b);
     }
-
 }

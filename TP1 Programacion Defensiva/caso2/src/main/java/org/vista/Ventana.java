@@ -1,7 +1,6 @@
 package org.vista;
 
 import org.controlador.Controlador;
-import org.modelo.Manguera;
 
 import javax.swing.*;
 
@@ -11,25 +10,23 @@ public class Ventana extends JFrame implements IVistaMain {
     private JButton cargar_btn;
     private JButton btn_activarM1;
     private JButton btn_detenerM1;
-//    private ObservadorManguera txt_acumuladoM1;
+    //    private ObservadorManguera txt_acumuladoM1;
     private JTextField txt_acumuladoM1;
     private JButton btn_activarM2;
     private JButton btn_detenerM2;
     private JTextField txt_acumuladoM2;
-//    private ObservadorManguera txt_acumuladoM2;
+    //    private ObservadorManguera txt_acumuladoM2;
     private JTextField txt_ultimaM1;
     private JTextField txt_ultimaM2;
     private JPanel root_jpane;
 
 
-    public Ventana(Manguera m1, Manguera m2) {
+    public Ventana() {
         this.add(this.root_jpane);
         this.setTitle("Surtidor");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
 //        this.txt_acumuladoM1 = new ObservadorManguera(m1);
 //        this.txt_acumuladoM2 = new ObservadorManguera(m2);
-
         this.cargar_btn.setActionCommand("cargar");
         this.btn_activarM1.setActionCommand("activarM1");
         this.btn_activarM2.setActionCommand("activarM2");
@@ -40,38 +37,33 @@ public class Ventana extends JFrame implements IVistaMain {
         this.btn_detenerM1.addActionListener(Controlador.getInstance());
         this.btn_detenerM2.addActionListener(Controlador.getInstance());
         this.cargar_btn.addActionListener(Controlador.getInstance());
-
         this.setBounds(375, 200, 400, 400);
         this.setVisible(true);
     }
 
     @Override
-    public double cargarSurtidor() throws NumberFormatException {
+    public double cargarSurtidor() {
         return Double.parseDouble(this.cargar_litros_txt.getText());
     }
 
     @Override
     public void activaManguera1() {
-        // TODO: 31/08/2021
-        // btn
+        // Accion resuelta con el boton correspondiente.
     }
 
     @Override
     public void activaManguera2() {
-        // TODO: 31/08/2021
-        // btn
+        // Accion resuelta con el boton correspondiente.
     }
 
     @Override
     public void desactivaManguera1() {
-        // TODO: 31/08/2021
-        // btn
+        // Accion resuelta con el boton correspondiente.
     }
 
     @Override
     public void desactivaManguera2() {
-        // TODO: 31/08/2021
-        // btn
+        // Accion resuelta con el boton correspondiente.
     }
 
     @Override
@@ -96,8 +88,7 @@ public class Ventana extends JFrame implements IVistaMain {
     }
 
     @Override
-    public void refreshTotal(double total) {
-        this.cant_litros_txt.setText(String.valueOf(total));
+    public void refresh() {
         this.cargar_litros_txt.setText(null);
     }
 
@@ -110,4 +101,5 @@ public class Ventana extends JFrame implements IVistaMain {
     public void setUltimaVentaM1(double ultimaVentaMG1) {
         this.txt_ultimaM1.setText(String.valueOf(ultimaVentaMG1));
     }
+
 }

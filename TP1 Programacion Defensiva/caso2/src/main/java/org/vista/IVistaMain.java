@@ -19,7 +19,7 @@ public interface IVistaMain {
 
     void visible(boolean b);
 
-    void refreshTotal(double total);
+    void refresh();
 
     void setUltimaVentaM2(double ultimaVentaMG2);
 
