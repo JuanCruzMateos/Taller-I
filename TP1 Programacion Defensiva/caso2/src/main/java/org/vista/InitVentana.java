@@ -7,6 +7,9 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+/**
+ * Ventana inicial donde se inicializa el surtidor.<br>
+ */
 public class InitVentana extends JFrame implements IVistaInit {
     private JTextField textField1;
     private JButton btn_inicializar;

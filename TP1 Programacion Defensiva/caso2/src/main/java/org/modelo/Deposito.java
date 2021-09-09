@@ -3,16 +3,19 @@ package org.modelo;
 import org.excepciones.CapacidadMaximaExcedidaException;
 import org.excepciones.DescargaImposibleException;
 
+import java.util.Observable;
+
 
 /**
  * Clase que modela el deposito de combustible.<br>
  * Aplica patron Singleton:<br>
  * todas las mangueras comparten el mismo deposito del cual extraer el combustible.<br>
- *
+ * Se extiende de la clase Observable.<br>
  * <b>Invariante: </b><br>
  * - cantidad de combustible mayor o igual a cero.<br>
  */
-public class Deposito {
+@SuppressWarnings("deprecation")
+public class Deposito extends Observable {
     private static Deposito instance = null;
     private static final double CAPACIDAD_MAX = 2000.0;
     private double cantCombustible;
@@ -63,6 +66,8 @@ public class Deposito {
      */
     public synchronized void retirarCombustible() throws DescargaImposibleException {
         if (this.cantCombustible == 0) {
+            this.setChanged();
+            this.notifyObservers("Deposito vacio!");
             throw new DescargaImposibleException("El deposito se encuentra vacio. Debe cargarlo para extraer combustible");
         } else {
             double cantAnterior = this.cantCombustible;
@@ -101,6 +106,10 @@ public class Deposito {
      */
     public synchronized double getCantCombustible() {
         return cantCombustible;
+    }
+
+    public boolean vacio() {
+        return this.cantCombustible == 0;
     }
 
     /**

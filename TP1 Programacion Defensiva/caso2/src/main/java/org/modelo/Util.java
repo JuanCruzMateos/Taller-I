@@ -1,5 +1,8 @@
 package org.modelo;
 
+/**
+ * Clase auxiliar para uso en concurrencia.<br>
+ */
 public class Util {
 
     public static void esperar(int seg) {

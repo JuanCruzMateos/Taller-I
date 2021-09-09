@@ -4,6 +4,9 @@ import org.controlador.Controlador;
 
 import javax.swing.*;
 
+/**
+ * Ventana principal.<br>
+ */
 public class Ventana extends JFrame implements IVistaMain {
     private JTextField cant_litros_txt;
     private JTextField cargar_litros_txt;
@@ -19,7 +22,6 @@ public class Ventana extends JFrame implements IVistaMain {
     private JTextField txt_ultimaM1;
     private JTextField txt_ultimaM2;
     private JPanel root_jpane;
-
 
     public Ventana() {
         this.add(this.root_jpane);
@@ -101,5 +103,4 @@ public class Ventana extends JFrame implements IVistaMain {
     public void setUltimaVentaM1(double ultimaVentaMG1) {
         this.txt_ultimaM1.setText(String.valueOf(ultimaVentaMG1));
     }
-
 }

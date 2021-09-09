@@ -1,6 +1,5 @@
 package org.modelo;
 
-
 import org.excepciones.DescargaImposibleException;
 
 import java.util.Observable;
@@ -18,6 +17,9 @@ public class Manguera extends Observable implements Runnable {
     private double ultimaVenta;
     private boolean activa;
 
+    /**
+     * Concurrencia sobre el recurso compartido (Deposito).
+     */
     @Override
     public void run() {
         this.activa = true;
@@ -31,25 +33,43 @@ public class Manguera extends Observable implements Runnable {
                 this.notifyObservers();
                 Util.esperar(1);
             } catch (DescargaImposibleException e) {
-                System.out.println(e.getMessage());
+//                System.out.println(e.getMessage());
                 this.activa = false;
             }
         }
         this.verificarInvariante();
     }
 
+    /**
+     * Getter.<br>
+     *
+     * @return acumulado.<br>
+     */
     public double getAcumulado() {
         return acumulado;
     }
 
+    /**
+     * Getter.<br>
+     *
+     * @return ultima venta.<br>
+     */
     public double getUltimaVenta() {
         return ultimaVenta;
     }
 
+    /**
+     * Manguera activa.<br>
+     *
+     * @return true si activa, de lo contrario false.<br>
+     */
     public boolean isActiva() {
         return activa;
     }
 
+    /**
+     * Setea la manguera como inactiva.<br>
+     */
     public void desconectar() {
         this.activa = false;
     }

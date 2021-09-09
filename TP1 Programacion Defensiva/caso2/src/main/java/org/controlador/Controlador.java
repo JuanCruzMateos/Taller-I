@@ -1,6 +1,8 @@
 package org.controlador;
 
 import org.excepciones.CapacidadMaximaExcedidaException;
+import org.excepciones.DescargaImposibleException;
+import org.modelo.Deposito;
 import org.modelo.Surtidor;
 import org.vista.IVistaInit;
 import org.vista.IVistaMain;
@@ -9,8 +11,15 @@ import org.vista.Ventana;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
 
-public class Controlador implements ActionListener {
+/**
+ * Controlador del modelo.<br>
+ * Aplica patron Singleton.<br>
+ */
+@SuppressWarnings("deprecation")
+public class Controlador implements ActionListener, Observer {
     private static Controlador instance = null;
     private Surtidor surtidor;
     private IVistaInit vistaInit;
@@ -21,8 +30,10 @@ public class Controlador implements ActionListener {
     }
 
     public static Controlador getInstance() {
-        if (Controlador.instance == null)
+        if (Controlador.instance == null) {
             Controlador.instance = new Controlador();
+            Deposito.getInstance().addObserver(Controlador.instance);
+        }
         return Controlador.instance;
     }
 
@@ -46,6 +57,10 @@ public class Controlador implements ActionListener {
         }
     }
 
+    /**
+     * Inicializa el surtidor si es posible validando los datos recibidos de la ventana.<br>
+     * <b>post: </b> se inicializa el surtidor con la cantidad requerida y validada.<br>
+     */
     public void inicializarSurtidor() {
         double cantidad = this.vistaInit.inicializaSurtidor();
         if (cantidad <= 0) {
@@ -68,6 +83,12 @@ public class Controlador implements ActionListener {
         this.vistaInit.resetField();
     }
 
+    /**
+     * Carga el surtidos con la cantidad recivida de la ventana si es posible luego de validarla.<br>
+     * <b>post: </b> aumenta la cantidad del deposito de combustible una cantidad igual a la pasada por parametro.<br>
+     *
+     * @param carga recibida de la ventana.<br>
+     */
     public void cargarSurtidor(double carga) {
         if (carga <= 0) {
             JOptionPane.showMessageDialog(null, "Debe ingresar una cantidad positiva.");
@@ -77,45 +98,110 @@ public class Controlador implements ActionListener {
                 JOptionPane.showMessageDialog(null, "Carga exitosa!");
                 this.vistaMain.setCombustible(this.surtidor.getExistenciaDeposito());
             } catch (CapacidadMaximaExcedidaException e) {
-                JOptionPane.showMessageDialog(null, "Capacidad excedida!");
+                JOptionPane.showMessageDialog(null, e.getMessage());
             }
         }
         this.vistaMain.refresh();
     }
 
+    /**
+     * Informa al modelo el inicio de la descarga de la manguera 1, si es posible.<br>
+     */
     public void desgargaManguera1() {
-        this.surtidor.descargarManguera1();
+        try {
+            this.surtidor.descargarManguera1();
+        } catch (DescargaImposibleException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
 
+    /**
+     * Informa al modelo el inicio de la descarga de la manguera 2, si es posible.<br>
+     */
     public void desgargaManguera2() {
-        this.surtidor.descargarManguera2();
+        try {
+            this.surtidor.descargarManguera2();
+        } catch (DescargaImposibleException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+        }
     }
 
+    /**
+     * getter
+     *
+     * @return cantidad de combustible en surtidor.<br>
+     */
     public double getExistenciaDeposito() {
         return this.surtidor.getExistenciaDeposito();
     }
 
+    /**
+     * getter
+     *
+     * @return acumulado de manguera 1.<br>
+     */
     public double getAcumuladoManguera1() {
         return this.surtidor.getAcumuladoManguera1();
     }
 
+    /**
+     * getter
+     *
+     * @return acumulado de manguera 2.<br>
+     */
     public double getAcumuladoManguera2() {
         return this.surtidor.getAcumuladoManguera2();
     }
 
+    /**
+     * getter
+     *
+     * @return ultima venta de manguera 1.<br>
+     */
     public double getUltimaVentaManguera1() {
         return this.surtidor.getUltimaVentaMG1();
     }
 
+    /**
+     * getter
+     *
+     * @return ultima venta de manguera 2.<br>
+     */
     public double getUltimaVentaManguera2() {
         return this.surtidor.getUltimaVentaMG2();
     }
 
-    public void detenerManguera2() {
-        this.surtidor.detenerManguera2();
-    }
-
+    /**
+     * Informa al modelo que debe detener la descarga de la manguera 1.<br>
+     */
     public void detenerManguera1() {
         this.surtidor.detenerManguera1();
+        this.vistaMain.setAcumuladoM1(this.surtidor.getAcumuladoManguera1());
+        this.vistaMain.setUltimaVentaM1(this.surtidor.getUltimaVentaMG1());
+        this.vistaMain.setCombustible(this.surtidor.getExistenciaDeposito());
+    }
+
+    /**
+     * Informa al modelo que debe detener la descarga de la manguera 2.<br>
+     */
+    public void detenerManguera2() {
+        this.surtidor.detenerManguera2();
+        this.vistaMain.setAcumuladoM2(this.surtidor.getAcumuladoManguera2());
+        this.vistaMain.setUltimaVentaM2(this.surtidor.getUltimaVentaMG2());
+        this.vistaMain.setCombustible(this.surtidor.getExistenciaDeposito());
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        if (o != Deposito.getInstance()) {
+            throw new IllegalArgumentException();
+        } else {
+            JOptionPane.showMessageDialog(null, arg);
+            this.vistaMain.setAcumuladoM1(this.surtidor.getAcumuladoManguera1());
+            this.vistaMain.setAcumuladoM2(this.surtidor.getAcumuladoManguera2());
+            this.vistaMain.setUltimaVentaM1(this.surtidor.getUltimaVentaMG1());
+            this.vistaMain.setUltimaVentaM2(this.surtidor.getUltimaVentaMG2());
+            this.vistaMain.setCombustible(this.surtidor.getExistenciaDeposito());
+        }
     }
 }

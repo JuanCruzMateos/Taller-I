@@ -1,5 +1,8 @@
 package org.vista;
 
+/**
+ * Interfaz de ventana principal.<br>
+ */
 public interface IVistaMain {
     double cargarSurtidor();
 
