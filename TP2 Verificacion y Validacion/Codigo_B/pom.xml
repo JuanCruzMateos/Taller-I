@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>Codigo_B</groupId>
+  <artifactId>Codigo_B</artifactId>
+  <version>1.0</version>
+  <description>NetBeans</description>
+  <build>
+    <sourceDirectory>src/</sourceDirectory>
+    <resources>
+      <resource>
+        <directory>${basedir}</directory>
+        <includes>
+          <include>*</include>
+        </includes>
+      </resource>
+    </resources>
+    <outputDirectory>classes/</outputDirectory>
+  </build>
+    <name>Codigo_B</name>
+    <properties>
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
+    </properties>
+</project>

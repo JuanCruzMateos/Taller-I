@@ -1,0 +1,61 @@
+/usr/lib/jvm/java-14-openjdk-amd64/bin/javadoc
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/src'
+-author
+-bottom
+'Copyright &#169; 2020. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Codigo_B 1.0 API'
+-use
+-version
+-windowtitle
+'Codigo_B 1.0 API'
+Interfaces
+Modelo
+Modelo
+Modelo
+Modelo
+Modelo
+Modelo
+Modelo
+Modelo
+Excepciones
+Decorator
+Decorator
+Decorator
+Decorator
+Factory
+Factory
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/src = 1606431402487
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/help-doc.html = 1606477477205
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/search.js = 1606477477213
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/overview-summary.html = 1606477477205
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/allpackages-index.html = 1606477477201
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/serialized-form.html = 1606477477061
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/stylesheet.css = 1606477477209
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/constant-values.html = 1606477477049
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/overview-tree.html = 1606477477145
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/member-search-index.zip = 1606477477189
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/script.js = 1606477477209
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/type-search-index.js = 1606477477189
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/index-all.html = 1606477477193
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/index.html = 1606477477157
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/system-properties.html = 1606477477201
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/package-search-index.zip = 1606477477189
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/deprecated-list.html = 1606477477153
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/member-search-index.js = 1606477477189
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/type-search-index.zip = 1606477477189
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/allclasses-index.html = 1606477477197
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/element-list = 1606477477013
+/home/adolfo/Descargas/Taller1/TrabajoFinal/Codigo_B/target/site/apidocs/package-search-index.js = 1606477477181
