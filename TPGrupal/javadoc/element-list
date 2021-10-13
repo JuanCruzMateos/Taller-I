@@ -1,0 +1,17 @@
+app
+collections
+sistema
+sistema.atencion
+sistema.clinica
+sistema.egreso
+sistema.excepciones
+sistema.facturacion
+sistema.gui
+sistema.habitaciones
+sistema.ingreso
+sistema.personas
+sistema.personas.medicos
+sistema.personas.medicos.decorators
+sistema.personas.medicos.especialidades
+sistema.personas.medicos.factory
+sistema.personas.pacientes
