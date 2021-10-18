@@ -9,6 +9,12 @@ public class Clinico extends Medico {
     private static double aumentoClinico = 0.05;
 
     /**
+     * Constructor vacio para persistencia XML.<br>
+     */
+    public Clinico() {
+    }
+
+    /**
      * Constructor. <br>
      * <b>Pre: </b> nombre, apellido, direccion, ciudad distintos de null; telenofo y dni enteros positivos.<br>
      * <b>Post: </b> se genera una nueva instancia de la clase.<br>
@@ -25,6 +31,20 @@ public class Clinico extends Medico {
         super(nombre, apellido, direccion, ciudad, telefono, dni, matricula);
     }
 
+    public static double getAumentoClinico() {
+        return aumentoClinico;
+    }
+
+    /**
+     * Setea porcentaje de aumento para todos los clinicos.<br>
+     * <b>Pre: </b> aumentoClinico deber se un numero entre 0 y 1.<br>
+     *
+     * @param aumentoClinico numero entre 0 y 1.<br>
+     */
+    public static void setAumentoClinico(double aumentoClinico) {
+        Clinico.aumentoClinico = aumentoClinico;
+    }
+
     /**
      * Retorna sueldo de un medico clinico.<br>
      */
@@ -38,15 +58,6 @@ public class Clinico extends Medico {
         return "Clinico";
     }
 
-    /**
-     * Setea porcentaje de aumento para todos los clinicos.<br>
-     * <b>Pre: </b> aumentoClinico deber se un numero entre 0 y 1.<br>
-     *
-     * @param aumentoClinico numero entre 0 y 1.<br>
-     */
-    public static void setAumentoClinico(double aumentoClinico) {
-        Clinico.aumentoClinico = aumentoClinico;
-    }
 
     @Override
     public String toString() {

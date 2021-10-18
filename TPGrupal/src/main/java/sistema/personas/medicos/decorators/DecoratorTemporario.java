@@ -8,17 +8,25 @@ import sistema.personas.medicos.IMedico;
 public class DecoratorTemporario extends DecoratorMedico {
     private static double aumentoTemporario = 0.05;
 
+    /**
+     *
+     */
+    public DecoratorTemporario() {
+
+    }
+
+    /**
+     * @param encapsulado
+     */
     public DecoratorTemporario(IMedico encapsulado) {
         super(encapsulado);
     }
 
     /**
-     * Decorator de sueldo para medicos temporarios.<br>
-     * <b>Pre: Este decorator se aplica sobre un medico con especialidad y titulo de posgrado</b><br>
+     * @return
      */
-    @Override
-    public double getSueldo() {
-        return this.encapsulado.getSueldo() * (1 + DecoratorTemporario.aumentoTemporario);
+    public static double getAumentoTemporario() {
+        return aumentoTemporario;
     }
 
     /**
@@ -28,6 +36,15 @@ public class DecoratorTemporario extends DecoratorMedico {
      */
     public static void setAumentoTemporario(double aumentoTemporario) {
         DecoratorTemporario.aumentoTemporario = aumentoTemporario;
+    }
+
+    /**
+     * Decorator de sueldo para medicos temporarios.<br>
+     * <b>Pre: Este decorator se aplica sobre un medico con especialidad y titulo de posgrado</b><br>
+     */
+    @Override
+    public double getSueldo() {
+        return this.encapsulado.getSueldo() * (1 + DecoratorTemporario.aumentoTemporario);
     }
 
     /**

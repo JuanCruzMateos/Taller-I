@@ -27,15 +27,21 @@ public abstract class Medico extends Persona implements IMedico {
         this.matricula = matricula;
     }
 
-    @Override
-    public int getMatricula() {
-        return matricula;
+    /**
+     * Constructor vacio para persistencia XML.<br>
+     */
+    public Medico() {
     }
 
-    @Override
-    public void setMatricula(Integer matricula) {
-        this.matricula = matricula;
+    /**
+     * Devuelve el sueldo basico de cualquier medico sin importar especialidad, posgrado o contratacion.<br>
+     *
+     * @return sueldoBasico del medico.<br>
+     */
+    public static double getSueldoBasico() {
+        return sueldoBasico;
     }
+
 
     /**
      * Setea el sueldo basico para todos los medicos, sin importar especialidad, posgrado o contratacion.<br>
@@ -48,13 +54,15 @@ public abstract class Medico extends Persona implements IMedico {
         Medico.sueldoBasico = sueldoBasico;
     }
 
-    /**
-     * Devuelve el sueldo basico de cualquier medico sin importar especialidad, posgrado o contratacion.<br>
-     *
-     * @return sueldoBasico del medico.<br>
-     */
-    public static double getSueldoBasico() {
-        return sueldoBasico;
+    @Override
+    public int getMatricula() {
+        return matricula;
+    }
+
+
+    @Override
+    public void setMatricula(int matricula) {
+        this.matricula = matricula;
     }
 
     @Override

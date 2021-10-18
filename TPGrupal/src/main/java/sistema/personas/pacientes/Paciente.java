@@ -27,6 +27,13 @@ public abstract class Paciente extends Persona {
     }
 
     /**
+     * Constructor vacio para persistencia XML.<br>
+     */
+    public Paciente() {
+
+    }
+
+    /**
      * A implementar en clases extendidas - Double dispatch
      *
      * @param p debe ser distinto de null.<br>
@@ -73,6 +80,10 @@ public abstract class Paciente extends Persona {
      */
     public int getNroHistoriaClinica() {
         return nroHistoriaClinica;
+    }
+
+    public void setNroHistoriaClinica(int nroHistoriaClinica) {
+        this.nroHistoriaClinica = nroHistoriaClinica;
     }
 
     @Override

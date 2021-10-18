@@ -1,6 +1,5 @@
 package sistema.egreso;
 
-import collections.SortedArrayList;
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Factura;
 import sistema.facturacion.Internacion;
@@ -12,12 +11,14 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.util.TreeSet;
 
 /**
  * Clase que modela el modulo de egreso de la clinica.<br>
  */
 public class ModuloEgreso {
-    private SortedArrayList<Factura> facturas = new SortedArrayList<>();
+    //    private SortedArrayList<Factura> facturas = new SortedArrayList<>();
+    private TreeSet<Factura> facturas = new TreeSet<>();
 
     /**
      * Genera una factura para un paciente determinado y la almacena en un registro de facturas.<br>

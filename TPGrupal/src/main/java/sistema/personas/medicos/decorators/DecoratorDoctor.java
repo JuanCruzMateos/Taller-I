@@ -8,8 +8,34 @@ import sistema.personas.medicos.IMedico;
 public class DecoratorDoctor extends DecoratorMedico {
     private static double aumentoDoctor = 0.1;
 
+    /**
+     * Para persistencia XML
+     */
+    public DecoratorDoctor() {
+
+    }
+
+    /**
+     * @param encapsulado
+     */
     public DecoratorDoctor(IMedico encapsulado) {
         super(encapsulado);
+    }
+
+    /**
+     * @return
+     */
+    public static double getAumentoDoctor() {
+        return aumentoDoctor;
+    }
+
+    /**
+     * Seta aumento para todos los medicos con titulo de posgrado de doctor.<br>
+     *
+     * @param aumentoDoctor numero entre 0 y 1.<br>
+     */
+    public static void setAumentoDoctor(double aumentoDoctor) {
+        DecoratorDoctor.aumentoDoctor = aumentoDoctor;
     }
 
     /**
@@ -28,15 +54,6 @@ public class DecoratorDoctor extends DecoratorMedico {
     @Override
     public String getDescripcion() {
         return super.getDescripcion() + ", Doctor";
-    }
-
-    /**
-     * Seta aumento para todos los medicos con titulo de posgrado de doctor.<br>
-     *
-     * @param aumentoDoctor numero entre 0 y 1.<br>
-     */
-    public static void setAumentoDoctor(double aumentoDoctor) {
-        DecoratorDoctor.aumentoDoctor = aumentoDoctor;
     }
 
     @Override

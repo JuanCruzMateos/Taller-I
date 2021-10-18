@@ -21,6 +21,12 @@ public class PacienteNino extends Paciente {
     }
 
     /**
+     * Constructor vacio para persistencia XML.<br>
+     */
+    public PacienteNino() {
+    }
+
+    /**
      * Double dispatch para resolucion de conflictos en sala VIP.<br>
      */
     public boolean quedaEnSalaVipFrenteA(Paciente p) {

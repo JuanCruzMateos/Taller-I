@@ -6,5 +6,5 @@ public interface IMedico {
     double getSueldo();
     String getDescripcion();
     int getMatricula();
-    void setMatricula(Integer matricula);
+    void setMatricula(int matricula);
 }

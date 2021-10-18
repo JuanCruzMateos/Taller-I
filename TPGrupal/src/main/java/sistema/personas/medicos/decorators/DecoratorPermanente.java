@@ -8,17 +8,25 @@ import sistema.personas.medicos.IMedico;
 public class DecoratorPermanente extends DecoratorMedico {
     private static double aumentoPermanente = 0.1;
 
+    /**
+     *
+     */
+    public DecoratorPermanente() {
+
+    }
+
+    /**
+     * @param encapsulado
+     */
     public DecoratorPermanente(IMedico encapsulado) {
         super(encapsulado);
     }
 
     /**
-     * Decorator de sueldo para medicos en planta permanente.<br>
-     * <b>Pre: Este decorator se aplica sobre un medico con especialidad y titulo de posgrado</b><br>
+     * @return
      */
-    @Override
-    public double getSueldo() {
-        return this.encapsulado.getSueldo() * (1 + DecoratorPermanente.aumentoPermanente);
+    public static double getAumentoPermanente() {
+        return aumentoPermanente;
     }
 
     /**
@@ -28,6 +36,15 @@ public class DecoratorPermanente extends DecoratorMedico {
      */
     public static void setAumentoPermanente(double aumentoPermanente) {
         DecoratorPermanente.aumentoPermanente = aumentoPermanente;
+    }
+
+    /**
+     * Decorator de sueldo para medicos en planta permanente.<br>
+     * <b>Pre: Este decorator se aplica sobre un medico con especialidad y titulo de posgrado</b><br>
+     */
+    @Override
+    public double getSueldo() {
+        return this.encapsulado.getSueldo() * (1 + DecoratorPermanente.aumentoPermanente);
     }
 
     /**

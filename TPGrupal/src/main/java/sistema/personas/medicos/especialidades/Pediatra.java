@@ -9,6 +9,12 @@ public class Pediatra extends Medico {
     private static double aumentoPediatra = 0.07;
 
     /**
+     * Constructor vacio para persistencia XML.<br>
+     */
+    public Pediatra() {
+    }
+
+    /**
      * Constructor. <br>
      * <b>Pre: </b> nombre, apellido, direccion, ciudad distintos de null; telenofo y dni enteros positivos.<br>
      * <b>Post: </b> se genera una nueva instancia de la clase.<br>
@@ -26,16 +32,10 @@ public class Pediatra extends Medico {
     }
 
     /**
-     * Retorna sueldo de un medico pediatra
+     * TODO
      */
-    @Override
-    public double getSueldo() {
-        return Medico.sueldoBasico * (1 + Pediatra.aumentoPediatra);
-    }
-
-    @Override
-    public String getDescripcion() {
-        return "Pediatra";
+    public static double getAumentoPediatra() {
+        return aumentoPediatra;
     }
 
     /**
@@ -46,6 +46,24 @@ public class Pediatra extends Medico {
      */
     public static void setAumentoPediatra(double aumentoPediatra) {
         Pediatra.aumentoPediatra = aumentoPediatra;
+    }
+
+    /**
+     * Retorna sueldo de un medico pediatra
+     */
+    @Override
+    public double getSueldo() {
+        return Medico.sueldoBasico * (1 + Pediatra.aumentoPediatra);
+    }
+
+    /**
+     * TODO
+     *
+     * @return
+     */
+    @Override
+    public String getDescripcion() {
+        return "Pediatra";
     }
 
     @Override

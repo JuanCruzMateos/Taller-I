@@ -8,17 +8,16 @@ import sistema.personas.medicos.IMedico;
 public class DecoratorMagister extends DecoratorMedico {
     private static double aumentoMagister = 0.05;
 
+    public DecoratorMagister() {
+
+    }
+
     public DecoratorMagister(IMedico encapsulado) {
         super(encapsulado);
     }
 
-    /**
-     * Decorator de sueldo para medicos con titulo de Master.<br>
-     * <b>Pre: Este decorator se aplica sobre un medico con especialidad</b><br>
-     */
-    @Override
-    public double getSueldo() {
-        return this.encapsulado.getSueldo() * (1 + DecoratorMagister.aumentoMagister);
+    public static double getAumentoMagister() {
+        return aumentoMagister;
     }
 
     /**
@@ -28,6 +27,15 @@ public class DecoratorMagister extends DecoratorMedico {
      */
     public static void setAumentoMagister(double aumentoMagister) {
         DecoratorMagister.aumentoMagister = aumentoMagister;
+    }
+
+    /**
+     * Decorator de sueldo para medicos con titulo de Master.<br>
+     * <b>Pre: Este decorator se aplica sobre un medico con especialidad</b><br>
+     */
+    @Override
+    public double getSueldo() {
+        return this.encapsulado.getSueldo() * (1 + DecoratorMagister.aumentoMagister);
     }
 
     /**

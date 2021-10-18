@@ -9,6 +9,12 @@ public class Cirujano extends Medico {
     private static double aumentoCirujano = 0.1;
 
     /**
+     * Constructor vacio para persistencia XML.<br>
+     */
+    public Cirujano() {
+    }
+
+    /**
      * Constructor. <br>
      * <b>Pre: </b> nombre, apellido, direccion, ciudad distintos de null; telenofo y dni enteros positivos.<br>
      * <b>Post: </b> se genera una nueva instancia de la clase.<br>
@@ -26,6 +32,20 @@ public class Cirujano extends Medico {
     }
 
     /**
+     * Setea porcentaje de aumento para todos los cirujano.<br>
+     * <b>Pre: </b> aumentoCirujano deber se un numero entre 0 y 1.<br>
+     *
+     * @param aumentoCirujano numero entre 0 y 1.<br>
+     */
+    public static void setAumentoCirujano(double aumentoCirujano) {
+        Cirujano.aumentoCirujano = aumentoCirujano;
+    }
+
+    public static double getAumentoCirujano() {
+        return aumentoCirujano;
+    }
+
+    /**
      * Retorna sueldo de un medico Cirujano.<br>
      */
     @Override
@@ -36,16 +56,6 @@ public class Cirujano extends Medico {
     @Override
     public String getDescripcion() {
         return "Cirujano";
-    }
-
-    /**
-     * Setea porcentaje de aumento para todos los cirujano.<br>
-     * <b>Pre: </b> aumentoCirujano deber se un numero entre 0 y 1.<br>
-     *
-     * @param aumentoCirujano numero entre 0 y 1.<br>
-     */
-    public static void setAumentoCirujano(double aumentoCirujano) {
-        Cirujano.aumentoCirujano = aumentoCirujano;
     }
 
     @Override
