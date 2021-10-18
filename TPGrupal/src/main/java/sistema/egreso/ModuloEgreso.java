@@ -17,7 +17,6 @@ import java.util.TreeSet;
  * Clase que modela el modulo de egreso de la clinica.<br>
  */
 public class ModuloEgreso {
-    //    private SortedArrayList<Factura> facturas = new SortedArrayList<>();
     private TreeSet<Factura> facturas = new TreeSet<>();
 
     /**

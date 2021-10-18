@@ -1,6 +1,6 @@
 package sistema.persistencia.dto;
 
-import sistema.ambulatorio.ModuloAtencionAmbulatoria;
+//import sistema.ambulatorio.ModuloAtencionAmbulatoria;
 import sistema.atencion.ModuloAtencion;
 import sistema.egreso.ModuloEgreso;
 import sistema.ingreso.ModuloIngreso;
@@ -18,7 +18,7 @@ public class ClinicaDTO implements Serializable {
     private ModuloIngreso moduloIngreso = new ModuloIngreso();
     private ModuloAtencion moduloAtencion = new ModuloAtencion();
     private ModuloEgreso moduloEgreso = new ModuloEgreso();
-    private ModuloAtencionAmbulatoria moduloAtencionAmbulatoria = new ModuloAtencionAmbulatoria();
+//    private ModuloAtencionAmbulatoria moduloAtencionAmbulatoria = new ModuloAtencionAmbulatoria();
     // Habitacioens
     private double costoAsignacion;
     // Medicos
@@ -199,13 +199,13 @@ public class ClinicaDTO implements Serializable {
         this.moduloEgreso = moduloEgreso;
     }
 
-    public ModuloAtencionAmbulatoria getModuloAtencionAmbulatoria() {
-        return moduloAtencionAmbulatoria;
-    }
-
-    public void setModuloAtencionAmbulatoria(ModuloAtencionAmbulatoria moduloAtencionAmbulatoria) {
-        this.moduloAtencionAmbulatoria = moduloAtencionAmbulatoria;
-    }
+//    public ModuloAtencionAmbulatoria getModuloAtencionAmbulatoria() {
+//        return moduloAtencionAmbulatoria;
+//    }
+//
+//    public void setModuloAtencionAmbulatoria(ModuloAtencionAmbulatoria moduloAtencionAmbulatoria) {
+//        this.moduloAtencionAmbulatoria = moduloAtencionAmbulatoria;
+//    }
 
     public double getCostoHabCompartida() {
         return costoHabCompartida;

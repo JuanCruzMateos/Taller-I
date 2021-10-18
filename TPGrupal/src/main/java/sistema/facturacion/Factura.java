@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.util.Objects;
 
 /**
  * Clase que modela una factura de la clinica.<br>
@@ -126,5 +127,18 @@ public class Factura implements Comparable<Factura> {
     @Override
     public int compareTo(Factura o) {
         return this.fecha.compareTo(o.fecha);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Factura factura = (Factura) o;
+        return nroFactura == factura.nroFactura;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nroFactura);
     }
 }

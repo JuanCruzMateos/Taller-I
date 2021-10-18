@@ -7,7 +7,7 @@ import sistema.habitaciones.Habitacion;
  * Contiene informacion sobre la habitacion, la cantidad de dias internado, el costo de la habitacion y el subtotal.<br>
  */
 public class Internacion {
-    private Habitacion habitacion;
+    private String habitacion;
     private int diasInternado;
     private double costoHabitacion;
     private double subtotal;
@@ -21,7 +21,7 @@ public class Internacion {
      * @param diasInternado Cantidad de dias internado. Debe ser mayor a cero.<br>
      */
     public Internacion(Habitacion habitacion, int diasInternado) {
-        this.habitacion = habitacion;
+        this.habitacion = habitacion.toString();
         this.diasInternado = diasInternado;
         this.costoHabitacion = habitacion.getCostoHabitacion();
         this.subtotal = habitacion.getCostoInternacion(diasInternado);
@@ -32,7 +32,7 @@ public class Internacion {
      *
      * @return habitacion donde se interno al paciente.<br>
      */
-    public Habitacion getHabitacion() {
+    public String getHabitacion() {
         return habitacion;
     }
 

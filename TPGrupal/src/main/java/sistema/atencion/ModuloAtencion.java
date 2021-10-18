@@ -9,7 +9,7 @@ import java.util.Iterator;
  * Clase que modela el modulo de atencion de la clinica.<br>
  */
 public class ModuloAtencion {
-    private ArrayList<Paciente> pacientesEnAtencion = new ArrayList<Paciente>();
+    private ArrayList<Paciente> pacientesEnAtencion = new ArrayList<>();
 
     /**
      * Agrega al paciente a la lista de pacientes en atencion.<br>

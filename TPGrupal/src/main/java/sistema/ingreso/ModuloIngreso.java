@@ -3,7 +3,10 @@ package sistema.ingreso;
 import sistema.personas.pacientes.Paciente;
 import sistema.personas.pacientes.PacienteFactory;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Clase que modela el modulo de ingreso de la clinica.<br>
@@ -12,9 +15,9 @@ import java.util.*;
  */
 public class ModuloIngreso {
     private static int nroOrden = 0;
-    private HashMap<Integer, Paciente> registroDePacientes = new HashMap<Integer, Paciente>();
-    private Queue<Paciente> listaDeEspera = new LinkedList<Paciente>();
-    private ArrayList<Paciente> listaPacientesEnPatio = new ArrayList<Paciente>();
+    private HashMap<Integer, Paciente> registroDePacientes = new HashMap<>();
+    private Queue<Paciente> listaDeEspera = new LinkedList<>();
+    private ArrayList<Paciente> listaPacientesEnPatio = new ArrayList<>();
     private Paciente salaVip;
 
     /**

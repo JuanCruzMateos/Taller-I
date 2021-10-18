@@ -4,6 +4,7 @@ package sistema.personas.pacientes;
  * Patron Factory: creacional.<br>
  * Responsable de crear un paciente asignandole un numero de historia clinica.<br>
  * <b>pre:</b> El rango etareo debe ser alguna de estas opciones "Joven", "Mayor" o "Nino".<br>
+ * TODO::doc de otros parametros
  * <b>Post:</b> Retorna un paciente con historia clinica o null si el rango etareo no corresponde a una opcion valida (no lanza excepciones).<br>
  */
 public class PacienteFactory {
