@@ -10,6 +10,13 @@ public abstract class Medico extends Persona implements IMedico {
     protected int matricula;
 
     /**
+     * Peristencia XML.<br>
+     */
+    public Medico() {
+
+    }
+
+    /**
      * Constructor. <br>
      * <b>Pre: </b> nombre, apellido, direccion, ciudad distintos de null; telenofo y dni enteros positivos.<br>
      * <b>Post: </b> se genera una nueva instancia de la clase.<br>
@@ -22,15 +29,9 @@ public abstract class Medico extends Persona implements IMedico {
      * @param dni       DNI del medico. Numero entero positivo.<br>
      * @param matricula Numero de matricula del medico.<br>
      */
-    public Medico(String nombre, String apellido, String direccion, String ciudad, int telefono, int dni, int matricula) {
+    public Medico(String nombre, String apellido, String direccion, String ciudad, long telefono, int dni, int matricula) {
         super(nombre, apellido, direccion, ciudad, telefono, dni);
         this.matricula = matricula;
-    }
-
-    /**
-     * Constructor vacio para persistencia XML.<br>
-     */
-    public Medico() {
     }
 
     /**
@@ -41,7 +42,6 @@ public abstract class Medico extends Persona implements IMedico {
     public static double getSueldoBasico() {
         return sueldoBasico;
     }
-
 
     /**
      * Setea el sueldo basico para todos los medicos, sin importar especialidad, posgrado o contratacion.<br>
@@ -58,7 +58,6 @@ public abstract class Medico extends Persona implements IMedico {
     public int getMatricula() {
         return matricula;
     }
-
 
     @Override
     public void setMatricula(int matricula) {

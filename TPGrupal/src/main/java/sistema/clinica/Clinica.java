@@ -177,42 +177,6 @@ public class Clinica {
     }
 
     /**
-     * Setea el nombre de la Clinica.<br>
-     *
-     * @param nombre String que contiene nombre de la clinica.<br>
-     */
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    /**
-     * Setea la direccion de la clinica.<br>
-     *
-     * @param direccion String que contiene la direccion de la clinica.<br>
-     */
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    /**
-     * Setea la ciudad de la clinica.<br>
-     *
-     * @param ciudad String que contiene la ciudad en donde funciona la clinica.<br>
-     */
-    public void setCiudad(String ciudad) {
-        this.ciudad = ciudad;
-    }
-
-    /**
-     * Setea el telefono de la clinica.<br>
-     *
-     * @param telefono (int) que almacena el telefono de la clinica.<br>
-     */
-    public void setTelefono(int telefono) {
-        this.telefono = telefono;
-    }
-
-    /**
      * Metodo ToString que brinda una breve descripcion de la clinica.<br>
      */
     @Override
@@ -225,7 +189,6 @@ public class Clinica {
                 ']';
     }
 
-
     /**
      * Genera un reporte de la situacion actual de la clinica, indicando cuantos pacientes hay en espera de ser atendidos
      * Indica la cantidad de pacientes en el patio y si hay alguien en la sala VIP
@@ -237,5 +200,89 @@ public class Clinica {
                 "   - en patio: " + this.moduloIngreso.cantidadDePacientesEnPatio() + "\n" +
                 "   - en sala vip: " + ((this.moduloIngreso.salaVipOcupada()) ? 1 : 0) + "\n" +
                 "Pacientes en atencion: " + this.moduloAtencion.cantidadDePacientesEnAtencion() + "\n";
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    /**
+     * Setea el nombre de la Clinica.<br>
+     *
+     * @param nombre String que contiene nombre de la clinica.<br>
+     */
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    /**
+     * Setea la direccion de la clinica.<br>
+     *
+     * @param direccion String que contiene la direccion de la clinica.<br>
+     */
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    /**
+     * Setea la ciudad de la clinica.<br>
+     *
+     * @param ciudad String que contiene la ciudad en donde funciona la clinica.<br>
+     */
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public int getTelefono() {
+        return telefono;
+    }
+
+    /**
+     * Setea el telefono de la clinica.<br>
+     *
+     * @param telefono (int) que almacena el telefono de la clinica.<br>
+     */
+    public void setTelefono(int telefono) {
+        this.telefono = telefono;
+    }
+
+    public HashMap<Integer, IMedico> getMedicos() {
+        return medicos;
+    }
+
+    public void setMedicos(HashMap<Integer, IMedico> medicos) {
+        this.medicos = medicos;
+    }
+
+    public ModuloIngreso getModuloIngreso() {
+        return moduloIngreso;
+    }
+
+    public void setModuloIngreso(ModuloIngreso moduloIngreso) {
+        this.moduloIngreso = moduloIngreso;
+    }
+
+    public ModuloAtencion getModuloAtencion() {
+        return moduloAtencion;
+    }
+
+    public void setModuloAtencion(ModuloAtencion moduloAtencion) {
+        this.moduloAtencion = moduloAtencion;
+    }
+
+    public ModuloEgreso getModuloEgreso() {
+        return moduloEgreso;
+    }
+
+    public void setModuloEgreso(ModuloEgreso moduloEgreso) {
+        this.moduloEgreso = moduloEgreso;
     }
 }

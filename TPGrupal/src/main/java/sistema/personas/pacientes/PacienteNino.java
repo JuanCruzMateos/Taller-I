@@ -5,6 +5,13 @@ package sistema.personas.pacientes;
  */
 public class PacienteNino extends Paciente {
     /**
+     * Persistencia XML.<br>
+     */
+    public PacienteNino() {
+
+    }
+
+    /**
      * Constructor. <br>
      * <b>Pre: </b> nombre, apellido, direccion, ciudad distintos de null; telenofo y dni enteros positivos.<br>
      *
@@ -16,14 +23,8 @@ public class PacienteNino extends Paciente {
      * @param dni                DNI del paciente. Numero entero positivo.<br>
      * @param nroHistoriaClinica Numero de historia clinica del paciente.<br>
      */
-    public PacienteNino(String nombre, String apellido, String direccion, String ciudad, int telefono, int dni, int nroHistoriaClinica) {
+    public PacienteNino(String nombre, String apellido, String direccion, String ciudad, long telefono, int dni, int nroHistoriaClinica) {
         super(nombre, apellido, direccion, ciudad, telefono, dni, nroHistoriaClinica);
-    }
-
-    /**
-     * Constructor vacio para persistencia XML.<br>
-     */
-    public PacienteNino() {
     }
 
     /**

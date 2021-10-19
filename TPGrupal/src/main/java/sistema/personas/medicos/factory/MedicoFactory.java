@@ -1,6 +1,9 @@
 package sistema.personas.medicos.factory;
 
-import sistema.excepciones.*;
+import sistema.excepciones.ContratacionNoValidaException;
+import sistema.excepciones.EspecialidadNoValidaException;
+import sistema.excepciones.InformacionPersonalNoValidaException;
+import sistema.excepciones.PosgradoNoValidoException;
 import sistema.personas.medicos.IMedico;
 import sistema.personas.medicos.decorators.DecoratorDoctor;
 import sistema.personas.medicos.decorators.DecoratorMagister;
@@ -19,7 +22,7 @@ import sistema.personas.medicos.especialidades.Pediatra;
  */
 public class MedicoFactory {
     public static IMedico getMedico(String especialidad, String posgrado, String contratacion, String nombre,
-                                    String apellido, String direccion, String ciudad, int telefono, int dni, int matricula)
+                                    String apellido, String direccion, String ciudad, long telefono, int dni, int matricula)
             throws InformacionPersonalNoValidaException, EspecialidadNoValidaException,
             PosgradoNoValidoException, ContratacionNoValidaException {
         IMedico medicoBasico = null;

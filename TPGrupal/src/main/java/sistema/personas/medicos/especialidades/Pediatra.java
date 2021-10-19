@@ -9,9 +9,10 @@ public class Pediatra extends Medico {
     private static double aumentoPediatra = 0.07;
 
     /**
-     * Constructor vacio para persistencia XML.<br>
+     * Persistencia XML.<br>
      */
     public Pediatra() {
+
     }
 
     /**
@@ -27,13 +28,10 @@ public class Pediatra extends Medico {
      * @param dni       DNI del medico. Numero entero positivo.<br>
      * @param matricula Numero de matricula del medico.<br>
      */
-    public Pediatra(String nombre, String apellido, String direccion, String ciudad, int telefono, int dni, int matricula) {
+    public Pediatra(String nombre, String apellido, String direccion, String ciudad, Long telefono, int dni, int matricula) {
         super(nombre, apellido, direccion, ciudad, telefono, dni, matricula);
     }
 
-    /**
-     * TODO
-     */
     public static double getAumentoPediatra() {
         return aumentoPediatra;
     }
@@ -56,11 +54,6 @@ public class Pediatra extends Medico {
         return Medico.sueldoBasico * (1 + Pediatra.aumentoPediatra);
     }
 
-    /**
-     * TODO
-     *
-     * @return
-     */
     @Override
     public String getDescripcion() {
         return "Pediatra";

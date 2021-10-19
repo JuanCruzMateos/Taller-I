@@ -9,9 +9,10 @@ public class Clinico extends Medico {
     private static double aumentoClinico = 0.05;
 
     /**
-     * Constructor vacio para persistencia XML.<br>
+     * Persistencia XML.<br>
      */
     public Clinico() {
+
     }
 
     /**
@@ -27,7 +28,7 @@ public class Clinico extends Medico {
      * @param dni       DNI del medico. Numero entero positivo.<br>
      * @param matricula Numero de matricula del medico.<br>
      */
-    public Clinico(String nombre, String apellido, String direccion, String ciudad, int telefono, int dni, int matricula) {
+    public Clinico(String nombre, String apellido, String direccion, String ciudad, Long telefono, int dni, int matricula) {
         super(nombre, apellido, direccion, ciudad, telefono, dni, matricula);
     }
 
@@ -57,7 +58,6 @@ public class Clinico extends Medico {
     public String getDescripcion() {
         return "Clinico";
     }
-
 
     @Override
     public String toString() {

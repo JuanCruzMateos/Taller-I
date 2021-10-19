@@ -3,10 +3,7 @@ package sistema.ingreso;
 import sistema.personas.pacientes.Paciente;
 import sistema.personas.pacientes.PacienteFactory;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * Clase que modela el modulo de ingreso de la clinica.<br>
@@ -117,5 +114,20 @@ public class ModuloIngreso {
      */
     public boolean salaVipOcupada() {
         return this.salaVip != null;
+    }
+
+    /**
+     *
+     * @return lista con el registro historico de pacientes en la clinica
+     */
+    public ArrayList<Paciente> getRegistroDePacientes() {
+        return new ArrayList<>(registroDePacientes.values());
+    }
+    /**
+     *
+     * @return iterator con el registro historico de pacientes en la clinica
+     */
+    public Iterator<Paciente> getRegistroDePacientesIterator() {
+        return registroDePacientes.values().iterator();
     }
 }

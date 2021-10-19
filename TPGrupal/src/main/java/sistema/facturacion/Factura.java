@@ -6,7 +6,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
-import java.util.Iterator;
 import java.util.Objects;
 
 /**
@@ -21,6 +20,10 @@ public class Factura implements Comparable<Factura> {
     private Paciente paciente;
     private ArrayList<ConsultaMedica> consultasConMedicos;
     private ArrayList<Internacion> internaciones;
+
+    public Factura() {
+
+    }
 
     /**
      * Constructor.<br>
@@ -40,6 +43,14 @@ public class Factura implements Comparable<Factura> {
         this.internaciones = internaciones;
     }
 
+    public static int getSigNroFactura() {
+        return sigNroFactura;
+    }
+
+    public static void setSigNroFactura(int sigNroFactura) {
+        Factura.sigNroFactura = sigNroFactura;
+    }
+
     /**
      * Retorna la fecha de facturacion.<br>
      *
@@ -47,6 +58,10 @@ public class Factura implements Comparable<Factura> {
      */
     public GregorianCalendar getFecha() {
         return fecha;
+    }
+
+    public void setFecha(GregorianCalendar fecha) {
+        this.fecha = fecha;
     }
 
     /**
@@ -58,6 +73,10 @@ public class Factura implements Comparable<Factura> {
         return paciente;
     }
 
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
     /**
      * Devuelve el numero de factura.<br>
      *
@@ -65,6 +84,10 @@ public class Factura implements Comparable<Factura> {
      */
     public int getNroFactura() {
         return nroFactura;
+    }
+
+    public void setNroFactura(int nroFactura) {
+        this.nroFactura = nroFactura;
     }
 
     /**
@@ -92,7 +115,6 @@ public class Factura implements Comparable<Factura> {
         DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         StringBuilder stringBuilder = new StringBuilder();
         double total = 0;
-        Iterator it;
 
         stringBuilder.append("***** Factura ********************************************************\n");
         stringBuilder.append(" - Numero de Factura: ").append(this.nroFactura).append(".\n");
@@ -121,6 +143,10 @@ public class Factura implements Comparable<Factura> {
         return this.consultasConMedicos;
     }
 
+    public void setConsultasConMedicos(ArrayList<ConsultaMedica> consultasConMedicos) {
+        this.consultasConMedicos = consultasConMedicos;
+    }
+
     /**
      * Override del metodo CompareTo, se ordena por fecha.<br>
      */
@@ -140,5 +166,13 @@ public class Factura implements Comparable<Factura> {
     @Override
     public int hashCode() {
         return Objects.hash(nroFactura);
+    }
+
+    public ArrayList<Internacion> getInternaciones() {
+        return internaciones;
+    }
+
+    public void setInternaciones(ArrayList<Internacion> internaciones) {
+        this.internaciones = internaciones;
     }
 }

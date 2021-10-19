@@ -8,23 +8,14 @@ import sistema.personas.medicos.IMedico;
 public class DecoratorPermanente extends DecoratorMedico {
     private static double aumentoPermanente = 0.1;
 
-    /**
-     *
-     */
     public DecoratorPermanente() {
 
     }
 
-    /**
-     * @param encapsulado
-     */
     public DecoratorPermanente(IMedico encapsulado) {
         super(encapsulado);
     }
 
-    /**
-     * @return
-     */
     public static double getAumentoPermanente() {
         return aumentoPermanente;
     }

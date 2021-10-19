@@ -11,6 +11,7 @@ import sistema.habitaciones.Habitacion;
 import sistema.habitaciones.HabitacionCompartida;
 import sistema.habitaciones.HabitacionPrivada;
 import sistema.habitaciones.HabitacionTerapiaIntensiva;
+import sistema.persistencia.PersistenciaPacientes;
 import sistema.personas.medicos.IMedico;
 import sistema.personas.pacientes.Paciente;
 
@@ -68,7 +69,6 @@ public class App {
         System.out.println(medico5);
         System.out.println(medico6);
         System.out.println("*************************************************************************************");
-
 
         Paciente paciente1 = clinica.altaPaciente("Juan Cruz", "Mateos", "Almafuerte 2356", "Mar del Plata", 101, 1, "joven");
         Paciente paciente2 = clinica.altaPaciente("Camila", "Ezama", "Formosa 2014", "Mar del Plata", 102, 2, "nino");
@@ -216,12 +216,14 @@ public class App {
         System.out.println(clinica.getReporteMedico(medico5, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
         System.out.println(clinica.getReporteMedico(medico6, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
 
-
         System.out.println(clinica.estadoDeLaClinica());
         clinica.ingresarPaciente(clinica.altaPaciente("Paola", "Argento", "Flores 1234", "Buenos Aires", 123654, 159327258, "Nino"));
         System.out.println(clinica.estadoDeLaClinica());
         clinica.atenderPaciente();
         System.out.println(clinica.estadoDeLaClinica());
+
+        ArrayList<Paciente> arr = PersistenciaPacientes.despersistir();
+        arr.forEach(paciente -> System.out.println(paciente.getNombre()));
 
     }
 }

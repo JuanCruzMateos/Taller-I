@@ -8,23 +8,14 @@ import sistema.personas.medicos.IMedico;
 public class DecoratorTemporario extends DecoratorMedico {
     private static double aumentoTemporario = 0.05;
 
-    /**
-     *
-     */
     public DecoratorTemporario() {
 
     }
 
-    /**
-     * @param encapsulado
-     */
     public DecoratorTemporario(IMedico encapsulado) {
         super(encapsulado);
     }
 
-    /**
-     * @return
-     */
     public static double getAumentoTemporario() {
         return aumentoTemporario;
     }

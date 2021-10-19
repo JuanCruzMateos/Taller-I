@@ -15,16 +15,10 @@ public class DecoratorDoctor extends DecoratorMedico {
 
     }
 
-    /**
-     * @param encapsulado
-     */
     public DecoratorDoctor(IMedico encapsulado) {
         super(encapsulado);
     }
 
-    /**
-     * @return
-     */
     public static double getAumentoDoctor() {
         return aumentoDoctor;
     }

@@ -12,6 +12,10 @@ public class ConsultaMedica {
     private int cantidadConsultas;
     private double valorConsulta;
 
+    public ConsultaMedica() {
+
+    }
+
     /**
      * Constructor de la clase.<br>
      * <b>Pre: </b> medico distinto de null, cantidadConsultas mayor a cero.<br>
@@ -24,6 +28,14 @@ public class ConsultaMedica {
         this.medico = medico;
         this.cantidadConsultas = cantidadConsultas;
         this.valorConsulta = this.medico.getSueldo() * (1.00 + ConsultaMedica.incremento);
+    }
+
+    public static double getIncremento() {
+        return incremento;
+    }
+
+    public static void setIncremento(double incremento) {
+        ConsultaMedica.incremento = incremento;
     }
 
     /**
@@ -44,8 +56,28 @@ public class ConsultaMedica {
         return medico;
     }
 
+    public void setMedico(IMedico medico) {
+        this.medico = medico;
+    }
+
     @Override
     public String toString() {
         return String.format("Dr.%-23s %.2f %9s %-10d %5s %.2f \n", this.medico.getApellido(), this.valorConsulta, " ", this.cantidadConsultas, " ", this.getSubtotal());
+    }
+
+    public int getCantidadConsultas() {
+        return cantidadConsultas;
+    }
+
+    public void setCantidadConsultas(int cantidadConsultas) {
+        this.cantidadConsultas = cantidadConsultas;
+    }
+
+    public double getValorConsulta() {
+        return valorConsulta;
+    }
+
+    public void setValorConsulta(double valorConsulta) {
+        this.valorConsulta = valorConsulta;
     }
 }

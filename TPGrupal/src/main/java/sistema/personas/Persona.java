@@ -8,8 +8,15 @@ public abstract class Persona {
     protected String apellido;
     protected String direccion;
     protected String ciudad;
-    protected int telefono;
+    protected long telefono;
     protected int dni;
+
+    /**
+     * Para persistencia XML
+     */
+    public Persona() {
+
+    }
 
     /**
      * Constructor. <br>
@@ -22,20 +29,13 @@ public abstract class Persona {
      * @param telefono  Telefono de contacto de la persona. Numero entero positivo.<br>
      * @param dni       DNI de la persona. Numero entero positivo.<br>
      */
-    public Persona(String nombre, String apellido, String direccion, String ciudad, int telefono, int dni) {
+    public Persona(String nombre, String apellido, String direccion, String ciudad, long telefono, int dni) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
         this.ciudad = ciudad;
         this.telefono = telefono;
         this.dni = dni;
-    }
-
-    /**
-     * Constructor vacio para persistencia XML.<br>
-     */
-    public Persona() {
-
     }
 
     public String getNombre() {
@@ -70,11 +70,11 @@ public abstract class Persona {
         this.ciudad = ciudad;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 

@@ -9,9 +9,10 @@ public class Cirujano extends Medico {
     private static double aumentoCirujano = 0.1;
 
     /**
-     * Constructor vacio para persistencia XML.<br>
+     * Persistencia XML.<br>
      */
     public Cirujano() {
+
     }
 
     /**
@@ -27,8 +28,12 @@ public class Cirujano extends Medico {
      * @param dni       DNI del medico. Numero entero positivo.<br>
      * @param matricula Numero de matricula del medico.<br>
      */
-    public Cirujano(String nombre, String apellido, String direccion, String ciudad, int telefono, int dni, int matricula) {
+    public Cirujano(String nombre, String apellido, String direccion, String ciudad, long telefono, int dni, int matricula) {
         super(nombre, apellido, direccion, ciudad, telefono, dni, matricula);
+    }
+
+    public static double getAumentoCirujano() {
+        return aumentoCirujano;
     }
 
     /**
@@ -39,10 +44,6 @@ public class Cirujano extends Medico {
      */
     public static void setAumentoCirujano(double aumentoCirujano) {
         Cirujano.aumentoCirujano = aumentoCirujano;
-    }
-
-    public static double getAumentoCirujano() {
-        return aumentoCirujano;
     }
 
     /**

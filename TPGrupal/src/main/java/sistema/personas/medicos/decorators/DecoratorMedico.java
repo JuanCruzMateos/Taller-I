@@ -8,30 +8,18 @@ import sistema.personas.medicos.IMedico;
 public abstract class DecoratorMedico implements IMedico {
     protected IMedico encapsulado;
 
-    /**
-     *
-     */
     public DecoratorMedico() {
 
     }
 
-    /**
-     * @param encapsulado
-     */
     public DecoratorMedico(IMedico encapsulado) {
         this.encapsulado = encapsulado;
     }
 
-    /**
-     * @return
-     */
     public IMedico getEncapsulado() {
         return encapsulado;
     }
 
-    /**
-     * @param encapsulado
-     */
     public void setEncapsulado(IMedico encapsulado) {
         this.encapsulado = encapsulado;
     }

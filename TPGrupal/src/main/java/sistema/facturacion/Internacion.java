@@ -12,6 +12,10 @@ public class Internacion {
     private double costoHabitacion;
     private double subtotal;
 
+    public Internacion() {
+
+    }
+
     /**
      * Constructor.<br>
      * <b>Pre: habitacion distinto de null, diasInternado mayor a cero.</b>
@@ -36,6 +40,14 @@ public class Internacion {
         return habitacion;
     }
 
+    public void setHabitacion(Habitacion habitacion) {
+        this.habitacion = habitacion.toString();
+    }
+
+    public void setHabitacion(String habitacion) {
+        this.habitacion = habitacion;
+    }
+
     /**
      * Devuelve el costo de la habitacion.<br>
      *
@@ -43,6 +55,10 @@ public class Internacion {
      */
     public double getCostoHabitacion() {
         return this.costoHabitacion;
+    }
+
+    public void setCostoHabitacion(double costoHabitacion) {
+        this.costoHabitacion = costoHabitacion;
     }
 
     /**
@@ -63,8 +79,20 @@ public class Internacion {
         return this.subtotal;
     }
 
+    public void setSubtotal(double subtotal) {
+        this.subtotal = subtotal;
+    }
+
     @Override
     public String toString() {
         return String.format("%-20s %5s %.2f %10s %-10d %5s %.2f \n", this.habitacion, " ", this.costoHabitacion, " ", this.diasInternado, " ", this.subtotal);
+    }
+
+    public int getDiasInternado() {
+        return diasInternado;
+    }
+
+    public void setDiasInternado(int diasInternado) {
+        this.diasInternado = diasInternado;
     }
 }
