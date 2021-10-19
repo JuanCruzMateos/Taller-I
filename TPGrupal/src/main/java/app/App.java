@@ -23,6 +23,7 @@ import java.util.GregorianCalendar;
 
 /**
  * Clase de prueba del sistema.<br>
+ * Simula la clinica en funcionamiento harcodeando medicos, pacientes, atenciones, internaciones, facturaciones y reportes.<br>
  */
 public class App {
     public static void main(String[] args) {
@@ -132,7 +133,7 @@ public class App {
         internacions1.add(new Internacion(HabitacionPrivada.getInstance(), 1));
         internacions1.add(new Internacion(HabitacionTerapiaIntensiva.getInstance(), 1));
 
-        clinica.facturar(paciente1, new GregorianCalendar(2021, Calendar.APRIL, 17), consultaMedicas1, internacions1);
+        clinica.facturar(paciente1, new GregorianCalendar(2018, Calendar.MARCH, 17), consultaMedicas1, internacions1);
 
         // intervenciones #2
         ArrayList<ConsultaMedica> consultaMedicas2 = new ArrayList<>();
@@ -142,7 +143,7 @@ public class App {
         internacions2.add(new Internacion(HabitacionPrivada.getInstance(), 1));
         internacions2.add(new Internacion(HabitacionTerapiaIntensiva.getInstance(), 1));
 
-        clinica.facturar(paciente2, new GregorianCalendar(2021, Calendar.MARCH, 15), consultaMedicas2, internacions2);
+        clinica.facturar(paciente2, new GregorianCalendar(2019, Calendar.APRIL, 15), consultaMedicas2, internacions2);
 
         // intervenciones #3
         ArrayList<ConsultaMedica> consultaMedicas3 = new ArrayList<>();
@@ -151,7 +152,7 @@ public class App {
         ArrayList<Internacion> internacions3 = new ArrayList<>();
         internacions3.add(new Internacion(HabitacionTerapiaIntensiva.getInstance(), 3));
 
-        clinica.facturar(paciente3, new GregorianCalendar(2021, Calendar.JANUARY, 23), consultaMedicas3, internacions3);
+        clinica.facturar(paciente3, new GregorianCalendar(2020, Calendar.MAY, 23), consultaMedicas3, internacions3);
 
         System.out.println(clinica.getDetalleFactura(1));
         System.out.println(clinica.getDetalleFactura(2));
@@ -187,7 +188,7 @@ public class App {
         internacions4.add(new Internacion(HabitacionPrivada.getInstance(), 5));
         internacions4.add(new Internacion(HabitacionTerapiaIntensiva.getInstance(), 1));
 
-        clinica.facturar(paciente4, new GregorianCalendar(2021, Calendar.FEBRUARY, 12), consultaMedicas4, internacions4);
+        clinica.facturar(paciente4, new GregorianCalendar(2021, Calendar.JULY, 12), consultaMedicas4, internacions4);
 
         // intervenciones #5
         ArrayList<ConsultaMedica> consultaMedicas5 = new ArrayList<>();
@@ -196,7 +197,7 @@ public class App {
         ArrayList<Internacion> internacions5 = new ArrayList<>();
         internacions5.add(new Internacion(HabitacionPrivada.getInstance(), 10));
 
-        clinica.facturar(paciente5, new GregorianCalendar(2021, Calendar.OCTOBER, 26), consultaMedicas5, internacions5);
+        clinica.facturar(paciente5, new GregorianCalendar(2021, Calendar.AUGUST, 26), consultaMedicas5, internacions5);
 
         // intervenciones #6
         ArrayList<ConsultaMedica> consultaMedicas6 = new ArrayList<>();
@@ -205,7 +206,7 @@ public class App {
         ArrayList<Internacion> internacions6 = new ArrayList<>();
         internacions6.add(new Internacion(HabitacionTerapiaIntensiva.getInstance(), 2));
 
-        clinica.facturar(paciente6, new GregorianCalendar(2019, Calendar.APRIL, 17), consultaMedicas6, internacions6);
+        clinica.facturar(paciente6, new GregorianCalendar(2021, Calendar.OCTOBER, 27), consultaMedicas6, internacions6);
 
         System.out.println(clinica.getDetalleFactura(4));
         System.out.println(clinica.getDetalleFactura(5));

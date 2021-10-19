@@ -11,13 +11,12 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
-import java.util.TreeSet;
 
 /**
  * Clase que modela el modulo de egreso de la clinica.<br>
  */
 public class ModuloEgreso {
-    private TreeSet<Factura> facturas = new TreeSet<>();
+    private ArrayList<Factura> facturas = new ArrayList<>();
 
     /**
      * Genera una factura para un paciente determinado y la almacena en un registro de facturas.<br>
@@ -86,11 +85,11 @@ public class ModuloEgreso {
         return stringBuilder.toString();
     }
 
-    public TreeSet<Factura> getFacturas() {
+    public ArrayList<Factura> getFacturas() {
         return facturas;
     }
 
-    public void setFacturas(TreeSet<Factura> facturas) {
+    public void setFacturas(ArrayList<Factura> facturas) {
         this.facturas = facturas;
     }
 

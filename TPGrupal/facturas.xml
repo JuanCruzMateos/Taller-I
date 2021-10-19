@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="16.0.2" class="java.beans.XMLDecoder">
- <object class="java.util.TreeSet">
+ <object class="java.util.ArrayList">
   <void method="add">
    <object class="sistema.facturacion.Factura">
     <void property="consultasConMedicos">
@@ -8,7 +8,193 @@
       <void method="add">
        <object class="sistema.facturacion.ConsultaMedica">
         <void property="cantidadConsultas">
+         <int>2</int>
+        </void>
+        <void property="medico">
+         <object class="sistema.personas.medicos.decorators.DecoratorPermanente">
+          <void property="encapsulado">
+           <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
+            <void property="encapsulado">
+             <object class="sistema.personas.medicos.especialidades.Clinico">
+              <void property="apellido">
+               <string>Favaloro</string>
+              </void>
+              <void property="ciudad">
+               <string>Buenos Aires</string>
+              </void>
+              <void property="direccion">
+               <string>Alverar 3101</string>
+              </void>
+              <void property="dni">
+               <int>8125936</int>
+              </void>
+              <void property="matricula">
+               <int>1</int>
+              </void>
+              <void property="nombre">
+               <string>Rene</string>
+              </void>
+              <void property="telefono">
+               <long>369258</long>
+              </void>
+             </object>
+            </void>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void property="valorConsulta">
+         <double>152.46000000000004</double>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="sistema.facturacion.ConsultaMedica">
+        <void property="cantidadConsultas">
+         <int>3</int>
+        </void>
+        <void property="medico">
+         <object class="sistema.personas.medicos.decorators.DecoratorTemporario" id="DecoratorTemporario0">
+          <void property="encapsulado">
+           <object class="sistema.personas.medicos.decorators.DecoratorMagister">
+            <void property="encapsulado">
+             <object class="sistema.personas.medicos.especialidades.Clinico">
+              <void property="apellido">
+               <string>Perez</string>
+              </void>
+              <void property="ciudad">
+               <string>La Plata</string>
+              </void>
+              <void property="direccion">
+               <string>Diagonal 3 2589</string>
+              </void>
+              <void property="dni">
+               <int>853259</int>
+              </void>
+              <void property="matricula">
+               <int>3</int>
+              </void>
+              <void property="nombre">
+               <string>Marta</string>
+              </void>
+              <void property="telefono">
+               <long>155937825</long>
+              </void>
+             </object>
+            </void>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void property="valorConsulta">
+         <double>138.915</double>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="fecha">
+     <object class="java.util.GregorianCalendar">
+      <void property="time">
+       <object class="java.util.Date">
+        <long>1521255600000</long>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="internaciones">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="sistema.facturacion.Internacion">
+        <void property="costoHabitacion">
+         <double>10.0</double>
+        </void>
+        <void property="diasInternado">
+         <int>3</int>
+        </void>
+        <void property="habitacion">
+         <string>Hab. Compartida</string>
+        </void>
+        <void property="subtotal">
+         <double>130.0</double>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="sistema.facturacion.Internacion">
+        <void property="costoHabitacion">
+         <double>20.0</double>
+        </void>
+        <void property="diasInternado">
          <int>1</int>
+        </void>
+        <void property="habitacion">
+         <string>Hab. Privada</string>
+        </void>
+        <void property="subtotal">
+         <double>120.0</double>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="sistema.facturacion.Internacion">
+        <void property="costoHabitacion">
+         <double>30.0</double>
+        </void>
+        <void property="diasInternado">
+         <int>1</int>
+        </void>
+        <void property="habitacion">
+         <string>Hab. T. Intensiva</string>
+        </void>
+        <void property="subtotal">
+         <double>130.0</double>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="nroFactura">
+     <int>1</int>
+    </void>
+    <void property="paciente">
+     <object class="sistema.personas.pacientes.PacienteJoven">
+      <void property="apellido">
+       <string>Mateos</string>
+      </void>
+      <void property="ciudad">
+       <string>Mar del Plata</string>
+      </void>
+      <void property="direccion">
+       <string>Almafuerte 2356</string>
+      </void>
+      <void property="dni">
+       <int>1</int>
+      </void>
+      <void property="nombre">
+       <string>Juan Cruz</string>
+      </void>
+      <void property="nroHistoriaClinica">
+       <int>1</int>
+      </void>
+      <void property="nroOrden">
+       <int>1</int>
+      </void>
+      <void property="telefono">
+       <long>101</long>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sistema.facturacion.Factura">
+    <void property="consultasConMedicos">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="sistema.facturacion.ConsultaMedica">
+        <void property="cantidadConsultas">
+         <int>2</int>
         </void>
         <void property="medico">
          <object class="sistema.personas.medicos.decorators.DecoratorPermanente" id="DecoratorPermanente0">
@@ -42,6 +228,146 @@
            </object>
           </void>
          </object>
+        </void>
+        <void property="valorConsulta">
+         <double>155.36400000000003</double>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="sistema.facturacion.ConsultaMedica">
+        <void property="cantidadConsultas">
+         <int>1</int>
+        </void>
+        <void property="medico">
+         <object class="sistema.personas.medicos.decorators.DecoratorTemporario">
+          <void property="encapsulado">
+           <object class="sistema.personas.medicos.decorators.DecoratorMagister">
+            <void property="encapsulado">
+             <object class="sistema.personas.medicos.especialidades.Cirujano">
+              <void property="apellido">
+               <string>Rodriguez</string>
+              </void>
+              <void property="ciudad">
+               <string>Mar del Plata</string>
+              </void>
+              <void property="direccion">
+               <string>Mitre 1479</string>
+              </void>
+              <void property="dni">
+               <int>15236</int>
+              </void>
+              <void property="matricula">
+               <int>4</int>
+              </void>
+              <void property="nombre">
+               <string>Lucia</string>
+              </void>
+              <void property="telefono">
+               <long>369258</long>
+              </void>
+             </object>
+            </void>
+           </object>
+          </void>
+         </object>
+        </void>
+        <void property="valorConsulta">
+         <double>145.53000000000003</double>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="fecha">
+     <object class="java.util.GregorianCalendar">
+      <void property="time">
+       <object class="java.util.Date">
+        <long>1555297200000</long>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="internaciones">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="sistema.facturacion.Internacion">
+        <void property="costoHabitacion">
+         <double>20.0</double>
+        </void>
+        <void property="diasInternado">
+         <int>1</int>
+        </void>
+        <void property="habitacion">
+         <string>Hab. Privada</string>
+        </void>
+        <void property="subtotal">
+         <double>120.0</double>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="sistema.facturacion.Internacion">
+        <void property="costoHabitacion">
+         <double>30.0</double>
+        </void>
+        <void property="diasInternado">
+         <int>1</int>
+        </void>
+        <void property="habitacion">
+         <string>Hab. T. Intensiva</string>
+        </void>
+        <void property="subtotal">
+         <double>130.0</double>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="nroFactura">
+     <int>2</int>
+    </void>
+    <void property="paciente">
+     <object class="sistema.personas.pacientes.PacienteNino">
+      <void property="apellido">
+       <string>Ezama</string>
+      </void>
+      <void property="ciudad">
+       <string>Mar del Plata</string>
+      </void>
+      <void property="direccion">
+       <string>Formosa 2014</string>
+      </void>
+      <void property="dni">
+       <int>2</int>
+      </void>
+      <void property="nombre">
+       <string>Camila</string>
+      </void>
+      <void property="nroHistoriaClinica">
+       <int>2</int>
+      </void>
+      <void property="nroOrden">
+       <int>2</int>
+      </void>
+      <void property="telefono">
+       <long>102</long>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sistema.facturacion.Factura">
+    <void property="consultasConMedicos">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="sistema.facturacion.ConsultaMedica">
+        <void property="cantidadConsultas">
+         <int>1</int>
+        </void>
+        <void property="medico">
+         <object idref="DecoratorPermanente0"/>
         </void>
         <void property="valorConsulta">
          <double>155.36400000000003</double>
@@ -97,101 +423,7 @@
      <object class="java.util.GregorianCalendar">
       <void property="time">
        <object class="java.util.Date">
-        <long>1555470000000</long>
-       </object>
-      </void>
-     </object>
-    </void>
-    <void property="internaciones">
-     <object class="java.util.ArrayList">
-      <void method="add">
-       <object class="sistema.facturacion.Internacion">
-        <void property="costoHabitacion">
-         <double>30.0</double>
-        </void>
-        <void property="diasInternado">
-         <int>2</int>
-        </void>
-        <void property="habitacion">
-         <string>Hab. T. Intensiva</string>
-        </void>
-        <void property="subtotal">
-         <double>1000.0</double>
-        </void>
-       </object>
-      </void>
-     </object>
-    </void>
-    <void property="nroFactura">
-     <int>6</int>
-    </void>
-    <void property="paciente">
-     <object class="sistema.personas.pacientes.PacienteMayor">
-      <void property="apellido">
-       <string>Jimenez</string>
-      </void>
-      <void property="ciudad">
-       <string>Mar del Plata</string>
-      </void>
-      <void property="direccion">
-       <string>Roca 1782</string>
-      </void>
-      <void property="dni">
-       <int>6</int>
-      </void>
-      <void property="nombre">
-       <string>Marcos</string>
-      </void>
-      <void property="nroHistoriaClinica">
-       <int>6</int>
-      </void>
-      <void property="nroOrden">
-       <int>6</int>
-      </void>
-      <void property="telefono">
-       <long>106</long>
-      </void>
-     </object>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="sistema.facturacion.Factura">
-    <void property="consultasConMedicos">
-     <object class="java.util.ArrayList">
-      <void method="add">
-       <object class="sistema.facturacion.ConsultaMedica">
-        <void property="cantidadConsultas">
-         <int>1</int>
-        </void>
-        <void property="medico">
-         <object idref="DecoratorPermanente0"/>
-        </void>
-        <void property="valorConsulta">
-         <double>155.36400000000003</double>
-        </void>
-       </object>
-      </void>
-      <void method="add">
-       <object class="sistema.facturacion.ConsultaMedica">
-        <void property="cantidadConsultas">
-         <int>4</int>
-        </void>
-        <void property="medico">
-         <object idref="DecoratorPermanente1"/>
-        </void>
-        <void property="valorConsulta">
-         <double>155.36400000000003</double>
-        </void>
-       </object>
-      </void>
-     </object>
-    </void>
-    <void property="fecha">
-     <object class="java.util.GregorianCalendar">
-      <void property="time">
-       <object class="java.util.Date">
-        <long>1611370800000</long>
+        <long>1590202800000</long>
        </object>
       </void>
      </object>
@@ -302,37 +534,7 @@
          <int>3</int>
         </void>
         <void property="medico">
-         <object class="sistema.personas.medicos.decorators.DecoratorTemporario" id="DecoratorTemporario0">
-          <void property="encapsulado">
-           <object class="sistema.personas.medicos.decorators.DecoratorMagister">
-            <void property="encapsulado">
-             <object class="sistema.personas.medicos.especialidades.Clinico">
-              <void property="apellido">
-               <string>Perez</string>
-              </void>
-              <void property="ciudad">
-               <string>La Plata</string>
-              </void>
-              <void property="direccion">
-               <string>Diagonal 3 2589</string>
-              </void>
-              <void property="dni">
-               <int>853259</int>
-              </void>
-              <void property="matricula">
-               <int>3</int>
-              </void>
-              <void property="nombre">
-               <string>Marta</string>
-              </void>
-              <void property="telefono">
-               <long>155937825</long>
-              </void>
-             </object>
-            </void>
-           </object>
-          </void>
-         </object>
+         <object idref="DecoratorTemporario0"/>
         </void>
         <void property="valorConsulta">
          <double>138.915</double>
@@ -345,7 +547,7 @@
      <object class="java.util.GregorianCalendar">
       <void property="time">
        <object class="java.util.Date">
-        <long>1613098800000</long>
+        <long>1626058800000</long>
        </object>
       </void>
      </object>
@@ -442,302 +644,6 @@
          <int>1</int>
         </void>
         <void property="medico">
-         <object class="sistema.personas.medicos.decorators.DecoratorTemporario">
-          <void property="encapsulado">
-           <object class="sistema.personas.medicos.decorators.DecoratorMagister">
-            <void property="encapsulado">
-             <object class="sistema.personas.medicos.especialidades.Cirujano">
-              <void property="apellido">
-               <string>Rodriguez</string>
-              </void>
-              <void property="ciudad">
-               <string>Mar del Plata</string>
-              </void>
-              <void property="direccion">
-               <string>Mitre 1479</string>
-              </void>
-              <void property="dni">
-               <int>15236</int>
-              </void>
-              <void property="matricula">
-               <int>4</int>
-              </void>
-              <void property="nombre">
-               <string>Lucia</string>
-              </void>
-              <void property="telefono">
-               <long>369258</long>
-              </void>
-             </object>
-            </void>
-           </object>
-          </void>
-         </object>
-        </void>
-        <void property="valorConsulta">
-         <double>145.53000000000003</double>
-        </void>
-       </object>
-      </void>
-     </object>
-    </void>
-    <void property="fecha">
-     <object class="java.util.GregorianCalendar">
-      <void property="time">
-       <object class="java.util.Date">
-        <long>1615777200000</long>
-       </object>
-      </void>
-     </object>
-    </void>
-    <void property="internaciones">
-     <object class="java.util.ArrayList">
-      <void method="add">
-       <object class="sistema.facturacion.Internacion">
-        <void property="costoHabitacion">
-         <double>20.0</double>
-        </void>
-        <void property="diasInternado">
-         <int>1</int>
-        </void>
-        <void property="habitacion">
-         <string>Hab. Privada</string>
-        </void>
-        <void property="subtotal">
-         <double>120.0</double>
-        </void>
-       </object>
-      </void>
-      <void method="add">
-       <object class="sistema.facturacion.Internacion">
-        <void property="costoHabitacion">
-         <double>30.0</double>
-        </void>
-        <void property="diasInternado">
-         <int>1</int>
-        </void>
-        <void property="habitacion">
-         <string>Hab. T. Intensiva</string>
-        </void>
-        <void property="subtotal">
-         <double>130.0</double>
-        </void>
-       </object>
-      </void>
-     </object>
-    </void>
-    <void property="nroFactura">
-     <int>2</int>
-    </void>
-    <void property="paciente">
-     <object class="sistema.personas.pacientes.PacienteNino">
-      <void property="apellido">
-       <string>Ezama</string>
-      </void>
-      <void property="ciudad">
-       <string>Mar del Plata</string>
-      </void>
-      <void property="direccion">
-       <string>Formosa 2014</string>
-      </void>
-      <void property="dni">
-       <int>2</int>
-      </void>
-      <void property="nombre">
-       <string>Camila</string>
-      </void>
-      <void property="nroHistoriaClinica">
-       <int>2</int>
-      </void>
-      <void property="nroOrden">
-       <int>2</int>
-      </void>
-      <void property="telefono">
-       <long>102</long>
-      </void>
-     </object>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="sistema.facturacion.Factura">
-    <void property="consultasConMedicos">
-     <object class="java.util.ArrayList">
-      <void method="add">
-       <object class="sistema.facturacion.ConsultaMedica">
-        <void property="cantidadConsultas">
-         <int>2</int>
-        </void>
-        <void property="medico">
-         <object class="sistema.personas.medicos.decorators.DecoratorPermanente">
-          <void property="encapsulado">
-           <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
-            <void property="encapsulado">
-             <object class="sistema.personas.medicos.especialidades.Clinico">
-              <void property="apellido">
-               <string>Favaloro</string>
-              </void>
-              <void property="ciudad">
-               <string>Buenos Aires</string>
-              </void>
-              <void property="direccion">
-               <string>Alverar 3101</string>
-              </void>
-              <void property="dni">
-               <int>8125936</int>
-              </void>
-              <void property="matricula">
-               <int>1</int>
-              </void>
-              <void property="nombre">
-               <string>Rene</string>
-              </void>
-              <void property="telefono">
-               <long>369258</long>
-              </void>
-             </object>
-            </void>
-           </object>
-          </void>
-         </object>
-        </void>
-        <void property="valorConsulta">
-         <double>152.46000000000004</double>
-        </void>
-       </object>
-      </void>
-      <void method="add">
-       <object class="sistema.facturacion.ConsultaMedica">
-        <void property="cantidadConsultas">
-         <int>3</int>
-        </void>
-        <void property="medico">
-         <object idref="DecoratorTemporario0"/>
-        </void>
-        <void property="valorConsulta">
-         <double>138.915</double>
-        </void>
-       </object>
-      </void>
-     </object>
-    </void>
-    <void property="fecha">
-     <object class="java.util.GregorianCalendar">
-      <void property="time">
-       <object class="java.util.Date">
-        <long>1618628400000</long>
-       </object>
-      </void>
-     </object>
-    </void>
-    <void property="internaciones">
-     <object class="java.util.ArrayList">
-      <void method="add">
-       <object class="sistema.facturacion.Internacion">
-        <void property="costoHabitacion">
-         <double>10.0</double>
-        </void>
-        <void property="diasInternado">
-         <int>3</int>
-        </void>
-        <void property="habitacion">
-         <string>Hab. Compartida</string>
-        </void>
-        <void property="subtotal">
-         <double>130.0</double>
-        </void>
-       </object>
-      </void>
-      <void method="add">
-       <object class="sistema.facturacion.Internacion">
-        <void property="costoHabitacion">
-         <double>20.0</double>
-        </void>
-        <void property="diasInternado">
-         <int>1</int>
-        </void>
-        <void property="habitacion">
-         <string>Hab. Privada</string>
-        </void>
-        <void property="subtotal">
-         <double>120.0</double>
-        </void>
-       </object>
-      </void>
-      <void method="add">
-       <object class="sistema.facturacion.Internacion">
-        <void property="costoHabitacion">
-         <double>30.0</double>
-        </void>
-        <void property="diasInternado">
-         <int>1</int>
-        </void>
-        <void property="habitacion">
-         <string>Hab. T. Intensiva</string>
-        </void>
-        <void property="subtotal">
-         <double>130.0</double>
-        </void>
-       </object>
-      </void>
-     </object>
-    </void>
-    <void property="nroFactura">
-     <int>1</int>
-    </void>
-    <void property="paciente">
-     <object class="sistema.personas.pacientes.PacienteJoven">
-      <void property="apellido">
-       <string>Mateos</string>
-      </void>
-      <void property="ciudad">
-       <string>Mar del Plata</string>
-      </void>
-      <void property="direccion">
-       <string>Almafuerte 2356</string>
-      </void>
-      <void property="dni">
-       <int>1</int>
-      </void>
-      <void property="nombre">
-       <string>Juan Cruz</string>
-      </void>
-      <void property="nroHistoriaClinica">
-       <int>1</int>
-      </void>
-      <void property="nroOrden">
-       <int>1</int>
-      </void>
-      <void property="telefono">
-       <long>101</long>
-      </void>
-     </object>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="sistema.facturacion.Factura">
-    <void property="consultasConMedicos">
-     <object class="java.util.ArrayList">
-      <void method="add">
-       <object class="sistema.facturacion.ConsultaMedica">
-        <void property="cantidadConsultas">
-         <int>2</int>
-        </void>
-        <void property="medico">
-         <object idref="DecoratorPermanente0"/>
-        </void>
-        <void property="valorConsulta">
-         <double>155.36400000000003</double>
-        </void>
-       </object>
-      </void>
-      <void method="add">
-       <object class="sistema.facturacion.ConsultaMedica">
-        <void property="cantidadConsultas">
-         <int>1</int>
-        </void>
-        <void property="medico">
          <object idref="DecoratorPermanente1"/>
         </void>
         <void property="valorConsulta">
@@ -751,7 +657,7 @@
      <object class="java.util.GregorianCalendar">
       <void property="time">
        <object class="java.util.Date">
-        <long>1635217200000</long>
+        <long>1629946800000</long>
        </object>
       </void>
      </object>
@@ -804,6 +710,100 @@
       </void>
       <void property="telefono">
        <long>105</long>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sistema.facturacion.Factura">
+    <void property="consultasConMedicos">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="sistema.facturacion.ConsultaMedica">
+        <void property="cantidadConsultas">
+         <int>1</int>
+        </void>
+        <void property="medico">
+         <object idref="DecoratorPermanente0"/>
+        </void>
+        <void property="valorConsulta">
+         <double>155.36400000000003</double>
+        </void>
+       </object>
+      </void>
+      <void method="add">
+       <object class="sistema.facturacion.ConsultaMedica">
+        <void property="cantidadConsultas">
+         <int>4</int>
+        </void>
+        <void property="medico">
+         <object idref="DecoratorPermanente1"/>
+        </void>
+        <void property="valorConsulta">
+         <double>155.36400000000003</double>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="fecha">
+     <object class="java.util.GregorianCalendar">
+      <void property="time">
+       <object class="java.util.Date">
+        <long>1635303600000</long>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="internaciones">
+     <object class="java.util.ArrayList">
+      <void method="add">
+       <object class="sistema.facturacion.Internacion">
+        <void property="costoHabitacion">
+         <double>30.0</double>
+        </void>
+        <void property="diasInternado">
+         <int>2</int>
+        </void>
+        <void property="habitacion">
+         <string>Hab. T. Intensiva</string>
+        </void>
+        <void property="subtotal">
+         <double>1000.0</double>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+    <void property="nroFactura">
+     <int>6</int>
+    </void>
+    <void property="paciente">
+     <object class="sistema.personas.pacientes.PacienteMayor">
+      <void property="apellido">
+       <string>Jimenez</string>
+      </void>
+      <void property="ciudad">
+       <string>Mar del Plata</string>
+      </void>
+      <void property="direccion">
+       <string>Roca 1782</string>
+      </void>
+      <void property="dni">
+       <int>6</int>
+      </void>
+      <void property="nombre">
+       <string>Marcos</string>
+      </void>
+      <void property="nroHistoriaClinica">
+       <int>6</int>
+      </void>
+      <void property="nroOrden">
+       <int>6</int>
+      </void>
+      <void property="telefono">
+       <long>106</long>
       </void>
      </object>
     </void>
