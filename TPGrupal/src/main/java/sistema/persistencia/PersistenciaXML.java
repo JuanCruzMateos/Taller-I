@@ -5,6 +5,9 @@ import java.beans.XMLEncoder;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+/**
+ * Clase encargada de la persistencia XML.<br>
+ */
 public class PersistenciaXML implements IPersistencia {
     private FileInputStream fileInputStream;
     private FileOutputStream fileOutputStream;

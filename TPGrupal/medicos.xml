@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="16.0.2" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
+  <void method="add">
+   <object class="sistema.personas.medicos.decorators.DecoratorPermanente">
+    <void property="encapsulado">
+     <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
+      <void property="encapsulado">
+       <object class="sistema.personas.medicos.especialidades.Clinico">
+        <void property="apellido">
+         <string>Favaloro</string>
+        </void>
+        <void property="ciudad">
+         <string>Buenos Aires</string>
+        </void>
+        <void property="direccion">
+         <string>Alverar 3101</string>
+        </void>
+        <void property="dni">
+         <int>8125936</int>
+        </void>
+        <void property="matricula">
+         <int>1</int>
+        </void>
+        <void property="nombre">
+         <string>Rene</string>
+        </void>
+        <void property="telefono">
+         <long>369258</long>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sistema.personas.medicos.decorators.DecoratorPermanente">
+    <void property="encapsulado">
+     <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
+      <void property="encapsulado">
+       <object class="sistema.personas.medicos.especialidades.Pediatra">
+        <void property="apellido">
+         <string>Rivas</string>
+        </void>
+        <void property="ciudad">
+         <string>Buenos Aires</string>
+        </void>
+        <void property="direccion">
+         <string>Libertador 1401</string>
+        </void>
+        <void property="dni">
+         <int>272589</int>
+        </void>
+        <void property="matricula">
+         <int>2</int>
+        </void>
+        <void property="nombre">
+         <string>Carlos</string>
+        </void>
+        <void property="telefono">
+         <long>4852963</long>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sistema.personas.medicos.decorators.DecoratorTemporario">
+    <void property="encapsulado">
+     <object class="sistema.personas.medicos.decorators.DecoratorMagister">
+      <void property="encapsulado">
+       <object class="sistema.personas.medicos.especialidades.Clinico">
+        <void property="apellido">
+         <string>Perez</string>
+        </void>
+        <void property="ciudad">
+         <string>La Plata</string>
+        </void>
+        <void property="direccion">
+         <string>Diagonal 3 2589</string>
+        </void>
+        <void property="dni">
+         <int>853259</int>
+        </void>
+        <void property="matricula">
+         <int>3</int>
+        </void>
+        <void property="nombre">
+         <string>Marta</string>
+        </void>
+        <void property="telefono">
+         <long>155937825</long>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sistema.personas.medicos.decorators.DecoratorTemporario">
+    <void property="encapsulado">
+     <object class="sistema.personas.medicos.decorators.DecoratorMagister">
+      <void property="encapsulado">
+       <object class="sistema.personas.medicos.especialidades.Cirujano">
+        <void property="apellido">
+         <string>Rodriguez</string>
+        </void>
+        <void property="ciudad">
+         <string>Mar del Plata</string>
+        </void>
+        <void property="direccion">
+         <string>Mitre 1479</string>
+        </void>
+        <void property="dni">
+         <int>15236</int>
+        </void>
+        <void property="matricula">
+         <int>4</int>
+        </void>
+        <void property="nombre">
+         <string>Lucia</string>
+        </void>
+        <void property="telefono">
+         <long>369258</long>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sistema.personas.medicos.decorators.DecoratorTemporario">
+    <void property="encapsulado">
+     <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
+      <void property="encapsulado">
+       <object class="sistema.personas.medicos.especialidades.Cirujano">
+        <void property="apellido">
+         <string>Gonzales</string>
+        </void>
+        <void property="ciudad">
+         <string>Mar del Plata</string>
+        </void>
+        <void property="direccion">
+         <string>Salta 936</string>
+        </void>
+        <void property="dni">
+         <int>78932</int>
+        </void>
+        <void property="matricula">
+         <int>5</int>
+        </void>
+        <void property="nombre">
+         <string>Lucas</string>
+        </void>
+        <void property="telefono">
+         <long>369258</long>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="sistema.personas.medicos.decorators.DecoratorPermanente">
+    <void property="encapsulado">
+     <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
+      <void property="encapsulado">
+       <object class="sistema.personas.medicos.especialidades.Pediatra">
+        <void property="apellido">
+         <string>Sanchez</string>
+        </void>
+        <void property="ciudad">
+         <string>Buenos Aires</string>
+        </void>
+        <void property="direccion">
+         <string>Falucho 3705</string>
+        </void>
+        <void property="dni">
+         <int>93624</int>
+        </void>
+        <void property="matricula">
+         <int>6</int>
+        </void>
+        <void property="nombre">
+         <string>Carolina</string>
+        </void>
+        <void property="telefono">
+         <long>369258</long>
+        </void>
+       </object>
+      </void>
+     </object>
+    </void>
+   </object>
+  </void>
+ </object>
+</java>

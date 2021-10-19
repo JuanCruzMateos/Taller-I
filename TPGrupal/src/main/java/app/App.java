@@ -11,6 +11,8 @@ import sistema.habitaciones.Habitacion;
 import sistema.habitaciones.HabitacionCompartida;
 import sistema.habitaciones.HabitacionPrivada;
 import sistema.habitaciones.HabitacionTerapiaIntensiva;
+import sistema.persistencia.PersistenciaFacturas;
+import sistema.persistencia.PersistenciaMedicos;
 import sistema.persistencia.PersistenciaPacientes;
 import sistema.personas.medicos.IMedico;
 import sistema.personas.pacientes.Paciente;
@@ -222,8 +224,10 @@ public class App {
         clinica.atenderPaciente();
         System.out.println(clinica.estadoDeLaClinica());
 
-        ArrayList<Paciente> arr = PersistenciaPacientes.despersistir();
-        arr.forEach(paciente -> System.out.println(paciente.getNombre()));
-
+//        ArrayList<Paciente> arr = PersistenciaPacientes.despersistir();
+//        arr.forEach(paciente -> System.out.println(paciente.getNombre()));
+        PersistenciaPacientes.persistir();
+        PersistenciaMedicos.persistir();
+        PersistenciaFacturas.persistir();
     }
 }

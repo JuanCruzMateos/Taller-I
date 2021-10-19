@@ -6,12 +6,13 @@ import sistema.personas.pacientes.Paciente;
 import java.util.ArrayList;
 
 public class PersistenciaPacientes {
+    private static final String FILENAME = "pacientes.xml";
 
     public static void persistir() {
         PersistenciaXML io = new PersistenciaXML();
 
         try {
-            io.openOutput("pacientes.xml");
+            io.openOutput(FILENAME);
             io.write(Clinica.getInstance().getModuloIngreso().getRegistroDePacientes());
             io.closeOutput();
         } catch (Exception e) {
@@ -24,7 +25,7 @@ public class PersistenciaPacientes {
         ArrayList<Paciente> pacientes = null;
 
         try {
-            io.openInput("pacientes.xml");
+            io.openInput(FILENAME);
             pacientes = (ArrayList<Paciente>) io.read();
             io.closeInput();
         } catch (Exception e) {
@@ -32,4 +33,5 @@ public class PersistenciaPacientes {
         }
         return pacientes;
     }
+
 }

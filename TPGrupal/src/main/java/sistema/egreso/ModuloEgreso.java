@@ -85,4 +85,30 @@ public class ModuloEgreso {
         stringBuilder.append("*************************************************************************\n");
         return stringBuilder.toString();
     }
+
+    public TreeSet<Factura> getFacturas() {
+        return facturas;
+    }
+
+    public void setFacturas(TreeSet<Factura> facturas) {
+        this.facturas = facturas;
+    }
+
+    public Iterator<Factura> getFacturasIterator() {
+        return facturas.iterator();
+    }
+
+    public String ultimaFacturaAgregada() {
+        int numeroFactura = this.facturas.size();
+        Iterator<Factura> it = this.facturas.iterator();
+        Factura fact = null;
+        boolean esta = false;
+
+        while (it.hasNext() && !esta) {
+            fact = it.next();
+            if (fact.getNroFactura() == numeroFactura)
+                esta = true;
+        }
+        return esta ? fact.toString() : null;
+    }
 }

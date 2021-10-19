@@ -117,17 +117,24 @@ public class ModuloIngreso {
     }
 
     /**
-     *
      * @return lista con el registro historico de pacientes en la clinica
      */
     public ArrayList<Paciente> getRegistroDePacientes() {
         return new ArrayList<>(registroDePacientes.values());
     }
+
     /**
-     *
      * @return iterator con el registro historico de pacientes en la clinica
      */
     public Iterator<Paciente> getRegistroDePacientesIterator() {
-        return registroDePacientes.values().iterator();
+        return this.registroDePacientes.values().iterator();
+    }
+
+    public Iterator<Paciente> getPacientesEnListaDeEspera() {
+        return this.listaDeEspera.iterator();
+    }
+
+    public Iterator<Paciente> getPacientesEnPatio() {
+        return this.listaPacientesEnPatio.iterator();
     }
 }

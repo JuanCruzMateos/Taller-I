@@ -16,6 +16,7 @@ import sistema.personas.pacientes.Paciente;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * @author Grupo 4
@@ -254,8 +255,12 @@ public class Clinica {
         this.telefono = telefono;
     }
 
-    public HashMap<Integer, IMedico> getMedicos() {
-        return medicos;
+    public ArrayList<IMedico> getMedicos() {
+        return new ArrayList<>(this.medicos.values());
+    }
+
+    public Iterator<IMedico> getMedicosIterator() {
+        return this.medicos.values().iterator();
     }
 
     public void setMedicos(HashMap<Integer, IMedico> medicos) {
