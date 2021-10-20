@@ -1,5 +1,4 @@
 app
-collections
 sistema
 sistema.atencion
 sistema.clinica
@@ -9,6 +8,7 @@ sistema.facturacion
 sistema.gui
 sistema.habitaciones
 sistema.ingreso
+sistema.persistencia
 sistema.personas
 sistema.personas.medicos
 sistema.personas.medicos.decorators
