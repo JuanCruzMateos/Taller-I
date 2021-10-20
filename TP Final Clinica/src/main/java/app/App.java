@@ -235,7 +235,7 @@ public class App {
         ArrayList<IMedico> med = PersistenciaMedicos.despersistir();
         med.forEach(medico -> System.out.println(medico.getNombre() + medico.getApellido()));
         System.out.println();
-        ArrayList<Factura> fac  = PersistenciaFacturas.despersistir();
+        ArrayList<Factura> fac = PersistenciaFacturas.despersistir();
         fac.forEach(factura -> System.out.println(factura.getNroFactura()));
     }
 }
