@@ -10,7 +10,7 @@ public abstract class Paciente extends Persona {
     protected int nroOrden;
 
     /**
-     * Para persistencia XML
+     * Constructor vacio para persistencia XML.<br>
      */
     public Paciente() {
 

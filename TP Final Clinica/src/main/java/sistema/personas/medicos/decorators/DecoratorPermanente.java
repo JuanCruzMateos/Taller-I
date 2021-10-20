@@ -8,6 +8,9 @@ import sistema.personas.medicos.IMedico;
 public class DecoratorPermanente extends DecoratorMedico {
     private static double aumentoPermanente = 0.1;
 
+    /**
+     * Constructor vacio para persistencia XML.<br>
+     */
     public DecoratorPermanente() {
 
     }

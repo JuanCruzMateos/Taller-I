@@ -9,7 +9,7 @@ public class Cirujano extends Medico {
     private static double aumentoCirujano = 0.1;
 
     /**
-     * Persistencia XML.<br>
+     * Constructor vacio para persistencia XML.<br>
      */
     public Cirujano() {
 

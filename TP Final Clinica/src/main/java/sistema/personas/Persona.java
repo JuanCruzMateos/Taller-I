@@ -12,7 +12,7 @@ public abstract class Persona {
     protected int dni;
 
     /**
-     * Para persistencia XML
+     * Constructor vacio para persistencia XML.<br>
      */
     public Persona() {
 

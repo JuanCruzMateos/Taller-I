@@ -9,7 +9,7 @@ public class DecoratorDoctor extends DecoratorMedico {
     private static double aumentoDoctor = 0.1;
 
     /**
-     * Para persistencia XML
+     * Constructor vacio para persistencia XML.<br>
      */
     public DecoratorDoctor() {
 

@@ -8,6 +8,9 @@ import sistema.personas.medicos.IMedico;
 public class DecoratorMagister extends DecoratorMedico {
     private static double aumentoMagister = 0.05;
 
+    /**
+     * Constructor vacio para persistencia XML.<br>
+     */
     public DecoratorMagister() {
 
     }

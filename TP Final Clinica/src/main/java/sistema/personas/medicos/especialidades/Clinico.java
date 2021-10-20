@@ -9,7 +9,7 @@ public class Clinico extends Medico {
     private static double aumentoClinico = 0.05;
 
     /**
-     * Persistencia XML.<br>
+     * Constructor vacio para persistencia XML.<br>
      */
     public Clinico() {
 

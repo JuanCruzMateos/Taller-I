@@ -10,7 +10,7 @@ public abstract class Medico extends Persona implements IMedico {
     protected int matricula;
 
     /**
-     * Peristencia XML.<br>
+     * Constructor vacio para persistencia XML.<br>
      */
     public Medico() {
 

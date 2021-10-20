@@ -9,7 +9,7 @@ public class Pediatra extends Medico {
     private static double aumentoPediatra = 0.07;
 
     /**
-     * Persistencia XML.<br>
+     * Constructor vacio para persistencia XML.<br>
      */
     public Pediatra() {
 

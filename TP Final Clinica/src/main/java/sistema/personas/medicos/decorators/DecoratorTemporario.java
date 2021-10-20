@@ -8,6 +8,9 @@ import sistema.personas.medicos.IMedico;
 public class DecoratorTemporario extends DecoratorMedico {
     private static double aumentoTemporario = 0.05;
 
+    /**
+     * Constructor vacio para persistencia XML.<br>
+     */
     public DecoratorTemporario() {
 
     }

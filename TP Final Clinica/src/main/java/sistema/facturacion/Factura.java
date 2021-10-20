@@ -21,6 +21,9 @@ public class Factura implements Comparable<Factura> {
     private ArrayList<ConsultaMedica> consultasConMedicos;
     private ArrayList<Internacion> internaciones;
 
+    /**
+     * Constructor vacio para persistencia XML.<br>
+     */
     public Factura() {
 
     }

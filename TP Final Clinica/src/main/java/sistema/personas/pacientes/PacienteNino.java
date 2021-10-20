@@ -4,8 +4,9 @@ package sistema.personas.pacientes;
  * Clase que modela a un paciente nino de la clinica.<br>
  */
 public class PacienteNino extends Paciente {
+
     /**
-     * Persistencia XML.<br>
+     * Constructor vacio para persistencia XML.<br>
      */
     public PacienteNino() {
 

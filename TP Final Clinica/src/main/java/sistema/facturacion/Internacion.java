@@ -12,6 +12,9 @@ public class Internacion {
     private double costoHabitacion;
     private double subtotal;
 
+    /**
+     * Constructor vacio para persistencia XML.<br>
+     */
     public Internacion() {
 
     }

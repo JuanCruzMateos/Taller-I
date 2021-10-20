@@ -12,6 +12,9 @@ public class ConsultaMedica {
     private int cantidadConsultas;
     private double valorConsulta;
 
+    /**
+     * Constructor vacio para persistencia XML.<br>
+     */
     public ConsultaMedica() {
 
     }

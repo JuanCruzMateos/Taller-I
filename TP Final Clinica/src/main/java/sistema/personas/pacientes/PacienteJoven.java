@@ -6,7 +6,7 @@ package sistema.personas.pacientes;
 public class PacienteJoven extends Paciente {
 
     /**
-     * Persistencia XML.<br>
+     * Constructor vacio para persistencia XML.<br>
      */
     public PacienteJoven() {
 
