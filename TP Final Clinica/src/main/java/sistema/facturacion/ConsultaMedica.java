@@ -11,6 +11,7 @@ public class ConsultaMedica {
     private IMedico medico;
     private int cantidadConsultas;
     private double valorConsulta;
+    private boolean facturada;
 
     /**
      * Constructor vacio para persistencia XML.<br>
@@ -82,5 +83,13 @@ public class ConsultaMedica {
 
     public void setValorConsulta(double valorConsulta) {
         this.valorConsulta = valorConsulta;
+    }
+
+    public boolean isFacturada() {
+        return facturada;
+    }
+
+    public void setFacturada(boolean facturada) {
+        this.facturada = facturada;
     }
 }

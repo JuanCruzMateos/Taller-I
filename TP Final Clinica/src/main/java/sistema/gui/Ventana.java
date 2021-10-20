@@ -1,60 +1,78 @@
 package sistema.gui;
 
+import sistema.habitaciones.Habitacion;
+import sistema.personas.medicos.IMedico;
 import sistema.personas.pacientes.Paciente;
 
-public class Ventana implements IVista {
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import java.awt.event.ActionListener;
+import java.util.Iterator;
+
+/**
+ * Ventana del modelo MVC.<br>
+ */
+public class Ventana extends JFrame implements ListSelectionListener, IVista {
+
+
     @Override
-    public String getNombre() {
+    public void valueChanged(ListSelectionEvent e) {
+
+    }
+
+    @Override
+    public Paciente getPacienteFacturacion() {
         return null;
     }
 
     @Override
-    public String getApellido() {
+    public IMedico getMedicoFacturacion() {
         return null;
     }
 
     @Override
-    public int getDni() {
+    public int getCantidadConsultasFacturacion() {
         return 0;
     }
 
     @Override
-    public int getTelefono() {
+    public Habitacion getHabitacionFacturacion() {
+        return null;
+    }
+
+    @Override
+    public int getCantidadDiasInternacionFacturacion() {
         return 0;
     }
 
     @Override
-    public String getDomicilio() {
-        return null;
+    public void actualizarListaPacientesFacturacion(Iterator<Paciente> iterator) {
+
     }
 
     @Override
-    public String getCiudad() {
-        return null;
+    public void actualizarComboMedicosFacturacion(Iterator<IMedico> iterator) {
+
     }
 
     @Override
-    public String getEspecialidad() {
-        return null;
+    public void actualizarComboHabitacionesFacturacion(Iterator<Habitacion> iterator) {
+
     }
 
     @Override
-    public String getPosgrado() {
-        return null;
+    public void MostrarFactura(String detalle) {
+
     }
 
     @Override
-    public String getContratacion() {
-        return null;
+    public void addActionListener(ActionListener actionListener) {
+
     }
 
     @Override
-    public String getRangoEtareo() {
-        return null;
-    }
+    public void habilitarBotonesFactura(boolean habilitar) {
 
-    @Override
-    public Paciente getSelectedValue() {
-        return null;
     }
 }

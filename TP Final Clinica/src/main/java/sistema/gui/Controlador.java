@@ -1,35 +1,55 @@
 package sistema.gui;
 
-import sistema.clinica.Clinica;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
-public class Controlador implements ActionListener {
-    private static Controlador instance;
-    private Clinica clinica;
-    private IVista ventana;
+/**
+ * Controlador segun modelo MVC.<br>
+ * Dirige el flujo de control de la aplicaion, administrando la comunicacion entre la ventana y el modelo.<br>
+ */
+public class Controlador implements ActionListener, WindowListener {
 
-    private Controlador() {
-        // constructor vacio
-    }
-
-    public static Controlador getInstance() {
-        if (Controlador.instance == null)
-            Controlador.instance = new Controlador();
-        return Controlador.instance;
-    }
-
-    public void setVentana(IVista ventana) {
-        this.ventana = ventana;
-    }
-
-    public void setClinica(Clinica clinica) {
-        this.clinica = clinica;
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+    }
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
 
     }
 }

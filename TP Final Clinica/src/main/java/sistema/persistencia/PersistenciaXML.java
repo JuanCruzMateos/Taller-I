@@ -3,11 +3,9 @@ package sistema.persistencia;
 import java.beans.XMLDecoder;
 import java.beans.XMLEncoder;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 
-/**
- * Clase encargada de la persistencia XML.<br>
- */
 public class PersistenciaXML implements IPersistencia {
     private FileInputStream fileInputStream;
     private FileOutputStream fileOutputStream;
@@ -15,25 +13,25 @@ public class PersistenciaXML implements IPersistencia {
     private XMLDecoder xmlDecoder;
 
     @Override
-    public void openInput(String fileName) throws Exception {
+    public void openInput(String fileName) throws FileNotFoundException {
         this.fileInputStream = new FileInputStream(fileName);
         this.xmlDecoder = new XMLDecoder(this.fileInputStream);
     }
 
     @Override
-    public void closeInput() throws Exception {
+    public void closeInput() {
         if (this.xmlDecoder != null)
             this.xmlDecoder.close();
     }
 
     @Override
-    public void openOutput(String fileName) throws Exception {
+    public void openOutput(String fileName) throws FileNotFoundException {
         this.fileOutputStream = new FileOutputStream(fileName);
         this.xmlEncoder = new XMLEncoder(this.fileOutputStream);
     }
 
     @Override
-    public void closeOutput() throws Exception {
+    public void closeOutput() {
         if (this.xmlEncoder != null)
             this.xmlEncoder.close();
     }

@@ -26,7 +26,7 @@ public class ModuloAtencion {
     /**
      * Devuelve el paciente de la lista de atencion cuyo dni es el sumistrado.<br>
      * <b>Pre: </b> dni mayor a 0.<br>
-     * <b>Post: </b> Devuelve el paciente cuyo dni es el pasado por parametro o null si no se encuentra.<br>
+     * <b>Post: </b> Devuelve el paciente cuyo dni es el pasado por parametro, eliminandolo de pacientes en atencion, o null si no se encuentra.<br>
      *
      * @param dni DNI del paciente; dni mayor a 0.<br>
      * @return referencia a un pacinte o null.<br>

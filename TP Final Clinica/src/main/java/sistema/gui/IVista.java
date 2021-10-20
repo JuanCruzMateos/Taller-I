@@ -1,20 +1,36 @@
 package sistema.gui;
 
+import sistema.habitaciones.Habitacion;
+import sistema.personas.medicos.IMedico;
 import sistema.personas.pacientes.Paciente;
 
+import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
+import java.util.Iterator;
+
 public interface IVista {
-    String getNombre();
-    String getApellido();
-    int getDni();
-    int getTelefono();
-    String getDomicilio();
-    String getCiudad();
+    //Facturacion
+    Paciente getPacienteFacturacion();
 
-    String getEspecialidad();
-    String getPosgrado();
-    String getContratacion();
+    IMedico getMedicoFacturacion();
 
-    String getRangoEtareo();
+    int getCantidadConsultasFacturacion();
 
-    Paciente getSelectedValue();
+    Habitacion getHabitacionFacturacion();
+
+    int getCantidadDiasInternacionFacturacion();
+
+    void actualizarListaPacientesFacturacion(Iterator<Paciente> iterator);
+
+    void actualizarComboMedicosFacturacion(Iterator<IMedico> iterator);
+
+    void actualizarComboHabitacionesFacturacion(Iterator<Habitacion> iterator);
+
+    void MostrarFactura(String detalle);
+
+    void addActionListener(ActionListener actionListener);
+
+    void addWindowListener(WindowListener windowListener);
+
+    void habilitarBotonesFactura(boolean habilitar);
 }

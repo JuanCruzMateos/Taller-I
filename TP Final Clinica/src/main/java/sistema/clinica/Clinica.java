@@ -8,15 +8,13 @@ import sistema.excepciones.InformacionPersonalNoValidaException;
 import sistema.excepciones.PosgradoNoValidoException;
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Internacion;
+import sistema.historiaclinica.HistoriaClinica;
 import sistema.ingreso.ModuloIngreso;
 import sistema.personas.medicos.IMedico;
 import sistema.personas.medicos.factory.MedicoFactory;
 import sistema.personas.pacientes.Paciente;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * @author Grupo 4
@@ -31,6 +29,7 @@ public class Clinica {
     private String direccion;
     private String ciudad;
     private long telefono;
+    private HashMap<Paciente, HistoriaClinica> hitoriasClinicas = new HashMap<>();
     private HashMap<Integer, IMedico> medicos = new HashMap<>();
     private ModuloIngreso moduloIngreso = new ModuloIngreso();
     private ModuloAtencion moduloAtencion = new ModuloAtencion();
@@ -60,7 +59,12 @@ public class Clinica {
      * @return referencia al paciente.
      */
     public Paciente altaPaciente(String nombre, String apellido, String direccion, String ciudad, long telefono, int dni, String rangoEtario) {
-        return this.moduloIngreso.altaPaciente(nombre, apellido, direccion, ciudad, telefono, dni, rangoEtario);
+        Paciente paciente = this.moduloIngreso.altaPaciente(nombre, apellido, direccion, ciudad, telefono, dni, rangoEtario);
+
+        // TODO :: revisar -> si el paciente es nuevo genero una nueva historia clinica vacia
+        if (!this.hitoriasClinicas.containsKey(paciente))
+            this.hitoriasClinicas.put(paciente, new HistoriaClinica());
+        return paciente;
     }
 
     /**
@@ -138,6 +142,35 @@ public class Clinica {
         return this.moduloAtencion.egresoPaciente(dni);
     }
 
+    /**
+     * TODO
+     *
+     * @param paciente
+     * @param internacion
+     */
+    public void agregarInternacionPaciente(Paciente paciente, Internacion internacion) {
+        this.hitoriasClinicas.get(paciente).agregarInternacion(internacion);
+    }
+
+    /**
+     * TODO
+     *
+     * @param paciente
+     * @param consultaMedica
+     */
+    public void agregarConsultaMedicaPaciente(Paciente paciente, ConsultaMedica consultaMedica) {
+        this.hitoriasClinicas.get(paciente).agregarConsultaMedica(consultaMedica);
+    }
+
+    /**
+     * TODO
+     *
+     * @param paciente
+     * @return
+     */
+    public HistoriaClinica getHistoriaClinicaPaciente(Paciente paciente) {
+        return this.hitoriasClinicas.get(paciente);
+    }
 
     /**
      * Genera la factura dado un paciente, las listas de internaciones y consultas realizadas y la fecha de facturacion.<br>
@@ -151,6 +184,14 @@ public class Clinica {
      */
     public void facturar(Paciente paciente, GregorianCalendar fecha, ArrayList<ConsultaMedica> consultaMedicas, ArrayList<Internacion> internacions) {
         this.moduloEgreso.facturar(paciente, fecha, consultaMedicas, internacions);
+    }
+
+    /**
+     * @param paciente
+     * @param fecha
+     */
+    public void facturar(Paciente paciente, GregorianCalendar fecha) {
+        this.moduloEgreso.facturar(paciente, fecha);
     }
 
     /**
@@ -249,7 +290,7 @@ public class Clinica {
     /**
      * Setea el telefono de la clinica.<br>
      *
-     * @param telefono (int) que almacena el telefono de la clinica.<br>
+     * @param telefono (long) que almacena el telefono de la clinica.<br>
      */
     public void setTelefono(long telefono) {
         this.telefono = telefono;
@@ -287,7 +328,6 @@ public class Clinica {
         this.moduloEgreso = moduloEgreso;
     }
 
-
     public ArrayList<Paciente> getPacientesEnAtencion() {
         return this.moduloAtencion.getPacientesEnAtencion();
     }
@@ -299,5 +339,17 @@ public class Clinica {
 
     public String getDetalleUltimaFactura() {
         return this.moduloEgreso.ultimaFacturaAgregada();
+    }
+
+    public HashMap<Paciente, HistoriaClinica> getHitoriasClinicas() {
+        return hitoriasClinicas;
+    }
+
+    public void setHitoriasClinicas(HashMap<Paciente, HistoriaClinica> hitoriasClinicas) {
+        this.hitoriasClinicas = hitoriasClinicas;
+    }
+
+    public Set<Map.Entry<Paciente, HistoriaClinica>> getHistoriasClinicasIterator() {
+        return this.hitoriasClinicas.entrySet();
     }
 }

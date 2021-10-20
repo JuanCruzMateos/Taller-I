@@ -1,8 +1,10 @@
 package sistema.egreso;
 
+import sistema.clinica.Clinica;
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Factura;
 import sistema.facturacion.Internacion;
+import sistema.historiaclinica.HistoriaClinica;
 import sistema.personas.medicos.IMedico;
 import sistema.personas.pacientes.Paciente;
 
@@ -31,6 +33,35 @@ public class ModuloEgreso implements Serializable {
     public void facturar(Paciente paciente, GregorianCalendar fecha, ArrayList<ConsultaMedica> consultaMedicas, ArrayList<Internacion> internacions) {
         Factura factura = new Factura(fecha, paciente, consultaMedicas, internacions);
         this.facturas.add(factura);
+    }
+
+    /**
+     * TODO
+     *
+     * @param paciente
+     * @param fecha
+     */
+    public void facturar(Paciente paciente, GregorianCalendar fecha) {
+        ArrayList<ConsultaMedica> consultaMedicas = new ArrayList<>();
+        ArrayList<Internacion> internaciones = new ArrayList<>();
+        HistoriaClinica historiaClinica = Clinica.getInstance().getHistoriaClinicaPaciente(paciente);
+
+        for (Internacion in : historiaClinica.getInternacions()) {
+            if (!in.isFacturada()) {
+                in.setFacturada(true);
+                internaciones.add(in);
+            }
+        }
+        for (ConsultaMedica cm : historiaClinica.getConsultaMedicas()) {
+            if (!cm.isFacturada()) {
+                cm.setFacturada(true);
+                consultaMedicas.add(cm);
+            }
+        }
+        if (consultaMedicas.size() != 0 || internaciones.size() != 0) {
+            Factura factura = new Factura(fecha, paciente, consultaMedicas, internaciones);
+            this.facturas.add(factura);
+        }
     }
 
     /**

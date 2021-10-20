@@ -11,6 +11,7 @@ public class Internacion {
     private int diasInternado;
     private double costoHabitacion;
     private double subtotal;
+    private boolean facturada;
 
     /**
      * Constructor vacio para persistencia XML.<br>
@@ -97,5 +98,13 @@ public class Internacion {
 
     public void setDiasInternado(int diasInternado) {
         this.diasInternado = diasInternado;
+    }
+
+    public boolean isFacturada() {
+        return facturada;
+    }
+
+    public void setFacturada(boolean facturada) {
+        this.facturada = facturada;
     }
 }
