@@ -6,6 +6,7 @@ import sistema.excepciones.EspecialidadNoValidaException;
 import sistema.excepciones.InformacionPersonalNoValidaException;
 import sistema.excepciones.PosgradoNoValidoException;
 import sistema.facturacion.ConsultaMedica;
+import sistema.facturacion.Factura;
 import sistema.facturacion.Internacion;
 import sistema.habitaciones.Habitacion;
 import sistema.habitaciones.HabitacionCompartida;
@@ -225,10 +226,16 @@ public class App {
         clinica.atenderPaciente();
         System.out.println(clinica.estadoDeLaClinica());
 
-//        ArrayList<Paciente> arr = PersistenciaPacientes.despersistir();
-//        arr.forEach(paciente -> System.out.println(paciente.getNombre()));
-        PersistenciaPacientes.persistir();
-        PersistenciaMedicos.persistir();
-        PersistenciaFacturas.persistir();
+//        PersistenciaPacientes.persistir();
+//        PersistenciaMedicos.persistir();
+//        PersistenciaFacturas.persistir();
+        ArrayList<Paciente> arr = PersistenciaPacientes.despersistir();
+        arr.forEach(paciente -> System.out.println(paciente.getNombre() + paciente.getApellido()));
+        System.out.println();
+        ArrayList<IMedico> med = PersistenciaMedicos.despersistir();
+        med.forEach(medico -> System.out.println(medico.getNombre() + medico.getApellido()));
+        System.out.println();
+        ArrayList<Factura> fac  = PersistenciaFacturas.despersistir();
+        fac.forEach(factura -> System.out.println(factura.getNroFactura()));
     }
 }

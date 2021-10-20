@@ -4,9 +4,13 @@
 # Eclipse
 .settings/
 .project/
+.eclipse
 
 # JDeveloper
 # ...
 
-# TPFinal
-TPGrupal/src/test/
+# Maven
+target/
+*.iml
+
+# TPGrupal/src/test/**/*.java
