@@ -13,7 +13,7 @@ public class PersistenciaMedicos {
 
         try {
             io.openOutput(FILENAME);
-            io.write(Clinica.getInstance().getMedicos());
+            io.write(new ArrayList<>(Clinica.getInstance().getMedicos().values()));
             io.closeOutput();
         } catch (Exception e) {
             e.printStackTrace();

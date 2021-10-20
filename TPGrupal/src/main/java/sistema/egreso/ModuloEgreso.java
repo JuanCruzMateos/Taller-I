@@ -6,6 +6,7 @@ import sistema.facturacion.Internacion;
 import sistema.personas.medicos.IMedico;
 import sistema.personas.pacientes.Paciente;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -15,7 +16,7 @@ import java.util.Iterator;
 /**
  * Clase que modela el modulo de egreso de la clinica.<br>
  */
-public class ModuloEgreso {
+public class ModuloEgreso implements Serializable {
     private ArrayList<Factura> facturas = new ArrayList<>();
 
     /**
@@ -93,10 +94,6 @@ public class ModuloEgreso {
         this.facturas = facturas;
     }
 
-    public Iterator<Factura> getFacturasIterator() {
-        return facturas.iterator();
-    }
-
     public String ultimaFacturaAgregada() {
         int numeroFactura = this.facturas.size();
         Iterator<Factura> it = this.facturas.iterator();
@@ -109,5 +106,9 @@ public class ModuloEgreso {
                 esta = true;
         }
         return esta ? fact.toString() : null;
+    }
+
+    public Iterator<Factura> getFacturasIterator() {
+        return this.facturas.iterator();
     }
 }

@@ -54,4 +54,16 @@ public class ModuloAtencion {
     public int cantidadDePacientesEnAtencion() {
         return this.pacientesEnAtencion.size();
     }
+
+    public ArrayList<Paciente> getPacientesEnAtencion() {
+        return pacientesEnAtencion;
+    }
+
+    public void setPacientesEnAtencion(ArrayList<Paciente> pacientesEnAtencion) {
+        this.pacientesEnAtencion = pacientesEnAtencion;
+    }
+
+    public Iterator<Paciente> getPacientesEnAtencionIterator() {
+        return this.pacientesEnAtencion.iterator();
+    }
 }

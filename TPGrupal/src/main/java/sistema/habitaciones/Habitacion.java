@@ -9,6 +9,22 @@ package sistema.habitaciones;
 public abstract class Habitacion {
     protected static double costoAsignacion;
 
+    public static double getCostoAsignacion() {
+        return costoAsignacion;
+    }
+
+    /**
+     * Especificar costo de asignacion base de una habitacion.<br>
+     * Debe utilizarse solo desde la clase Habitacion y no desde las clases heredadas.<br>
+     * <b>Pre: </b> CostoAsignacion debe ser un numero positivo mayor o igual a cero.<br>
+     * <b>Post: </b> El costo de la asignacion base de una habitacion se setea a costoAsignacion.<br>
+     *
+     * @param costoAsignacion Costo de asignacion de la habitacion. Debe ser mayor o igual a cero.<br>
+     */
+    public static void setCostoAsignacion(double costoAsignacion) {
+        Habitacion.costoAsignacion = costoAsignacion;
+    }
+
     /**
      * Devuelve el costo de internacion en la habitacion.<br>
      * Implementa Patron Template.<br>
@@ -47,16 +63,4 @@ public abstract class Habitacion {
      * @return costo de la habitacion.<br>
      */
     public abstract double getCostoHabitacion();
-
-    /**
-     * Especificar costo de asignacion base de una habitacion.<br>
-     * Debe utilizarse solo desde la clase Habitacion y no desde las clases heredadas.<br>
-     * <b>Pre: </b> CostoAsignacion debe ser un numero positivo mayor o igual a cero.<br>
-     * <b>Post: </b> El costo de la asignacion base de una habitacion se setea a costoAsignacion.<br>
-     *
-     * @param costoAsignacion Costo de asignacion de la habitacion. Debe ser mayor o igual a cero.<br>
-     */
-    public static void setCostoAsignacion(double costoAsignacion) {
-        Habitacion.costoAsignacion = costoAsignacion;
-    }
 }

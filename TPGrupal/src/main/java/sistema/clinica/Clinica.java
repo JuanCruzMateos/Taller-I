@@ -14,9 +14,9 @@ import sistema.personas.medicos.factory.MedicoFactory;
 import sistema.personas.pacientes.Paciente;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
-import java.util.Iterator;
 
 /**
  * @author Grupo 4
@@ -30,7 +30,7 @@ public class Clinica {
     private String nombre;
     private String direccion;
     private String ciudad;
-    private int telefono;
+    private long telefono;
     private HashMap<Integer, IMedico> medicos = new HashMap<>();
     private ModuloIngreso moduloIngreso = new ModuloIngreso();
     private ModuloAtencion moduloAtencion = new ModuloAtencion();
@@ -59,7 +59,7 @@ public class Clinica {
      * @param rangoEtario Rango etario de paciente.
      * @return referencia al paciente.
      */
-    public Paciente altaPaciente(String nombre, String apellido, String direccion, String ciudad, int telefono, int dni, String rangoEtario) {
+    public Paciente altaPaciente(String nombre, String apellido, String direccion, String ciudad, long telefono, int dni, String rangoEtario) {
         return this.moduloIngreso.altaPaciente(nombre, apellido, direccion, ciudad, telefono, dni, rangoEtario);
     }
 
@@ -107,7 +107,7 @@ public class Clinica {
      * @throws ContratacionNoValidaException
      */
     public void agregarMedico(String especialidad, String posgrado, String contratacion, String nombre, String apellido,
-                              String direccion, String ciudad, int telefono, int dni, int matricula)
+                              String direccion, String ciudad, long telefono, int dni, int matricula)
             throws InformacionPersonalNoValidaException, EspecialidadNoValidaException,
             PosgradoNoValidoException, ContratacionNoValidaException {
 
@@ -242,7 +242,7 @@ public class Clinica {
         this.ciudad = ciudad;
     }
 
-    public int getTelefono() {
+    public long getTelefono() {
         return telefono;
     }
 
@@ -251,16 +251,12 @@ public class Clinica {
      *
      * @param telefono (int) que almacena el telefono de la clinica.<br>
      */
-    public void setTelefono(int telefono) {
+    public void setTelefono(long telefono) {
         this.telefono = telefono;
     }
 
-    public ArrayList<IMedico> getMedicos() {
-        return new ArrayList<>(this.medicos.values());
-    }
-
-    public Iterator<IMedico> getMedicosIterator() {
-        return this.medicos.values().iterator();
+    public HashMap<Integer, IMedico> getMedicos() {
+        return medicos;
     }
 
     public void setMedicos(HashMap<Integer, IMedico> medicos) {
@@ -289,5 +285,19 @@ public class Clinica {
 
     public void setModuloEgreso(ModuloEgreso moduloEgreso) {
         this.moduloEgreso = moduloEgreso;
+    }
+
+
+    public ArrayList<Paciente> getPacientesEnAtencion() {
+        return this.moduloAtencion.getPacientesEnAtencion();
+    }
+
+    public ArrayList<IMedico> getListaMedicos() {
+        Collection<IMedico> values = medicos.values();
+        return new ArrayList<>(values);
+    }
+
+    public String getDetalleUltimaFactura() {
+        return this.moduloEgreso.ultimaFacturaAgregada();
     }
 }

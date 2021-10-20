@@ -158,7 +158,7 @@ public class App {
         System.out.println(clinica.getDetalleFactura(2));
         System.out.println(clinica.getDetalleFactura(3));
 
-        System.out.println(clinica.getReporteMedico(medico1, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
+        System.out.println(clinica.getReporteMedico(medico1, new GregorianCalendar(2015, Calendar.FEBRUARY, 1), new GregorianCalendar()));
         System.out.println(clinica.getReporteMedico(medico2, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
         System.out.println(clinica.getReporteMedico(medico3, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
         System.out.println(clinica.getReporteMedico(medico4, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));

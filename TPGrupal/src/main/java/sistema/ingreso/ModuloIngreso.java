@@ -17,6 +17,14 @@ public class ModuloIngreso {
     private ArrayList<Paciente> listaPacientesEnPatio = new ArrayList<>();
     private Paciente salaVip;
 
+    public static int getNroOrden() {
+        return nroOrden;
+    }
+
+    public static void setNroOrden(int nroOrden) {
+        ModuloIngreso.nroOrden = nroOrden;
+    }
+
     /**
      * Busca al paciente en el registro historico.<br>
      * Si lo encuentra devuelve su referencia.<br>
@@ -33,7 +41,7 @@ public class ModuloIngreso {
      * @param rangoEtario Rango etario de paciente. Debe ser distinto de null.<br>
      * @return referencia al paciente.
      */
-    public Paciente altaPaciente(String nombre, String apellido, String direccion, String ciudad, int telefono, int dni, String rangoEtario) {
+    public Paciente altaPaciente(String nombre, String apellido, String direccion, String ciudad, Long telefono, int dni, String rangoEtario) {
         Paciente paciente = null;
 
         if (this.registroDePacientes.containsKey(dni)) {
@@ -116,25 +124,47 @@ public class ModuloIngreso {
         return this.salaVip != null;
     }
 
-    /**
-     * @return lista con el registro historico de pacientes en la clinica
-     */
-    public ArrayList<Paciente> getRegistroDePacientes() {
-        return new ArrayList<>(registroDePacientes.values());
+    public HashMap<Integer, Paciente> getRegistroDePacientes() {
+        return registroDePacientes;
     }
 
-    /**
-     * @return iterator con el registro historico de pacientes en la clinica
-     */
+    public void setRegistroDePacientes(HashMap<Integer, Paciente> registroDePacientes) {
+        this.registroDePacientes = registroDePacientes;
+    }
+
+    public Queue<Paciente> getListaDeEspera() {
+        return listaDeEspera;
+    }
+
+    public void setListaDeEspera(Queue<Paciente> listaDeEspera) {
+        this.listaDeEspera = listaDeEspera;
+    }
+
+    public ArrayList<Paciente> getListaPacientesEnPatio() {
+        return listaPacientesEnPatio;
+    }
+
+    public void setListaPacientesEnPatio(ArrayList<Paciente> listaPacientesEnPatio) {
+        this.listaPacientesEnPatio = listaPacientesEnPatio;
+    }
+
+    public Paciente getSalaVip() {
+        return salaVip;
+    }
+
+    public void setSalaVip(Paciente salaVip) {
+        this.salaVip = salaVip;
+    }
+
     public Iterator<Paciente> getRegistroDePacientesIterator() {
         return this.registroDePacientes.values().iterator();
     }
 
-    public Iterator<Paciente> getPacientesEnListaDeEspera() {
+    public Iterator<Paciente> getPacientesEnListaDeEsperaIterator() {
         return this.listaDeEspera.iterator();
     }
 
-    public Iterator<Paciente> getPacientesEnPatio() {
+    public Iterator<Paciente> getPacientesEnPatioIterator() {
         return this.listaPacientesEnPatio.iterator();
     }
 }

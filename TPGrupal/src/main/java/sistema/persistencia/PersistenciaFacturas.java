@@ -4,7 +4,6 @@ import sistema.clinica.Clinica;
 import sistema.facturacion.Factura;
 
 import java.util.ArrayList;
-import java.util.TreeSet;
 
 public class PersistenciaFacturas {
     private static final String FILENAME = "facturas.xml";
@@ -27,7 +26,7 @@ public class PersistenciaFacturas {
 
         try {
             io.openInput(FILENAME);
-            facturas = new ArrayList<>((TreeSet<Factura>) io.read());
+            facturas = (ArrayList<Factura>) io.read();
             io.closeInput();
         } catch (Exception e) {
             e.printStackTrace();
