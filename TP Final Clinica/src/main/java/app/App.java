@@ -3,7 +3,7 @@ package app;
 import sistema.clinica.Clinica;
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Internacion;
-import sistema.historiaclinica.HistoriaClinica;
+import sistema.atencion.HistoriaClinica;
 import sistema.persistencia.AccesoDatos;
 import sistema.personas.pacientes.Paciente;
 

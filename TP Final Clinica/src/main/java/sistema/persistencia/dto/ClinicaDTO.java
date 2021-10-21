@@ -3,10 +3,8 @@ package sistema.persistencia.dto;
 
 import sistema.atencion.ModuloAtencion;
 import sistema.egreso.ModuloEgreso;
-import sistema.historiaclinica.HistoriaClinica;
 import sistema.ingreso.ModuloIngreso;
 import sistema.personas.medicos.IMedico;
-import sistema.personas.pacientes.Paciente;
 
 import java.io.Serializable;
 import java.util.HashMap;
@@ -16,7 +14,6 @@ public class ClinicaDTO implements Serializable {
     private String direccion;
     private String ciudad;
     private Long telefono;
-    private HashMap<Paciente, HistoriaClinica> hitoriasClinicas = new HashMap<>();
     private HashMap<Integer, IMedico> medicos = new HashMap<>();
     private ModuloIngreso moduloIngreso = new ModuloIngreso();
     private ModuloAtencion moduloAtencion = new ModuloAtencion();
@@ -224,13 +221,5 @@ public class ClinicaDTO implements Serializable {
 
     public void setCostoHabTerapiaIntensiva(double costoHabTerapiaIntensiva) {
         this.costoHabTerapiaIntensiva = costoHabTerapiaIntensiva;
-    }
-
-    public HashMap<Paciente, HistoriaClinica> getHitoriasClinicas() {
-        return hitoriasClinicas;
-    }
-
-    public void setHitoriasClinicas(HashMap<Paciente, HistoriaClinica> hitoriasClinicas) {
-        this.hitoriasClinicas = hitoriasClinicas;
     }
 }

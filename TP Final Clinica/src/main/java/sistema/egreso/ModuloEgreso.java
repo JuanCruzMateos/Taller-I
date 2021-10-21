@@ -4,7 +4,7 @@ import sistema.clinica.Clinica;
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Factura;
 import sistema.facturacion.Internacion;
-import sistema.historiaclinica.HistoriaClinica;
+import sistema.atencion.HistoriaClinica;
 import sistema.personas.medicos.IMedico;
 import sistema.personas.pacientes.Paciente;
 

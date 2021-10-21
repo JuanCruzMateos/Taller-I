@@ -25,7 +25,6 @@ public class DTOConverter {
         clinicaDTO.setDireccion(Clinica.getInstance().getDireccion());
         clinicaDTO.setCiudad(Clinica.getInstance().getCiudad());
         clinicaDTO.setTelefono(Clinica.getInstance().getTelefono());
-        clinicaDTO.setHitoriasClinicas(Clinica.getInstance().getHitoriasClinicas());
         clinicaDTO.setMedicos(Clinica.getInstance().getMedicos());
         clinicaDTO.setModuloIngreso(Clinica.getInstance().getModuloIngreso());
         clinicaDTO.setModuloAtencion(Clinica.getInstance().getModuloAtencion());
@@ -53,7 +52,6 @@ public class DTOConverter {
         Clinica.getInstance().setDireccion(clinicaDTO.getDireccion());
         Clinica.getInstance().setCiudad(clinicaDTO.getCiudad());
         Clinica.getInstance().setTelefono(clinicaDTO.getTelefono());
-        Clinica.getInstance().setHitoriasClinicas(clinicaDTO.getHitoriasClinicas());
         Clinica.getInstance().setMedicos(clinicaDTO.getMedicos());
         Clinica.getInstance().setModuloIngreso(clinicaDTO.getModuloIngreso());
         Clinica.getInstance().setModuloAtencion(clinicaDTO.getModuloAtencion());

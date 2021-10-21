@@ -8,7 +8,7 @@ import sistema.excepciones.InformacionPersonalNoValidaException;
 import sistema.excepciones.PosgradoNoValidoException;
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Internacion;
-import sistema.historiaclinica.HistoriaClinica;
+import sistema.atencion.HistoriaClinica;
 import sistema.ingreso.ModuloIngreso;
 import sistema.personas.medicos.IMedico;
 import sistema.personas.medicos.factory.MedicoFactory;
@@ -29,7 +29,7 @@ public class Clinica {
     private String direccion;
     private String ciudad;
     private long telefono;
-    private HashMap<Paciente, HistoriaClinica> hitoriasClinicas = new HashMap<>();
+
     private HashMap<Integer, IMedico> medicos = new HashMap<>();
     private ModuloIngreso moduloIngreso = new ModuloIngreso();
     private ModuloAtencion moduloAtencion = new ModuloAtencion();
@@ -62,8 +62,8 @@ public class Clinica {
         Paciente paciente = this.moduloIngreso.altaPaciente(nombre, apellido, direccion, ciudad, telefono, dni, rangoEtario);
 
         // TODO :: revisar -> si el paciente es nuevo genero una nueva historia clinica vacia
-        if (!this.hitoriasClinicas.containsKey(paciente))
-            this.hitoriasClinicas.put(paciente, new HistoriaClinica());
+        if (!this.moduloAtencion.existeHistoriaClinicaDePaciente(paciente))
+            this.moduloAtencion.nuevaHistoriaClinica(paciente);
         return paciente;
     }
 
@@ -149,7 +149,7 @@ public class Clinica {
      * @param internacion
      */
     public void agregarInternacionPaciente(Paciente paciente, Internacion internacion) {
-        this.hitoriasClinicas.get(paciente).agregarInternacion(internacion);
+        this.moduloAtencion.agregarInternacionPaciente(paciente, internacion);
     }
 
     /**
@@ -159,7 +159,7 @@ public class Clinica {
      * @param consultaMedica
      */
     public void agregarConsultaMedicaPaciente(Paciente paciente, ConsultaMedica consultaMedica) {
-        this.hitoriasClinicas.get(paciente).agregarConsultaMedica(consultaMedica);
+        this.moduloAtencion.agregarConsultaMedicaPaciente(paciente, consultaMedica);
     }
 
     /**
@@ -169,7 +169,7 @@ public class Clinica {
      * @return
      */
     public HistoriaClinica getHistoriaClinicaPaciente(Paciente paciente) {
-        return this.hitoriasClinicas.get(paciente);
+        return this.moduloAtencion.getHistoriaClinicaPaciente(paciente);
     }
 
     /**
@@ -341,15 +341,15 @@ public class Clinica {
         return this.moduloEgreso.ultimaFacturaAgregada();
     }
 
-    public HashMap<Paciente, HistoriaClinica> getHitoriasClinicas() {
-        return hitoriasClinicas;
-    }
-
-    public void setHitoriasClinicas(HashMap<Paciente, HistoriaClinica> hitoriasClinicas) {
-        this.hitoriasClinicas = hitoriasClinicas;
+    public void setHistoriasClinicas(HashMap<Paciente, HistoriaClinica> historiasClinicas) {
+        this.moduloAtencion.setHitoriasClinicas(historiasClinicas);
     }
 
     public Set<Map.Entry<Paciente, HistoriaClinica>> getHistoriasClinicasIterator() {
-        return this.hitoriasClinicas.entrySet();
+        return this.moduloAtencion.getHistoriasClinicasIterator();
+    }
+
+    public HashMap<Paciente, HistoriaClinica> getHitoriasClinicas() {
+        return this.moduloAtencion.getHitoriasClinicas();
     }
 }

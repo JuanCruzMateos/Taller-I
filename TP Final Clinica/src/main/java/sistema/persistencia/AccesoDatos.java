@@ -262,6 +262,10 @@ public class AccesoDatos {
 
             System.out.println(clinica.estadoDeLaClinica());
             clinica.ingresarPaciente(clinica.altaPaciente("Paola", "Argento", "Flores 1234", "Buenos Aires", 123654, 159327258, "Nino"));
+            clinica.atenderPaciente();
+            Paciente paciente9 = clinica.egresoPaciente(7);
+
+            clinica.agregarInternacionPaciente(paciente9, new Internacion(HabitacionPrivada.getInstance(), 15));
             System.out.println(clinica.estadoDeLaClinica());
             clinica.atenderPaciente();
             System.out.println(clinica.estadoDeLaClinica());

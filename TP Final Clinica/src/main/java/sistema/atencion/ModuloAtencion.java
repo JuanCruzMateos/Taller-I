@@ -1,14 +1,16 @@
 package sistema.atencion;
 
+import sistema.facturacion.ConsultaMedica;
+import sistema.facturacion.Internacion;
 import sistema.personas.pacientes.Paciente;
 
-import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.*;
 
 /**
  * Clase que modela el modulo de atencion de la clinica.<br>
  */
 public class ModuloAtencion {
+    private HashMap<Paciente, HistoriaClinica> hitoriasClinicas = new HashMap<>();
     private ArrayList<Paciente> pacientesEnAtencion = new ArrayList<>();
 
     /**
@@ -65,5 +67,50 @@ public class ModuloAtencion {
 
     public Iterator<Paciente> getPacientesEnAtencionIterator() {
         return this.pacientesEnAtencion.iterator();
+    }
+
+    public HashMap<Paciente, HistoriaClinica> getHitoriasClinicas() {
+        return hitoriasClinicas;
+    }
+
+    public void setHitoriasClinicas(HashMap<Paciente, HistoriaClinica> hitoriasClinicas) {
+        this.hitoriasClinicas = hitoriasClinicas;
+    }
+
+    public Set<Map.Entry<Paciente, HistoriaClinica>> getHistoriasClinicasIterator() {
+        return this.hitoriasClinicas.entrySet();
+    }
+
+    /**
+     * TODO
+     *
+     * @param paciente
+     * @param internacion
+     */
+    public void agregarInternacionPaciente(Paciente paciente, Internacion internacion) {
+        this.hitoriasClinicas.get(paciente).agregarInternacion(internacion);
+    }
+
+    /**
+     * TODO
+     *
+     * @param paciente
+     * @param consultaMedica
+     */
+    public void agregarConsultaMedicaPaciente(Paciente paciente, ConsultaMedica consultaMedica) {
+        this.hitoriasClinicas.get(paciente).agregarConsultaMedica(consultaMedica);
+    }
+
+    public boolean existeHistoriaClinicaDePaciente(Paciente paciente) {
+        return this.hitoriasClinicas.containsKey(paciente);
+    }
+
+    public void nuevaHistoriaClinica(Paciente paciente) {
+        this.hitoriasClinicas.put(paciente, new HistoriaClinica(paciente.getNroHistoriaClinica()));
+
+    }
+
+    public HistoriaClinica getHistoriaClinicaPaciente(Paciente paciente) {
+        return this.hitoriasClinicas.get(paciente);
     }
 }

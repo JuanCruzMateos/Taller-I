@@ -1,4 +1,4 @@
-package sistema.historiaclinica;
+package sistema.atencion;
 
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Internacion;
@@ -10,8 +10,17 @@ import java.util.Iterator;
  * TODO
  */
 public class HistoriaClinica {
+    private int numero;
     private ArrayList<Internacion> internacions = new ArrayList<>();
     private ArrayList<ConsultaMedica> consultaMedicas = new ArrayList<>();
+
+    public HistoriaClinica() {
+        
+    }
+
+    public HistoriaClinica(int numero) {
+        this.numero = numero;
+    }
 
     public void agregarInternacion(Internacion internacion) {
         this.internacions.add(internacion);
@@ -71,5 +80,13 @@ public class HistoriaClinica {
 
     public void setConsultaMedicas(ArrayList<ConsultaMedica> consultaMedicas) {
         this.consultaMedicas = consultaMedicas;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 }
