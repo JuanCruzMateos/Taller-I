@@ -3,8 +3,11 @@
 
 # Eclipse
 .settings/
-.project/
-.eclipse
+*.project
+.eclipse/
+*.classpath
+
+bin/
 
 # JDeveloper
 # ...
