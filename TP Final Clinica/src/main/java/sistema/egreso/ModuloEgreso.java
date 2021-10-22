@@ -29,6 +29,7 @@ public class ModuloEgreso implements Serializable {
      * @param fecha           fecha de la factura.<br>
      * @param consultaMedicas lista de consulatas medicas.<br>
      * @param internacions    lista de internaciones.<br>
+     * TODO eliminar
      */
     public void facturar(Paciente paciente, GregorianCalendar fecha, ArrayList<ConsultaMedica> consultaMedicas, ArrayList<Internacion> internacions) {
         Factura factura = new Factura(fecha, paciente, consultaMedicas, internacions);
@@ -41,10 +42,9 @@ public class ModuloEgreso implements Serializable {
      * @param paciente
      * @param fecha
      */
-    public void facturar(Paciente paciente, GregorianCalendar fecha) {
+    public void facturar(Paciente paciente, HistoriaClinica historiaClinica, GregorianCalendar fecha) {
         ArrayList<ConsultaMedica> consultaMedicas = new ArrayList<>();
         ArrayList<Internacion> internaciones = new ArrayList<>();
-        HistoriaClinica historiaClinica = Clinica.getInstance().getHistoriaClinicaPaciente(paciente);
 
         for (Internacion in : historiaClinica.getInternacions()) {
             if (!in.isFacturada()) {

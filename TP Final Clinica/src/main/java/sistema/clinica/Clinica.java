@@ -1,5 +1,6 @@
 package sistema.clinica;
 
+import sistema.atencion.HistoriaClinica;
 import sistema.atencion.ModuloAtencion;
 import sistema.egreso.ModuloEgreso;
 import sistema.excepciones.ContratacionNoValidaException;
@@ -8,7 +9,6 @@ import sistema.excepciones.InformacionPersonalNoValidaException;
 import sistema.excepciones.PosgradoNoValidoException;
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Internacion;
-import sistema.atencion.HistoriaClinica;
 import sistema.ingreso.ModuloIngreso;
 import sistema.personas.medicos.IMedico;
 import sistema.personas.medicos.factory.MedicoFactory;
@@ -29,16 +29,21 @@ public class Clinica {
     private String direccion;
     private String ciudad;
     private long telefono;
-
     private HashMap<Integer, IMedico> medicos = new HashMap<>();
     private ModuloIngreso moduloIngreso = new ModuloIngreso();
     private ModuloAtencion moduloAtencion = new ModuloAtencion();
     private ModuloEgreso moduloEgreso = new ModuloEgreso();
 
+    /**
+     * Patron singleton.<br>
+     */
     private Clinica() {
         // Constructor vacio
     }
 
+    /**
+     * Patron singleton.<br>
+     */
     public static Clinica getInstance() {
         if (Clinica.instance == null)
             Clinica.instance = new Clinica();
@@ -137,6 +142,8 @@ public class Clinica {
      *
      * @param dni DNI del paciente a buscar. Debe ser un entero positivo.<br>
      * @return Paciente cuyo dni es el pasado por parametro o null en caso de no encontrarse ningun paciente con ese dni.<br>
+     * <p>
+     * TODO PacienteInexistenteException
      */
     public Paciente egresoPaciente(int dni) {
         return this.moduloAtencion.egresoPaciente(dni);
@@ -181,6 +188,8 @@ public class Clinica {
      * @param fecha           Fecha de la factura.<br>
      * @param consultaMedicas Lista de consultas medicas.<br>
      * @param internacions    Lista de internaciones.<br>
+     *                        <p>
+     *                                               TODO borrar
      */
     public void facturar(Paciente paciente, GregorianCalendar fecha, ArrayList<ConsultaMedica> consultaMedicas, ArrayList<Internacion> internacions) {
         this.moduloEgreso.facturar(paciente, fecha, consultaMedicas, internacions);
@@ -191,7 +200,7 @@ public class Clinica {
      * @param fecha
      */
     public void facturar(Paciente paciente, GregorianCalendar fecha) {
-        this.moduloEgreso.facturar(paciente, fecha);
+        this.moduloEgreso.facturar(paciente, this.moduloAtencion.getHistoriaClinicaPaciente(paciente), fecha);
     }
 
     /**
@@ -352,4 +361,10 @@ public class Clinica {
     public HashMap<Paciente, HistoriaClinica> getHitoriasClinicas() {
         return this.moduloAtencion.getHitoriasClinicas();
     }
+
+    /**
+     * TODO:
+     *  1. agregar iterators a todo
+     *  2. validaciones en cadena de invocaciones
+     */
 }
