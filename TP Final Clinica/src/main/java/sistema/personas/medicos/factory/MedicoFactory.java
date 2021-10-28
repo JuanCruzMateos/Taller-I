@@ -22,15 +22,15 @@ import sistema.personas.medicos.especialidades.Pediatra;
  */
 public class MedicoFactory {
     public static IMedico getMedico(String especialidad, String posgrado, String contratacion, String nombre,
-                                    String apellido, String direccion, String ciudad, long telefono, int dni, int matricula)
+                                    String apellido, String direccion, String ciudad, String telefono, int dni, int matricula)
             throws InformacionPersonalNoValidaException, EspecialidadNoValidaException,
             PosgradoNoValidoException, ContratacionNoValidaException {
         IMedico medicoBasico = null;
         IMedico medicoConPosgrado = null;
         IMedico medicoConContratacion = null;
-        boolean infoPersonalValida = nombre != null && apellido != null && direccion != null && ciudad != null &&
+        boolean infoPersonalValida = nombre != null && apellido != null && direccion != null && ciudad != null && telefono != null &&
                 !nombre.equals("") && !apellido.equals("") && !direccion.equals("") && !ciudad.equals("") &&
-                telefono > 0 && dni > 0 && matricula > 0;
+                !telefono.equals("")  && dni > 0 && matricula > 0;
 
         if (!infoPersonalValida)
             throw new InformacionPersonalNoValidaException("Los campos con los datos personales no son correctos.");

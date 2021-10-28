@@ -10,7 +10,7 @@ public abstract class Persona {
     protected String apellido;
     protected String direccion;
     protected String ciudad;
-    protected long telefono;
+    protected String telefono;
     protected int dni;
 
     /**
@@ -31,7 +31,7 @@ public abstract class Persona {
      * @param telefono  Telefono de contacto de la persona. Numero entero positivo.<br>
      * @param dni       DNI de la persona. Numero entero positivo.<br>
      */
-    public Persona(String nombre, String apellido, String direccion, String ciudad, long telefono, int dni) {
+    public Persona(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
@@ -72,11 +72,11 @@ public abstract class Persona {
         this.ciudad = ciudad;
     }
 
-    public long getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(long telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
@@ -93,7 +93,7 @@ public abstract class Persona {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Persona persona = (Persona) o;
-        return telefono == persona.telefono && dni == persona.dni && Objects.equals(nombre, persona.nombre) && Objects.equals(apellido, persona.apellido) && Objects.equals(direccion, persona.direccion) && Objects.equals(ciudad, persona.ciudad);
+        return dni == persona.dni && Objects.equals(nombre, persona.nombre) && Objects.equals(apellido, persona.apellido) && Objects.equals(direccion, persona.direccion) && Objects.equals(ciudad, persona.ciudad) && Objects.equals(telefono, persona.telefono);
     }
 
     @Override

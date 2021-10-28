@@ -35,7 +35,7 @@ public class App {
 
         Clinica clinica = Clinica.getInstance();
 
-        Paciente paciente = clinica.altaPaciente("Juan Cruz", "Mateos", "Almafuerte 2356", "Mar del Plata", 101, 1, "joven");
+        Paciente paciente = clinica.altaPaciente("Juan Cruz", "Mateos", "Almafuerte 2356", "Mar del Plata", "101", 1, "joven");
         System.out.println(paciente);
         clinica.ingresarPaciente(paciente);
         clinica.atenderSiguentePaciente();
@@ -48,5 +48,7 @@ public class App {
         System.out.println(hc);
 
         System.out.println(paciente.equals(devueltor));
+
+        System.out.println(Integer.MAX_VALUE);
     }
 }

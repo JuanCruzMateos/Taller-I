@@ -28,7 +28,7 @@ public class Clinico extends Medico {
      * @param dni       DNI del medico. Numero entero positivo.<br>
      * @param matricula Numero de matricula del medico.<br>
      */
-    public Clinico(String nombre, String apellido, String direccion, String ciudad, Long telefono, int dni, int matricula) {
+    public Clinico(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, int matricula) {
         super(nombre, apellido, direccion, ciudad, telefono, dni, matricula);
     }
 

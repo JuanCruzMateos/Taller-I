@@ -9,7 +9,7 @@ package sistema.personas.pacientes;
 public class PacienteFactory {
     private static int nroHistoriaClinica = 0;
 
-    public static Paciente getPaciente(String nombre, String apellido, String direccion, String ciudad, long telefono, int dni, String rangoEtario) {
+    public static Paciente getPaciente(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, String rangoEtario) {
         Paciente respuesta = null;
         PacienteFactory.nroHistoriaClinica++;
 

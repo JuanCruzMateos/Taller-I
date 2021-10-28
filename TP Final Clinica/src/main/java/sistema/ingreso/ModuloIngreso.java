@@ -32,16 +32,16 @@ public class ModuloIngreso {
      * <b>Pre:</b> nombre, apellido, direccion, ciudad y rangoEtario diferentes de null;  dni y telefono enteros positivos.<br>
      * <b>Post:</b> Devuelve referencia a un paciente o null si rangoEtario no existe. <br>
      *
-     * @param nombre      Nombre del paciente. Debe ser distinto de null.<br>
-     * @param apellido    Apellido del paciente. Debe ser distinto de null.<br>
-     * @param direccion   Direccion del paciente. Debe ser distinto de null.<br>
-     * @param ciudad      Ciudad del paciente. Debe ser distinto de null.<br>
-     * @param telefono    Telefono del paciente. Debe ser un entero positivo.<br>
+     * @param nombre      Nombre del paciente. Debe ser distinto de null y no vacio.<br>
+     * @param apellido    Apellido del paciente. Debe ser distinto de null y no vacio<br>
+     * @param direccion   Direccion del paciente. Debe ser distinto de null y no vacio<br>
+     * @param ciudad      Ciudad del paciente. Debe ser distinto de null y no vacio<br>
+     * @param telefono    Telefono del paciente. Debe ser distinto de null y no vacio<br>
      * @param dni         DNI del paciente. Debe ser un entero positivo.<br>
-     * @param rangoEtario Rango etario de paciente. Debe ser distinto de null.<br>
+     * @param rangoEtario Rango etario de paciente. Debe ser distinto de null y no vacio<br>
      * @return referencia al paciente.
      */
-    public Paciente altaPaciente(String nombre, String apellido, String direccion, String ciudad, Long telefono, int dni, String rangoEtario) {
+    public Paciente altaPaciente(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, String rangoEtario) {
         Paciente paciente;
 
         if (this.registroDePacientes.containsKey(dni)) {

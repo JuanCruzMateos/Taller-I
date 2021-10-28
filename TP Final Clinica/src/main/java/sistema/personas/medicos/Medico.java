@@ -31,7 +31,7 @@ public abstract class Medico extends Persona implements IMedico {
      * @param dni       DNI del medico. Numero entero positivo.<br>
      * @param matricula Numero de matricula del medico.<br>
      */
-    public Medico(String nombre, String apellido, String direccion, String ciudad, long telefono, int dni, int matricula) {
+    public Medico(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, int matricula) {
         super(nombre, apellido, direccion, ciudad, telefono, dni);
         this.matricula = matricula;
     }

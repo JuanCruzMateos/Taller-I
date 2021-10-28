@@ -64,7 +64,7 @@ public class Clinica {
      * @return referencia al paciente.
      */
     public Paciente altaPaciente(String nombre, String apellido, String direccion,
-                                 String ciudad, long telefono, int dni, String rangoEtario) {
+                                 String ciudad, String telefono, int dni, String rangoEtario) {
         Paciente paciente = this.moduloIngreso.altaPaciente(nombre, apellido, direccion, ciudad, telefono, dni, rangoEtario);
 
         // TODO :: revisar -> si el paciente es nuevo genero una nueva historia clinica vacia
@@ -122,7 +122,7 @@ public class Clinica {
      * @throws ContratacionNoValidaException
      */
     public void agregarMedico(String especialidad, String posgrado, String contratacion, String nombre, String apellido,
-                              String direccion, String ciudad, long telefono, int dni, int matricula)
+                              String direccion, String ciudad, String telefono, int dni, int matricula)
             throws InformacionPersonalNoValidaException, EspecialidadNoValidaException,
             PosgradoNoValidoException, ContratacionNoValidaException {
 

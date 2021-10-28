@@ -24,7 +24,7 @@ public class PacienteMayor extends Paciente {
      * @param dni                DNI del paciente. Numero entero positivo.<br>
      * @param nroHistoriaClinica Numero de historia clinica del paciente.<br>
      */
-    public PacienteMayor(String nombre, String apellido, String direccion, String ciudad, long telefono, int dni, int nroHistoriaClinica) {
+    public PacienteMayor(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, int nroHistoriaClinica) {
         super(nombre, apellido, direccion, ciudad, telefono, dni, nroHistoriaClinica);
     }
 

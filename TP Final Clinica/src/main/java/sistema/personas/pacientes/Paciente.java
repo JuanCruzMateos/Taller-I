@@ -30,7 +30,7 @@ public abstract class Paciente extends Persona {
      * @param dni                DNI del paciente. Numero entero positivo.<br>
      * @param nroHistoriaClinica Numero de historia clinica del paciente.<br>
      */
-    public Paciente(String nombre, String apellido, String direccion, String ciudad, long telefono, int dni, int nroHistoriaClinica) {
+    public Paciente(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, int nroHistoriaClinica) {
         super(nombre, apellido, direccion, ciudad, telefono, dni);
         this.nroHistoriaClinica = nroHistoriaClinica;
     }
@@ -94,12 +94,12 @@ public abstract class Paciente extends Persona {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Paciente paciente = (Paciente) o;
-        return nroHistoriaClinica == paciente.nroHistoriaClinica && nroOrden == paciente.nroOrden;
+        return nroHistoriaClinica == paciente.nroHistoriaClinica;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), nroHistoriaClinica, nroOrden);
+        return Objects.hash(super.hashCode(), nroHistoriaClinica);
     }
 
     @Override
