@@ -8,12 +8,13 @@ import sistema.personas.medicos.IMedico;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Objects;
 
 public class ClinicaDTO implements Serializable {
     private String nombre;
     private String direccion;
     private String ciudad;
-    private Long telefono;
+    private long telefono;
     private HashMap<Integer, IMedico> medicos = new HashMap<>();
     private ModuloIngreso moduloIngreso = new ModuloIngreso();
     private ModuloAtencion moduloAtencion = new ModuloAtencion();
@@ -221,5 +222,18 @@ public class ClinicaDTO implements Serializable {
 
     public void setCostoHabTerapiaIntensiva(double costoHabTerapiaIntensiva) {
         this.costoHabTerapiaIntensiva = costoHabTerapiaIntensiva;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ClinicaDTO that = (ClinicaDTO) o;
+        return Double.compare(that.costoAsignacion, costoAsignacion) == 0 && Double.compare(that.sueldoBasico, sueldoBasico) == 0 && Double.compare(that.aumentoCirujano, aumentoCirujano) == 0 && Double.compare(that.aumentoClinico, aumentoClinico) == 0 && Double.compare(that.aumentoPediatra, aumentoPediatra) == 0 && nroHistoriaClinica == that.nroHistoriaClinica && Double.compare(that.aumentoDoctor, aumentoDoctor) == 0 && Double.compare(that.aumentoMagister, aumentoMagister) == 0 && Double.compare(that.aumentoPermanente, aumentoPermanente) == 0 && Double.compare(that.aumentoTemporario, aumentoTemporario) == 0 && nroOrden == that.nroOrden && sigNroFactura == that.sigNroFactura && Double.compare(that.costoHabCompartida, costoHabCompartida) == 0 && Double.compare(that.costoHabPrivada, costoHabPrivada) == 0 && Double.compare(that.costoHabTerapiaIntensiva, costoHabTerapiaIntensiva) == 0 && Objects.equals(nombre, that.nombre) && Objects.equals(direccion, that.direccion) && Objects.equals(ciudad, that.ciudad) && Objects.equals(telefono, that.telefono) && Objects.equals(medicos, that.medicos) && Objects.equals(moduloIngreso, that.moduloIngreso) && Objects.equals(moduloAtencion, that.moduloAtencion) && Objects.equals(moduloEgreso, that.moduloEgreso);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, direccion, ciudad, telefono, medicos, moduloIngreso, moduloAtencion, moduloEgreso, costoAsignacion, sueldoBasico, aumentoCirujano, aumentoClinico, aumentoPediatra, nroHistoriaClinica, aumentoDoctor, aumentoMagister, aumentoPermanente, aumentoTemporario, nroOrden, sigNroFactura, costoHabCompartida, costoHabPrivada, costoHabTerapiaIntensiva);
     }
 }

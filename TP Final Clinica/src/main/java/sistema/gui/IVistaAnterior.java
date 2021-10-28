@@ -1,15 +1,13 @@
 package sistema.gui;
 
+import sistema.habitaciones.Habitacion;
+import sistema.personas.medicos.IMedico;
+import sistema.personas.pacientes.Paciente;
+
+import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowListener;
 import java.util.Iterator;
-
-import javax.swing.JTextPane;
-
-import sistema.habitaciones.Habitacion;
-import sistema.personas.medicos.IMedico;
-import sistema.personas.pacientes.Asociado;
-import sistema.personas.pacientes.Paciente;
 
 public interface IVistaAnterior {
     //Facturacion
@@ -32,7 +30,7 @@ public interface IVistaAnterior {
     void MostrarFactura(String detalle);
 
     //ALTA/BAJA
-    void actualizarListaAsociados(Iterator<Asociado> iterator);
+//    void actualizarListaAsociados(Iterator<Asociado> iterator);
 
     String getNombreAsociado();
 
@@ -47,7 +45,7 @@ public interface IVistaAnterior {
     int getDNIAsociadoAEliminar();
 
     //SIMULACION
-    Asociado getAsociadoSimulacion();
+//    Asociado getAsociadoSimulacion();
 
     int getCantidadSolicitudesAsociado();
 

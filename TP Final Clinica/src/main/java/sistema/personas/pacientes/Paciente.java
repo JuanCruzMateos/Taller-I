@@ -2,6 +2,8 @@ package sistema.personas.pacientes;
 
 import sistema.personas.Persona;
 
+import java.util.Objects;
+
 /**
  * Clase que modela a un paciente de la clinica.<br>
  */
@@ -84,6 +86,20 @@ public abstract class Paciente extends Persona {
 
     public void setNroHistoriaClinica(int nroHistoriaClinica) {
         this.nroHistoriaClinica = nroHistoriaClinica;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        Paciente paciente = (Paciente) o;
+        return nroHistoriaClinica == paciente.nroHistoriaClinica && nroOrden == paciente.nroOrden;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(super.hashCode(), nroHistoriaClinica, nroOrden);
     }
 
     @Override

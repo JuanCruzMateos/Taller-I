@@ -1,10 +1,7 @@
 package sistema.gui;
 
-import sistema.ambulancia.Ambulancia;
+
 import sistema.clinica.Clinica;
-import sistema.excepciones.AsociadoExistenteException;
-import sistema.excepciones.AsociadoInexistenteException;
-import sistema.excepciones.SimulacionImposibleExeption;
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Internacion;
 import sistema.habitaciones.Habitacion;
@@ -12,16 +9,14 @@ import sistema.habitaciones.HabitacionCompartida;
 import sistema.habitaciones.HabitacionPrivada;
 import sistema.habitaciones.HabitacionTerapiaIntensiva;
 import sistema.persistencia.AccesoDatos;
-import sistema.personas.Operario;
-import sistema.simulacion.Simulacion;
-import sistema.temporizador.ObservadorAmbulanciaVentana;
-import sistema.temporizador.Temporizador;
+import sistema.persistencia.dto.DTOConverter;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
@@ -40,7 +35,7 @@ public class ControladorAnterior implements ActionListener, WindowListener {
     private IVistaAnterior ventana;
     //SIMULACION
     private int CantidadTotalSolicitudes;
-    private Simulacion simulacion;
+
 
     private ControladorAnterior() {
         // constructor vacio
@@ -75,7 +70,7 @@ public class ControladorAnterior implements ActionListener, WindowListener {
         //FACTURACION
         this.ventana.actualizarListaPacientesFacturacion(this.clinica.getPacientesEnAtencion().iterator());
         this.ventana.actualizarComboMedicosFacturacion(this.clinica.getListaMedicos().iterator());
-        this.ventana.actualizarListaAsociados(this.clinica.getListaAsociados().iterator());
+//        this.ventana.actualizarListaAsociados(this.clinica.getListaAsociados().iterator());
         ArrayList<Habitacion> Lista = new ArrayList<Habitacion>();
         Lista.add(HabitacionPrivada.getInstance());
         Lista.add(HabitacionCompartida.getInstance());
@@ -102,24 +97,24 @@ public class ControladorAnterior implements ActionListener, WindowListener {
                 FinalizarFactura();
                 break;
 
-            //ALTA/BAJA:
-            case "AgregarAsociado":
-                AgregarAsociado();
-                break;
-            case "EliminarAsociado":
-                EliminarAsociado();
-                break;
-
-            //SIMULACION:
-            case "AñadirSolicitud":
-                AñadirSolicitud();
-                break;
-            case "NuevaSimulacion":
-                NuevaSimulacion();
-                break;
-            case "ComenzarSimulacion":
-                ComenzarSimulacion();
-                break;
+//            //ALTA/BAJA:
+//            case "AgregarAsociado":
+//                AgregarAsociado();
+//                break;
+//            case "EliminarAsociado":
+//                EliminarAsociado();
+//                break;
+//
+//            //SIMULACION:
+//            case "AñadirSolicitud":
+//                AñadirSolicitud();
+//                break;
+//            case "NuevaSimulacion":
+//                NuevaSimulacion();
+//                break;
+//            case "ComenzarSimulacion":
+//                ComenzarSimulacion();
+//                break;
             default:
                 System.out.println("No se encontro action comand");
         }
@@ -153,55 +148,55 @@ public class ControladorAnterior implements ActionListener, WindowListener {
     }
 
     //ALTA/BAJA:
-    private void AgregarAsociado() {
-        //System.out.println("AgregarAsociado");
-        try {
-            this.clinica.AgregarAsociado(this.ventana.getNombreAsociado(), this.ventana.getApellidoAsociado(), this.ventana.getDireccionAsociado(), this.ventana.getTelefonoAsociado(), this.ventana.getDNIAsociado());
-        } catch (AsociadoExistenteException exception) {
-            JOptionPane.showMessageDialog(null, "Asociado ya existente");
-        }
-        this.ventana.actualizarListaAsociados(this.clinica.getListaAsociados().iterator());
-        AccesoDatos.persistirClinica();
-    }
-
-    private void EliminarAsociado() {
-        //System.out.println("Eliminar Asociado");
-//        Asociado AsociadoAElim = this.clinica.DevolverAsociado(this.ventana.getDNIAsociadoAEliminar());
-//        if (AsociadoAElim != null) {
-        try {
-            this.clinica.EliminarAsociado(this.ventana.getDNIAsociadoAEliminar());
-        } catch (AsociadoInexistenteException e) {
-            JOptionPane.showMessageDialog(null, "Asociado no existe");
-        }
+//    private void AgregarAsociado() {
+//        //System.out.println("AgregarAsociado");
+//        try {
+//            this.clinica.AgregarAsociado(this.ventana.getNombreAsociado(), this.ventana.getApellidoAsociado(), this.ventana.getDireccionAsociado(), this.ventana.getTelefonoAsociado(), this.ventana.getDNIAsociado());
+//        } catch (AsociadoExistenteException exception) {
+//            JOptionPane.showMessageDialog(null, "Asociado ya existente");
 //        }
-        this.ventana.actualizarListaAsociados(this.clinica.getListaAsociados().iterator());
-        AccesoDatos.persistirClinica();
-    }
+//        this.ventana.actualizarListaAsociados(this.clinica.getListaAsociados().iterator());
+//        AccesoDatos.persistirClinica();
+//    }
 
-    private void AñadirSolicitud() {
-        //System.out.println("AñadirSolicitud");
-        this.simulacion.agregarAsociado(this.ventana.getAsociadoSimulacion(), this.ventana.getCantidadSolicitudesAsociado());
-    }
+//    private void EliminarAsociado() {
+//        //System.out.println("Eliminar Asociado");
+////        Asociado AsociadoAElim = this.clinica.DevolverAsociado(this.ventana.getDNIAsociadoAEliminar());
+////        if (AsociadoAElim != null) {
+//        try {
+//            this.clinica.EliminarAsociado(this.ventana.getDNIAsociadoAEliminar());
+//        } catch (AsociadoInexistenteException e) {
+//            JOptionPane.showMessageDialog(null, "Asociado no existe");
+//        }
+////        }
+//        this.ventana.actualizarListaAsociados(this.clinica.getListaAsociados().iterator());
+//        AccesoDatos.persistirClinica();
+//    }
 
-    private void NuevaSimulacion() {
-        this.CantidadTotalSolicitudes = 0;
-        Operario operario = new Operario();
-        Temporizador temp = new Temporizador();
-        this.simulacion = new Simulacion(operario, temp);
-    }
+//    private void AñadirSolicitud() {
+//        //System.out.println("AñadirSolicitud");
+//        this.simulacion.agregarAsociado(this.ventana.getAsociadoSimulacion(), this.ventana.getCantidadSolicitudesAsociado());
+//    }
+//
+//    private void NuevaSimulacion() {
+//        this.CantidadTotalSolicitudes = 0;
+//        Operario operario = new Operario();
+//        Temporizador temp = new Temporizador();
+//        this.simulacion = new Simulacion(operario, temp);
+//    }
 
-    private void ComenzarSimulacion() {
-        //System.out.println("ComenzarSimulacion");
-        this.CantidadTotalSolicitudes += this.ventana.getCantidadSolicitudesOperario();
-        this.simulacion.cantidadDeConultasOperario(this.ventana.getCantidadSolicitudesOperario());
-        Ambulancia.getInstance().setCantidadTotalSolicitudes(CantidadTotalSolicitudes);
-        try {
-            this.simulacion.iniciarSimulacion(new ObservadorAmbulanciaVentana(Ambulancia.getInstance(), this.ventana.getTextPane()));
-        } catch (SimulacionImposibleExeption simulacionImposibleExeption) {
-            JOptionPane.showMessageDialog(null, "Debe agregar al menos un asociado a la simulacion");
-        }
-        /*this.simulacion.iniciarSimulacion(new ObservadorAmbulanciaConsola(Ambulancia.getInstance()));   */
-    }
+//    private void ComenzarSimulacion() {
+//        //System.out.println("ComenzarSimulacion");
+//        this.CantidadTotalSolicitudes += this.ventana.getCantidadSolicitudesOperario();
+//        this.simulacion.cantidadDeConultasOperario(this.ventana.getCantidadSolicitudesOperario());
+//        Ambulancia.getInstance().setCantidadTotalSolicitudes(CantidadTotalSolicitudes);
+//        try {
+//            this.simulacion.iniciarSimulacion(new ObservadorAmbulanciaVentana(Ambulancia.getInstance(), this.ventana.getTextPane()));
+//        } catch (SimulacionImposibleExeption simulacionImposibleExeption) {
+//            JOptionPane.showMessageDialog(null, "Debe agregar al menos un asociado a la simulacion");
+//        }
+//        /*this.simulacion.iniciarSimulacion(new ObservadorAmbulanciaConsola(Ambulancia.getInstance()));   */
+//    }
 
     @Override
     public void windowOpened(WindowEvent e) {
@@ -211,12 +206,20 @@ public class ControladorAnterior implements ActionListener, WindowListener {
 
     @Override
     public void windowClosing(WindowEvent e) {
-        AccesoDatos.persistirClinica();
+        try {
+            AccesoDatos.persistirClinica(DTOConverter.ClinicaDTOFromClinica());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-        AccesoDatos.persistirClinica();
+        try {
+            AccesoDatos.persistirClinica(DTOConverter.ClinicaDTOFromClinica());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override

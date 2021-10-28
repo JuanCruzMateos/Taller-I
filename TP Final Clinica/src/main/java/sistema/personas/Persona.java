@@ -1,5 +1,7 @@
 package sistema.personas;
 
+import java.util.Objects;
+
 /**
  * Clase que modela a una persona con su informacion de contacto basica.<br>
  */
@@ -84,6 +86,19 @@ public abstract class Persona {
 
     public void setDni(int dni) {
         this.dni = dni;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Persona persona = (Persona) o;
+        return telefono == persona.telefono && dni == persona.dni && Objects.equals(nombre, persona.nombre) && Objects.equals(apellido, persona.apellido) && Objects.equals(direccion, persona.direccion) && Objects.equals(ciudad, persona.ciudad);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nombre, apellido, direccion, ciudad, telefono, dni);
     }
 
     @Override

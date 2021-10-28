@@ -11,7 +11,7 @@ import javax.swing.event.ListSelectionListener;
 //import controlador.Controlador;
 import sistema.habitaciones.Habitacion;
 import sistema.personas.medicos.IMedico;
-import sistema.personas.pacientes.Asociado;
+//import sistema.personas.pacientes.Asociado;
 import sistema.personas.pacientes.Paciente;
 
 import javax.swing.JTabbedPane;
@@ -68,12 +68,12 @@ public class VentanaAnterior extends JFrame implements ListSelectionListener, IV
     private JTextField DomicilioAsociado;
     private JTextField TelefonoAsociado;
     private JTextField DNIAsociadoAEliminar;
-    private JList<Asociado> ListaAsociados;
-    private DefaultListModel<Asociado> ModeloListaAsociados;
+//    private JList<Asociado> ListaAsociados;
+//    private DefaultListModel<Asociado> ModeloListaAsociados;
 
 
     //Simulacion
-    private JList<Asociado> ListaAsociadosSimulacion;
+//    private JList<Asociado> ListaAsociadosSimulacion;
     private JTextField CantidadSolicitudesAsociado;
     private JTextField CantidadSolicitudesOperario;
     private JTextPane textPane;
@@ -340,11 +340,11 @@ public class VentanaAnterior extends JFrame implements ListSelectionListener, IV
         PanelListaAsociados.setLayout(new BorderLayout(0, 0));
 
         //LISTA ASOCIADOS
-        ListaAsociados = new JList<Asociado>();
-        ListaAsociados.setBorder(new TitledBorder(null, "Asociados", TitledBorder.LEADING, TitledBorder.TOP, null, null));
-        this.ModeloListaAsociados = new DefaultListModel<Asociado>();
-        this.ListaAsociados.setModel(ModeloListaAsociados);
-        PanelListaAsociados.add(ListaAsociados, BorderLayout.CENTER);
+//        ListaAsociados = new JList<Asociado>();
+//        ListaAsociados.setBorder(new TitledBorder(null, "Asociados", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+//        this.ModeloListaAsociados = new DefaultListModel<Asociado>();
+//        this.ListaAsociados.setModel(ModeloListaAsociados);
+//        PanelListaAsociados.add(ListaAsociados, BorderLayout.CENTER);
 
         JPanel PanelSimulacion = new JPanel();
         tabbedPane.addTab("Simulacion", null, PanelSimulacion, null);
@@ -354,10 +354,10 @@ public class VentanaAnterior extends JFrame implements ListSelectionListener, IV
         PanelSimulacion.add(PanelListaAsociadosSimulacion);
         PanelListaAsociadosSimulacion.setLayout(new BorderLayout(0, 0));
 
-        ListaAsociadosSimulacion = new JList<Asociado>();
-        ListaAsociadosSimulacion.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Asociados", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
-        this.ListaAsociadosSimulacion.setModel(ModeloListaAsociados);
-        PanelListaAsociadosSimulacion.add(ListaAsociadosSimulacion);
+//        ListaAsociadosSimulacion = new JList<Asociado>();
+//        ListaAsociadosSimulacion.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Asociados", TitledBorder.LEADING, TitledBorder.TOP, null, new Color(0, 0, 0)));
+//        this.ListaAsociadosSimulacion.setModel(ModeloListaAsociados);
+//        PanelListaAsociadosSimulacion.add(ListaAsociadosSimulacion);
 
         JPanel panel_4 = new JPanel();
         panel_4.setPreferredSize(new Dimension(10, 70));
@@ -525,14 +525,14 @@ public class VentanaAnterior extends JFrame implements ListSelectionListener, IV
         this.TextoFactura.setText(detalle);
     }
 
-    @Override
-    public void actualizarListaAsociados(Iterator<Asociado> iterator) {
-        this.ModeloListaAsociados.clear();
-        while (iterator.hasNext()) {
-            this.ModeloListaAsociados.addElement(iterator.next());
-        }
-        this.repaint();
-    }
+//    @Override
+//    public void actualizarListaAsociados(Iterator<Asociado> iterator) {
+//        this.ModeloListaAsociados.clear();
+//        while (iterator.hasNext()) {
+//            this.ModeloListaAsociados.addElement(iterator.next());
+//        }
+//        this.repaint();
+//    }
 
     @Override
     public String getNombreAsociado() {
@@ -600,10 +600,10 @@ public class VentanaAnterior extends JFrame implements ListSelectionListener, IV
         //return Integer.parseInt(this.DNIAsociadoAEliminar.getText());
     }
 
-    @Override
-    public Asociado getAsociadoSimulacion() {
-        return this.ListaAsociadosSimulacion.getSelectedValue();
-    }
+//    @Override
+//    public Asociado getAsociadoSimulacion() {
+//        return this.ListaAsociadosSimulacion.getSelectedValue();
+//    }
 
     @Override
     public int getCantidadSolicitudesAsociado() {

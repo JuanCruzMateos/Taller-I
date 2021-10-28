@@ -2,6 +2,8 @@ package sistema.facturacion;
 
 import sistema.personas.medicos.IMedico;
 
+import java.util.Objects;
+
 /**
  * Clase que modela una consulta medica.<br>
  * Tiene informacion del medico, la cantidad de consultas realizadas y el valor de la consulta.<br>
@@ -91,5 +93,18 @@ public class ConsultaMedica {
 
     public void setFacturada(boolean facturada) {
         this.facturada = facturada;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ConsultaMedica that = (ConsultaMedica) o;
+        return cantidadConsultas == that.cantidadConsultas && Double.compare(that.valorConsulta, valorConsulta) == 0 && facturada == that.facturada && Objects.equals(medico, that.medico);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(medico, cantidadConsultas, valorConsulta, facturada);
     }
 }

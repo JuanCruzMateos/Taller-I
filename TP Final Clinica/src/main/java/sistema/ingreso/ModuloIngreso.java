@@ -42,7 +42,7 @@ public class ModuloIngreso {
      * @return referencia al paciente.
      */
     public Paciente altaPaciente(String nombre, String apellido, String direccion, String ciudad, Long telefono, int dni, String rangoEtario) {
-        Paciente paciente = null;
+        Paciente paciente;
 
         if (this.registroDePacientes.containsKey(dni)) {
             return this.registroDePacientes.get(dni);
@@ -166,5 +166,18 @@ public class ModuloIngreso {
 
     public Iterator<Paciente> getPacientesEnPatioIterator() {
         return this.listaPacientesEnPatio.iterator();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ModuloIngreso that = (ModuloIngreso) o;
+        return Objects.equals(registroDePacientes, that.registroDePacientes) && Objects.equals(listaDeEspera, that.listaDeEspera) && Objects.equals(listaPacientesEnPatio, that.listaPacientesEnPatio) && Objects.equals(salaVip, that.salaVip);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(registroDePacientes, listaDeEspera, listaPacientesEnPatio, salaVip);
     }
 }

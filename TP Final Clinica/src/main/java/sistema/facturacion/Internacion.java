@@ -2,6 +2,8 @@ package sistema.facturacion;
 
 import sistema.habitaciones.Habitacion;
 
+import java.util.Objects;
+
 /**
  * Clase que modela una internacion.<br>
  * Contiene informacion sobre la habitacion, la cantidad de dias internado, el costo de la habitacion y el subtotal.<br>
@@ -106,5 +108,18 @@ public class Internacion {
 
     public void setFacturada(boolean facturada) {
         this.facturada = facturada;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Internacion that = (Internacion) o;
+        return diasInternado == that.diasInternado && Double.compare(that.costoHabitacion, costoHabitacion) == 0 && Double.compare(that.subtotal, subtotal) == 0 && facturada == that.facturada && Objects.equals(habitacion, that.habitacion);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(habitacion, diasInternado, costoHabitacion, subtotal, facturada);
     }
 }

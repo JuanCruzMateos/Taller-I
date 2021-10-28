@@ -5,17 +5,18 @@ import sistema.facturacion.Internacion;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Objects;
 
 /**
  * TODO
  */
 public class HistoriaClinica {
     private int numero;
-    private ArrayList<Internacion> internacions = new ArrayList<>();
+    private ArrayList<Internacion> internaciones = new ArrayList<>();
     private ArrayList<ConsultaMedica> consultaMedicas = new ArrayList<>();
 
     public HistoriaClinica() {
-        
+
     }
 
     public HistoriaClinica(int numero) {
@@ -23,7 +24,7 @@ public class HistoriaClinica {
     }
 
     public void agregarInternacion(Internacion internacion) {
-        this.internacions.add(internacion);
+        this.internaciones.add(internacion);
     }
 
     public void agregarConsultaMedica(ConsultaMedica consultaMedica) {
@@ -31,7 +32,7 @@ public class HistoriaClinica {
     }
 
     public int getCantidadDeInternaciones() {
-        return this.internacions.size();
+        return this.internaciones.size();
     }
 
     public int getCantidadDeConsultasMedicas() {
@@ -41,7 +42,7 @@ public class HistoriaClinica {
     public int getCantidadDeInternacionesSinFacturar() {
         int total = 0;
 
-        for (Internacion internacion : this.internacions) {
+        for (Internacion internacion : this.internaciones) {
             if (!internacion.isFacturada())
                 total += 1;
         }
@@ -59,19 +60,19 @@ public class HistoriaClinica {
     }
 
     public Iterator<Internacion> getInternacionesIterator() {
-        return this.internacions.iterator();
+        return this.internaciones.iterator();
     }
 
     public Iterator<ConsultaMedica> getConsultasMedicasIterator() {
         return this.consultaMedicas.iterator();
     }
 
-    public ArrayList<Internacion> getInternacions() {
-        return internacions;
+    public ArrayList<Internacion> getInternaciones() {
+        return internaciones;
     }
 
-    public void setInternacions(ArrayList<Internacion> internacions) {
-        this.internacions = internacions;
+    public void setInternaciones(ArrayList<Internacion> internaciones) {
+        this.internaciones = internaciones;
     }
 
     public ArrayList<ConsultaMedica> getConsultaMedicas() {
@@ -88,5 +89,27 @@ public class HistoriaClinica {
 
     public void setNumero(int numero) {
         this.numero = numero;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HistoriaClinica that = (HistoriaClinica) o;
+        return numero == that.numero;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numero);
+    }
+
+    @Override
+    public String toString() {
+        return "HistoriaClinica{" +
+                "numero=" + numero +
+                ", internacions=" + internaciones +
+                ", consultaMedicas=" + consultaMedicas +
+                '}';
     }
 }

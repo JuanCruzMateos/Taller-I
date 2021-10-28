@@ -63,12 +63,18 @@ public class Clinica {
      * @param rangoEtario Rango etario de paciente.
      * @return referencia al paciente.
      */
-    public Paciente altaPaciente(String nombre, String apellido, String direccion, String ciudad, long telefono, int dni, String rangoEtario) {
+    public Paciente altaPaciente(String nombre, String apellido, String direccion,
+                                 String ciudad, long telefono, int dni, String rangoEtario) {
         Paciente paciente = this.moduloIngreso.altaPaciente(nombre, apellido, direccion, ciudad, telefono, dni, rangoEtario);
 
         // TODO :: revisar -> si el paciente es nuevo genero una nueva historia clinica vacia
+        System.out.println("alta Paciente");
+        System.out.println(this.moduloAtencion.existeHistoriaClinicaDePaciente(paciente));
         if (!this.moduloAtencion.existeHistoriaClinicaDePaciente(paciente))
             this.moduloAtencion.nuevaHistoriaClinica(paciente);
+        System.out.println("se creo una nueva historia clinica");
+        System.out.println(this.moduloAtencion.existeHistoriaClinicaDePaciente(paciente));
+        System.out.println("fin alta paciente");
         return paciente;
     }
 
@@ -90,7 +96,7 @@ public class Clinica {
      * <b>Post: </b> Se retira el proximo paciente a ser atendido ingreandolo a la lista de pacientes en atencion.
      * Si no hay ningun paciente en espera, no tiene ningun efecto.<br>
      */
-    public void atenderPaciente() {
+    public void atenderSiguentePaciente() {
         Paciente paciente = this.moduloIngreso.getPacienteParaAtender();
         if (paciente != null)
             this.moduloAtencion.atenderPaciente(paciente);
@@ -189,7 +195,7 @@ public class Clinica {
      * @param consultaMedicas Lista de consultas medicas.<br>
      * @param internacions    Lista de internaciones.<br>
      *                        <p>
-     *                                               TODO borrar
+     *                                                                                                                                           TODO borrar
      */
     public void facturar(Paciente paciente, GregorianCalendar fecha, ArrayList<ConsultaMedica> consultaMedicas, ArrayList<Internacion> internacions) {
         this.moduloEgreso.facturar(paciente, fecha, consultaMedicas, internacions);
@@ -351,7 +357,7 @@ public class Clinica {
     }
 
     public void setHistoriasClinicas(HashMap<Paciente, HistoriaClinica> historiasClinicas) {
-        this.moduloAtencion.setHitoriasClinicas(historiasClinicas);
+        this.moduloAtencion.setHistoriasClinicas(historiasClinicas);
     }
 
     public Set<Map.Entry<Paciente, HistoriaClinica>> getHistoriasClinicasIterator() {
@@ -359,7 +365,7 @@ public class Clinica {
     }
 
     public HashMap<Paciente, HistoriaClinica> getHitoriasClinicas() {
-        return this.moduloAtencion.getHitoriasClinicas();
+        return this.moduloAtencion.getHistoriasClinicas();
     }
 
     /**

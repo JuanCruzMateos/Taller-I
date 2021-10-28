@@ -1,6 +1,5 @@
 package sistema.egreso;
 
-import sistema.clinica.Clinica;
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Factura;
 import sistema.facturacion.Internacion;
@@ -14,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
+import java.util.Objects;
 
 /**
  * Clase que modela el modulo de egreso de la clinica.<br>
@@ -46,7 +46,7 @@ public class ModuloEgreso implements Serializable {
         ArrayList<ConsultaMedica> consultaMedicas = new ArrayList<>();
         ArrayList<Internacion> internaciones = new ArrayList<>();
 
-        for (Internacion in : historiaClinica.getInternacions()) {
+        for (Internacion in : historiaClinica.getInternaciones()) {
             if (!in.isFacturada()) {
                 in.setFacturada(true);
                 internaciones.add(in);
@@ -141,5 +141,18 @@ public class ModuloEgreso implements Serializable {
 
     public Iterator<Factura> getFacturasIterator() {
         return this.facturas.iterator();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ModuloEgreso that = (ModuloEgreso) o;
+        return Objects.equals(facturas, that.facturas);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(facturas);
     }
 }

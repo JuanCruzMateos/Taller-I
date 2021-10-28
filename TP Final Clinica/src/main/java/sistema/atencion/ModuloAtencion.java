@@ -10,7 +10,7 @@ import java.util.*;
  * Clase que modela el modulo de atencion de la clinica.<br>
  */
 public class ModuloAtencion {
-    private HashMap<Paciente, HistoriaClinica> hitoriasClinicas = new HashMap<>();
+    private HashMap<Paciente, HistoriaClinica> historiasClinicas = new HashMap<>();
     private ArrayList<Paciente> pacientesEnAtencion = new ArrayList<>();
 
     /**
@@ -69,16 +69,24 @@ public class ModuloAtencion {
         return this.pacientesEnAtencion.iterator();
     }
 
-    public HashMap<Paciente, HistoriaClinica> getHitoriasClinicas() {
-        return hitoriasClinicas;
+    public HashMap<Paciente, HistoriaClinica> getHistoriasClinicas() {
+        return historiasClinicas;
     }
 
-    public void setHitoriasClinicas(HashMap<Paciente, HistoriaClinica> hitoriasClinicas) {
-        this.hitoriasClinicas = hitoriasClinicas;
+    public void setHistoriasClinicas(HashMap<Paciente, HistoriaClinica> historiasClinicas) {
+        this.historiasClinicas = historiasClinicas;
     }
 
     public Set<Map.Entry<Paciente, HistoriaClinica>> getHistoriasClinicasIterator() {
-        return this.hitoriasClinicas.entrySet();
+        return this.historiasClinicas.entrySet();
+    }
+
+    public boolean existeHistoriaClinicaDePaciente(Paciente paciente) {
+        return this.historiasClinicas.containsKey(paciente);
+    }
+
+    public void nuevaHistoriaClinica(Paciente paciente) {
+        this.historiasClinicas.put(paciente, new HistoriaClinica(paciente.getNroHistoriaClinica()));
     }
 
     /**
@@ -88,7 +96,8 @@ public class ModuloAtencion {
      * @param internacion
      */
     public void agregarInternacionPaciente(Paciente paciente, Internacion internacion) {
-        this.hitoriasClinicas.get(paciente).agregarInternacion(internacion);
+        HistoriaClinica historiaClinica = this.historiasClinicas.get(paciente);
+        historiaClinica.agregarInternacion(internacion);
     }
 
     /**
@@ -98,19 +107,24 @@ public class ModuloAtencion {
      * @param consultaMedica
      */
     public void agregarConsultaMedicaPaciente(Paciente paciente, ConsultaMedica consultaMedica) {
-        this.hitoriasClinicas.get(paciente).agregarConsultaMedica(consultaMedica);
-    }
-
-    public boolean existeHistoriaClinicaDePaciente(Paciente paciente) {
-        return this.hitoriasClinicas.containsKey(paciente);
-    }
-
-    public void nuevaHistoriaClinica(Paciente paciente) {
-        this.hitoriasClinicas.put(paciente, new HistoriaClinica(paciente.getNroHistoriaClinica()));
-
+        HistoriaClinica historiaClinia = this.historiasClinicas.get(paciente);
+        historiaClinia.agregarConsultaMedica(consultaMedica);
     }
 
     public HistoriaClinica getHistoriaClinicaPaciente(Paciente paciente) {
-        return this.hitoriasClinicas.get(paciente);
+        return this.historiasClinicas.get(paciente);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ModuloAtencion that = (ModuloAtencion) o;
+        return Objects.equals(historiasClinicas, that.historiasClinicas) && Objects.equals(pacientesEnAtencion, that.pacientesEnAtencion);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(historiasClinicas, pacientesEnAtencion);
     }
 }
