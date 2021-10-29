@@ -41,7 +41,22 @@ public class Controlador implements ActionListener, WindowListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
+    	if(e.getActionCommand().equals("ComenzarFactura")) {
+    		//TODO
+    		System.out.println("Comenzar Factura");
+    	}
+    	if(e.getActionCommand().equals("FinalizarFactura")) {
+    		//TODO
+    		System.out.println("Finalizar faactura");
+    	}
+    	if(e.getActionCommand().equals("AñadirConsulta")) {
+    		//TODO
+    		System.out.println("Añadir Consulta");
+    	}
+    	if(e.getActionCommand().equals("AñadirInternacion")) {
+    		//TODO
+    		System.out.println("Añadir Internacion");
+    	}
     }
 
     @Override
