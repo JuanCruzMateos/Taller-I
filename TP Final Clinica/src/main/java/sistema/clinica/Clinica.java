@@ -6,6 +6,10 @@ import sistema.egreso.ModuloEgreso;
 import sistema.excepciones.*;
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Internacion;
+import sistema.habitaciones.Habitacion;
+import sistema.habitaciones.HabitacionCompartida;
+import sistema.habitaciones.HabitacionPrivada;
+import sistema.habitaciones.HabitacionTerapiaIntensiva;
 import sistema.ingreso.ModuloIngreso;
 import sistema.personas.medicos.IMedico;
 import sistema.personas.medicos.factory.MedicoFactory;
@@ -305,6 +309,26 @@ public class Clinica {
      */
     public String getReporteMedico(IMedico medico, GregorianCalendar desde, GregorianCalendar hasta) {
         return this.moduloEgreso.reporteMedico(medico, desde, hasta);
+    }
+
+    public Iterator<Habitacion> getHabitacionesIterator() {
+        List<Habitacion> list = new ArrayList<>();
+        list.add(HabitacionPrivada.getInstance());
+        list.add(HabitacionCompartida.getInstance());
+        list.add(HabitacionTerapiaIntensiva.getInstance());
+        return list.iterator();
+    }
+
+    public Iterator<IMedico> getMedicosIterator() {
+        return this.medicos.values().iterator();
+    }
+
+    public Iterator<Paciente> getPacientesEnSalaEsperaIterator() {
+        return this.moduloIngreso.getPacientesEnListaDeEsperaIterator();
+    }
+
+    public Iterator<Paciente> getPacientesEnAtencionIterator() {
+        return this.moduloAtencion.getPacientesEnAtencionIterator();
     }
 
     /**
