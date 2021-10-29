@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <java version="16.0.2" class="java.beans.XMLDecoder">
  <object class="sistema.persistencia.dto.ClinicaDTO" id="ClinicaDTO0">
+  <void property="aumentoCirujano">
+   <double>0.1</double>
+  </void>
+  <void property="aumentoClinico">
+   <double>0.05</double>
+  </void>
+  <void property="aumentoDoctor">
+   <double>0.1</double>
+  </void>
+  <void property="aumentoMagister">
+   <double>0.05</double>
+  </void>
+  <void property="aumentoPediatra">
+   <double>0.07</double>
+  </void>
+  <void property="aumentoPermanente">
+   <double>0.1</double>
+  </void>
+  <void property="aumentoTemporario">
+   <double>0.05</double>
+  </void>
   <void property="ciudad">
    <string>Mar del Plata</string>
   </void>
@@ -22,7 +43,7 @@
   <void property="medicos">
    <void method="put">
     <int>1</int>
-    <object class="sistema.personas.medicos.decorators.DecoratorPermanente">
+    <object class="sistema.personas.medicos.decorators.DecoratorPermanente" id="DecoratorPermanente0">
      <void property="encapsulado">
       <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
        <void property="encapsulado">
@@ -56,7 +77,7 @@
    </void>
    <void method="put">
     <int>2</int>
-    <object class="sistema.personas.medicos.decorators.DecoratorPermanente" id="DecoratorPermanente0">
+    <object class="sistema.personas.medicos.decorators.DecoratorPermanente" id="DecoratorPermanente1">
      <void property="encapsulado">
       <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
        <void property="encapsulado">
@@ -192,7 +213,7 @@
    </void>
    <void method="put">
     <int>6</int>
-    <object class="sistema.personas.medicos.decorators.DecoratorPermanente" id="DecoratorPermanente1">
+    <object class="sistema.personas.medicos.decorators.DecoratorPermanente" id="DecoratorPermanente2">
      <void property="encapsulado">
       <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
        <void property="encapsulado">
@@ -298,7 +319,10 @@
           <boolean>true</boolean>
          </void>
          <void property="medico">
-          <object idref="DecoratorPermanente0"/>
+          <object idref="DecoratorPermanente1"/>
+         </void>
+         <void property="valorConsulta">
+          <double>155.36400000000003</double>
          </void>
         </object>
        </void>
@@ -311,7 +335,10 @@
           <boolean>true</boolean>
          </void>
          <void property="medico">
-          <object idref="DecoratorPermanente1"/>
+          <object idref="DecoratorPermanente2"/>
+         </void>
+         <void property="valorConsulta">
+          <double>155.36400000000003</double>
          </void>
         </object>
        </void>
@@ -380,7 +407,10 @@
           <boolean>true</boolean>
          </void>
          <void property="medico">
-          <object idref="DecoratorPermanente0"/>
+          <object idref="DecoratorPermanente1"/>
+         </void>
+         <void property="valorConsulta">
+          <double>155.36400000000003</double>
          </void>
         </object>
        </void>
@@ -393,7 +423,10 @@
           <boolean>true</boolean>
          </void>
          <void property="medico">
-          <object idref="DecoratorPermanente1"/>
+          <object idref="DecoratorPermanente2"/>
+         </void>
+         <void property="valorConsulta">
+          <double>155.36400000000003</double>
          </void>
         </object>
        </void>
@@ -464,6 +497,9 @@
          <void property="medico">
           <object idref="DecoratorTemporario2"/>
          </void>
+         <void property="valorConsulta">
+          <double>152.46000000000004</double>
+         </void>
         </object>
        </void>
        <void method="add">
@@ -476,6 +512,9 @@
          </void>
          <void property="medico">
           <object idref="DecoratorTemporario0"/>
+         </void>
+         <void property="valorConsulta">
+          <double>138.915</double>
          </void>
         </object>
        </void>
@@ -596,7 +635,10 @@
           <boolean>true</boolean>
          </void>
          <void property="medico">
-          <object idref="DecoratorPermanente0"/>
+          <object idref="DecoratorPermanente1"/>
+         </void>
+         <void property="valorConsulta">
+          <double>155.36400000000003</double>
          </void>
         </object>
        </void>
@@ -610,6 +652,9 @@
          </void>
          <void property="medico">
           <object idref="DecoratorTemporario1"/>
+         </void>
+         <void property="valorConsulta">
+          <double>145.53000000000003</double>
          </void>
         </object>
        </void>
@@ -738,6 +783,40 @@
       </void>
      </object>
      <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica5">
+      <void property="consultaMedicas">
+       <void method="add">
+        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica8">
+         <void property="cantidadConsultas">
+          <int>3</int>
+         </void>
+         <void property="facturada">
+          <boolean>true</boolean>
+         </void>
+         <void property="medico">
+          <object idref="DecoratorTemporario0"/>
+         </void>
+         <void property="valorConsulta">
+          <double>138.915</double>
+         </void>
+        </object>
+       </void>
+       <void method="add">
+        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica9">
+         <void property="cantidadConsultas">
+          <int>2</int>
+         </void>
+         <void property="facturada">
+          <boolean>true</boolean>
+         </void>
+         <void property="medico">
+          <object idref="DecoratorPermanente0"/>
+         </void>
+         <void property="valorConsulta">
+          <double>152.46000000000004</double>
+         </void>
+        </object>
+       </void>
+      </void>
       <void property="internaciones">
        <void method="add">
         <object class="sistema.facturacion.Internacion" id="Internacion6">
@@ -832,7 +911,7 @@
      <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica6">
       <void property="consultaMedicas">
        <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica8">
+        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica10">
          <void property="cantidadConsultas">
           <int>1</int>
          </void>
@@ -840,12 +919,15 @@
           <boolean>true</boolean>
          </void>
          <void property="medico">
-          <object idref="DecoratorPermanente0"/>
+          <object idref="DecoratorPermanente1"/>
+         </void>
+         <void property="valorConsulta">
+          <double>155.36400000000003</double>
          </void>
         </object>
        </void>
        <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica9">
+        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica11">
          <void property="cantidadConsultas">
           <int>4</int>
          </void>
@@ -853,7 +935,10 @@
           <boolean>true</boolean>
          </void>
          <void property="medico">
-          <object idref="DecoratorPermanente1"/>
+          <object idref="DecoratorPermanente2"/>
+         </void>
+         <void property="valorConsulta">
+          <double>155.36400000000003</double>
          </void>
         </object>
        </void>
@@ -899,7 +984,14 @@
     <void method="add">
      <object class="sistema.facturacion.Factura">
       <void property="consultasConMedicos">
-       <object class="java.util.ArrayList"/>
+       <object class="java.util.ArrayList">
+        <void method="add">
+         <object idref="ConsultaMedica8"/>
+        </void>
+        <void method="add">
+         <object idref="ConsultaMedica9"/>
+        </void>
+       </object>
       </void>
       <void property="fecha">
        <object class="java.util.GregorianCalendar">
@@ -1086,10 +1178,10 @@
       <void property="consultasConMedicos">
        <object class="java.util.ArrayList">
         <void method="add">
-         <object idref="ConsultaMedica8"/>
+         <object idref="ConsultaMedica10"/>
         </void>
         <void method="add">
-         <object idref="ConsultaMedica9"/>
+         <object idref="ConsultaMedica11"/>
         </void>
        </object>
       </void>
@@ -1170,6 +1262,9 @@
   </void>
   <void property="sigNroFactura">
    <int>6</int>
+  </void>
+  <void property="sueldoBasico">
+   <double>100.0</double>
   </void>
   <void property="telefono">
    <long>4827593</long>

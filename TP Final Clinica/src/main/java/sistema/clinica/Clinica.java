@@ -3,10 +3,7 @@ package sistema.clinica;
 import sistema.atencion.HistoriaClinica;
 import sistema.atencion.ModuloAtencion;
 import sistema.egreso.ModuloEgreso;
-import sistema.excepciones.ContratacionNoValidaException;
-import sistema.excepciones.EspecialidadNoValidaException;
-import sistema.excepciones.InformacionPersonalNoValidaException;
-import sistema.excepciones.PosgradoNoValidoException;
+import sistema.excepciones.*;
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Internacion;
 import sistema.ingreso.ModuloIngreso;
@@ -50,9 +47,41 @@ public class Clinica {
         return Clinica.instance;
     }
 
+    private static boolean validarDatosPersona(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni) {
+        boolean sonValidos = true;
+
+        sonValidos &= nombre != null && !nombre.equals("");
+        sonValidos &= apellido != null && !apellido.equals("");
+        sonValidos &= direccion != null && !direccion.equals("");
+        sonValidos &= ciudad != null && !ciudad.equals("");
+        sonValidos &= telefono != null && !telefono.equals("");
+        sonValidos &= dni > 0;
+        return sonValidos;
+    }
+
+    private static boolean validarDatosPaciente(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, String rangoEtario) {
+        boolean sonValidos = Clinica.validarDatosPersona(nombre, apellido, direccion, ciudad, telefono, dni);
+
+        sonValidos &= rangoEtario != null && !rangoEtario.equals("") &&
+                (rangoEtario.equalsIgnoreCase("joven") ||
+                        rangoEtario.equalsIgnoreCase("nino") ||
+                        rangoEtario.equalsIgnoreCase("mayor"));
+        return sonValidos;
+    }
+
+    private static boolean validarDatosMedico(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, int matricula) {
+        boolean sonValidos = Clinica.validarDatosPersona(nombre, apellido, direccion, ciudad, telefono, dni);
+
+        sonValidos &= matricula > 0;
+        return sonValidos;
+    }
+
+
     /**
-     * Da de alta a un paciente. Si el paciente ha sido atendido previamente en la clinica, se lo busca y retorna su referencia.<br>
-     * Si se trata de un paciente nuevo, lo crea, se guarda en el registro historico y se devuelve su referencia.<br>
+     * Da de alta a un paciente.<br>
+     * Si el paciente ha sido atendido previamente en la clinica, se lo busca y retorna su referencia.<br>
+     * Si se trata de un paciente nuevo, lo crea, se guarda en el registro historico, crea una nueva historia clinica
+     * y se devuelve su referencia.<br>
      *
      * @param nombre      Nombre del paciente.
      * @param apellido    Apellido del paciente.
@@ -62,44 +91,68 @@ public class Clinica {
      * @param dni         DNI del paciente.
      * @param rangoEtario Rango etario de paciente.
      * @return referencia al paciente.
+     * @throws InformacionPersonalNoValidaException si alguno de los parametros String es null o vacio, si dni no es un etero positivo o si
+     *                                              rangoEtario no se corresponde con "joven", "mayor", o "nino"
      */
     public Paciente altaPaciente(String nombre, String apellido, String direccion,
-                                 String ciudad, String telefono, int dni, String rangoEtario) {
-        Paciente paciente = this.moduloIngreso.altaPaciente(nombre, apellido, direccion, ciudad, telefono, dni, rangoEtario);
+                                 String ciudad, String telefono, int dni, String rangoEtario)
+            throws InformacionPersonalNoValidaException {
 
-        // TODO :: revisar -> si el paciente es nuevo genero una nueva historia clinica vacia
-        System.out.println("alta Paciente");
-        System.out.println(this.moduloAtencion.existeHistoriaClinicaDePaciente(paciente));
+        if (!Clinica.validarDatosPaciente(nombre, apellido, direccion, ciudad, telefono, dni, rangoEtario))
+            throw new InformacionPersonalNoValidaException("Informacion personal no valida.");
+        Paciente paciente = this.moduloIngreso.altaPaciente(nombre, apellido, direccion, ciudad, telefono, dni, rangoEtario);
         if (!this.moduloAtencion.existeHistoriaClinicaDePaciente(paciente))
             this.moduloAtencion.nuevaHistoriaClinica(paciente);
-        System.out.println("se creo una nueva historia clinica");
-        System.out.println(this.moduloAtencion.existeHistoriaClinicaDePaciente(paciente));
-        System.out.println("fin alta paciente");
         return paciente;
     }
 
     /**
-     * Ingresa al paciente a la lista de espera, asignadole un numero de orden y ubicandolo en la sala vip o en el patio
-     * segun corresponda.<br>
-     * Si el paciente ya esta presente el metodo no tiene efecto.<br>
-     * <b>Pre: </b> paciente != null.<br>
-     * <b>Post: </b> Se otorga un numero de orden al paciente, se lo ubica en la lista de espera, y en la sala vip o en el pactio segun corresponda.<br>
+     * Ingresa paciente para atencion, si no se encuentra presente en la lista, otorgadole un numero de orden y
+     * ubicandolo en sala vip o patio segun corresponda.<br>
+     * <p>
+     * Si el paciente ya esta presente en la lista de espera el metodo no tiene efecto.<br>
+     *
+     * <b>Pre: </b> paciente distinto de null.<br>
+     * <b>Post: </b> se asigna al paciente un numero de orden y se lo ubica en la sala de espera o en el patio.<br>
      *
      * @param paciente Paciente a ingresar a sala de espera.<br>
+     * @throws IllegalArgumentException si paciente es igual a null.<br>
      */
-    public void ingresarPaciente(Paciente paciente) {
+    public void ingresarPaciente(Paciente paciente) throws IllegalArgumentException {
+        if (paciente == null)
+            throw new IllegalArgumentException("No se puede ingresar un paciente nulo");
         this.moduloIngreso.ingresoPaciente(paciente);
     }
 
     /**
-     * Retira al primer paciente de la lista de espera para ser atendido, ingresandolo en la lista de atencion.<br>
-     * <b>Post: </b> Se retira el proximo paciente a ser atendido ingreandolo a la lista de pacientes en atencion.
-     * Si no hay ningun paciente en espera, no tiene ningun efecto.<br>
+     * Devuelve la cantidad total de personas en sala de espera (patio + vip).<br>
+     *
+     * @return cantidad de personas en espera de ser atendidas.<br>
      */
-    public void atenderSiguentePaciente() {
-        Paciente paciente = this.moduloIngreso.getPacienteParaAtender();
-        if (paciente != null)
-            this.moduloAtencion.atenderPaciente(paciente);
+    public int cantidadDePacientesEnSalaEspera() {
+        return this.moduloIngreso.cantidadDePacientesEnEspera();
+    }
+
+    /**
+     * Retira al primer paciente de la lista de espera del el modulo de ingreso para ser atendido,
+     * ingresandolo en la lista de atencion en el modulo de atencion.<br>
+     *
+     * <b>Post: </b> Se retira el proximo paciente a ser atendido ingreandolo a la lista de pacientes en atencion.<br>
+     *
+     * @throws SalaDeEsperaVaciaException si no hay pacientes esperando ser atendidos.<br>
+     */
+    public void atenderSiguentePaciente() throws SalaDeEsperaVaciaException {
+        Paciente pacienteParaAtender = this.moduloIngreso.getPacienteParaAtender();
+        this.moduloAtencion.atenderPaciente(pacienteParaAtender);
+    }
+
+    /**
+     * Devuelve la cantidad total de personas en atencion.<br>
+     *
+     * @return cantidad de personas en atencion.<br>
+     */
+    public int cantidadDePacientesEnAtencion() {
+        return this.moduloAtencion.cantidadDePacientesEnAtencion();
     }
 
     /**
@@ -116,96 +169,117 @@ public class Clinica {
      * @param telefono     Telefono de contacto del medico.<br>
      * @param dni          Dni del medico.<br>
      * @param matricula    Matricula del medico.<br>
-     * @throws InformacionPersonalNoValidaException
-     * @throws EspecialidadNoValidaException
-     * @throws PosgradoNoValidoException
-     * @throws ContratacionNoValidaException
+     * @throws InformacionPersonalNoValidaException si alguno de los parametros String es null o vacio, o si dni o matricula no son enteros positivos.<br>
+     * @throws EspecialidadNoValidaException        si la especialidad es distinta de Clinica, Cirugia o Pediatria.
+     * @throws PosgradoNoValidoException            si el posgrado es distinto de Doctor, Magister.
+     * @throws ContratacionNoValidaException        si la contratacion es distinta de Permanente, Temporario
      */
     public void agregarMedico(String especialidad, String posgrado, String contratacion, String nombre, String apellido,
                               String direccion, String ciudad, String telefono, int dni, int matricula)
             throws InformacionPersonalNoValidaException, EspecialidadNoValidaException,
             PosgradoNoValidoException, ContratacionNoValidaException {
 
+        if (!Clinica.validarDatosMedico(nombre, apellido, direccion, ciudad, telefono, dni, matricula))
+            throw new InformacionPersonalNoValidaException("Informacion personal no valida.");
         IMedico medico = MedicoFactory.getMedico(especialidad, posgrado, contratacion, nombre, apellido, direccion, ciudad, telefono, dni, matricula);
         this.medicos.put(matricula, medico);
     }
 
     /**
-     * Devuelve el medico cuya matricula es la solicitada o null si no existe un medico asociado a esa matricula.<br>
+     * Devuelve el medico cuya matricula es la solicitada.<br>
      * <b>Pre: </b> matricula debe ser un entero positivo.<br>
      *
      * @param matricula Matricula del medico a buscar.<br>
-     * @return Medico cuya matricula se pasa por parametro o null si no existe el medico.<br>
+     * @return Medico cuya matricula se pasa por parametro.<br>
+     * @throws MatriculaIncorrectaException si no existe medico asociado a esa matricula.<br>
      */
-    public IMedico getMedico(int matricula) {
-        return this.medicos.getOrDefault(matricula, null);
+    public IMedico getMedico(int matricula) throws MatriculaIncorrectaException {
+
+        IMedico medico = this.medicos.getOrDefault(matricula, null);
+        if (medico == null)
+            throw new MatriculaIncorrectaException("No existe medico asociado a esa matricula");
+        else
+            return medico;
     }
 
     /**
      * Selecciona un paciente dado su dni de aquellos en atencion.<br>
      * <b>Pre: </b> El dni debe ser mayor a cero.<br>
-     * <b>Post: </b> Se devuelve el paciente cuyo documento es dni o null en caso de no encontrarse un paciente con ese dni.<br>
+     * <b>Post: </b> Se devuelve el paciente cuyo documento es dni.<br>
      *
      * @param dni DNI del paciente a buscar. Debe ser un entero positivo.<br>
-     * @return Paciente cuyo dni es el pasado por parametro o null en caso de no encontrarse ningun paciente con ese dni.<br>
-     * <p>
-     * TODO PacienteInexistenteException
+     * @return Paciente cuyo dni es el pasado por parametro.<br>
+     * @throws PacienteInexistenteException en caso de no encontrarse un paciente con ese dni en atencion.<br>
      */
-    public Paciente egresoPaciente(int dni) {
-        return this.moduloAtencion.egresoPaciente(dni);
+    public Paciente egresoPaciente(int dni) throws PacienteInexistenteException {
+        Paciente paciente = this.moduloAtencion.egresoPaciente(dni);
+        if (paciente == null)
+            throw new PacienteInexistenteException("No existe paciente en atencion con el dni indicado");
+        else
+            return paciente;
     }
 
     /**
-     * TODO
+     * Agregar Internacion a historia clinica de paciente.<br>
+     * <b>post: la historia clinica del paciente tiene una nueva internacion.</b>
      *
-     * @param paciente
-     * @param internacion
+     * @param paciente    paciente a agregar internacion<br>
+     * @param internacion internacion.<br>
+     * @throws IllegalArgumentException     si paciente o intercacion son null.<br>
+     * @throws PacienteInexistenteException si el paciente no esta registrado en la clinica.<br>
      */
-    public void agregarInternacionPaciente(Paciente paciente, Internacion internacion) {
+    public void agregarInternacionPaciente(Paciente paciente, Internacion internacion) throws IllegalArgumentException, PacienteInexistenteException {
+        if (paciente == null || internacion == null)
+            throw new IllegalArgumentException("No se puede registrar parametros nulos");
+        if (!this.moduloIngreso.pacienteRegistrado(paciente))
+            throw new PacienteInexistenteException("El paciente no esta registrado en la clinica");
         this.moduloAtencion.agregarInternacionPaciente(paciente, internacion);
     }
 
     /**
-     * TODO
+     * Agregar consulta medica a historia clinica de paciente.<br>
+     * <b>post: la historia clinica del paciente tiene una nueva consulta medica.</b>
      *
-     * @param paciente
-     * @param consultaMedica
+     * @param paciente       paciente a agregar consulta medica.<br>
+     * @param consultaMedica consultaMedica.<br>
+     * @throws IllegalArgumentException     si paciente o consultaMedica son null.<br>
+     * @throws PacienteInexistenteException si el paciente no esta registrado en la clinica.<br>
      */
-    public void agregarConsultaMedicaPaciente(Paciente paciente, ConsultaMedica consultaMedica) {
+    public void agregarConsultaMedicaPaciente(Paciente paciente, ConsultaMedica consultaMedica) throws IllegalArgumentException, PacienteInexistenteException {
+        if (paciente == null || consultaMedica == null)
+            throw new IllegalArgumentException("No se puede registrar parametros nulos");
+        if (!this.moduloIngreso.pacienteRegistrado(paciente))
+            throw new PacienteInexistenteException("El paciente no esta registrado en la clinica");
         this.moduloAtencion.agregarConsultaMedicaPaciente(paciente, consultaMedica);
     }
 
     /**
-     * TODO
+     * <b>pre: </b> paciente distinto de null.<br>
      *
-     * @param paciente
-     * @return
+     * @param paciente distinto de null.<br>
+     * @return historia clinica del paciente o null en caso de no encontrarse.<br>
+     * @throws PacienteInexistenteException si el paciente no esta ingresado a la clinica.<br>
      */
-    public HistoriaClinica getHistoriaClinicaPaciente(Paciente paciente) {
+    public HistoriaClinica getHistoriaClinicaPaciente(Paciente paciente) throws PacienteInexistenteException {
+        if (this.moduloIngreso.pacienteRegistrado(paciente))
+            throw new PacienteInexistenteException("El paciente no pertenece a la clinica");
         return this.moduloAtencion.getHistoriaClinicaPaciente(paciente);
     }
 
     /**
-     * Genera la factura dado un paciente, las listas de internaciones y consultas realizadas y la fecha de facturacion.<br>
-     * <b>Pre: </b> paciente != null, fecha != null, consultaMedicas != null, internaciones != null.<br>
-     * <b>Post: </b> Se genera la factura y se guarda en el registro de facturas.<br>
+     * Genera una factura con todas las intervenciones no facturadas de la historia clinica del paciente.<br>
+     * <b>post: </b> se genera una nueva factura.<br>
      *
-     * @param paciente        Paciente a confeccionar la factura.<br>
-     * @param fecha           Fecha de la factura.<br>
-     * @param consultaMedicas Lista de consultas medicas.<br>
-     * @param internacions    Lista de internaciones.<br>
-     *                        <p>
-     *                                                                                                                                           TODO borrar
+     * @param paciente paciente a facturar
+     * @param fecha    fecha de la factura
+     * @throws IllegalArgumentException     si paciente o fecha son null.<br>
+     * @throws PacienteInexistenteException si el paciente no esta registrado en la clinica.<br>
      */
-    public void facturar(Paciente paciente, GregorianCalendar fecha, ArrayList<ConsultaMedica> consultaMedicas, ArrayList<Internacion> internacions) {
-        this.moduloEgreso.facturar(paciente, fecha, consultaMedicas, internacions);
-    }
-
-    /**
-     * @param paciente
-     * @param fecha
-     */
-    public void facturar(Paciente paciente, GregorianCalendar fecha) {
+    public void facturar(Paciente paciente, GregorianCalendar fecha) throws IllegalArgumentException, PacienteInexistenteException {
+        if (paciente == null || fecha == null)
+            throw new IllegalArgumentException("Se nececitan parametros no nulos para facturar");
+        if (!this.moduloIngreso.pacienteRegistrado(paciente))
+            throw new PacienteInexistenteException("El paciente no pertenece a la clinica");
         this.moduloEgreso.facturar(paciente, this.moduloAtencion.getHistoriaClinicaPaciente(paciente), fecha);
     }
 
@@ -221,12 +295,12 @@ public class Clinica {
 
     /**
      * Genera reporte medico para un medico determinado, entre dos fechas estipuladas.<br>
+     * <b>Pre:</b> medico distinto de null, desde menor o igual a hasta.<br>
+     * <b>Post:</b> se genera el reporte medico.<br>
      *
      * @param medico Medico al cual se le hace el reporte.<br>
      * @param desde  Fecha Inicial.<br>
      * @param hasta  Fecha Final.<br>
-     *               <b>Pre:</b> medico distinto de null, desde menor o igual a hasta.<br>
-     *               <b>Post:</b>  	Se genera el reporte medico.<br>
      * @return reporte del medico.<br>
      */
     public String getReporteMedico(IMedico medico, GregorianCalendar desde, GregorianCalendar hasta) {

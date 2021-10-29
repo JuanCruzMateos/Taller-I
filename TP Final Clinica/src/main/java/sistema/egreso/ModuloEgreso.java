@@ -1,9 +1,9 @@
 package sistema.egreso;
 
+import sistema.atencion.HistoriaClinica;
 import sistema.facturacion.ConsultaMedica;
 import sistema.facturacion.Factura;
 import sistema.facturacion.Internacion;
-import sistema.atencion.HistoriaClinica;
 import sistema.personas.medicos.IMedico;
 import sistema.personas.pacientes.Paciente;
 
@@ -22,25 +22,13 @@ public class ModuloEgreso implements Serializable {
     private ArrayList<Factura> facturas = new ArrayList<>();
 
     /**
-     * Genera una factura para un paciente determinado y la almacena en un registro de facturas.<br>
-     * <b>Pre:</b> fecha distina de null.<br>
+     * Genera una facutura con los items de la historia clinica aun no facturados.<br>
+     * <b>pre: </b> paciente, historia Clinica y fecha distintos de null.<br>
+     * <b>post: </b> se genera una nueva factura.<br>
      *
-     * @param paciente        paciente a facturar.<br>
-     * @param fecha           fecha de la factura.<br>
-     * @param consultaMedicas lista de consulatas medicas.<br>
-     * @param internacions    lista de internaciones.<br>
-     * TODO eliminar
-     */
-    public void facturar(Paciente paciente, GregorianCalendar fecha, ArrayList<ConsultaMedica> consultaMedicas, ArrayList<Internacion> internacions) {
-        Factura factura = new Factura(fecha, paciente, consultaMedicas, internacions);
-        this.facturas.add(factura);
-    }
-
-    /**
-     * TODO
-     *
-     * @param paciente
-     * @param fecha
+     * @param paciente        paciente a facturar
+     * @param historiaClinica hisotoria clinica del paciente
+     * @param fecha           fecha de la factura
      */
     public void facturar(Paciente paciente, HistoriaClinica historiaClinica, GregorianCalendar fecha) {
         ArrayList<ConsultaMedica> consultaMedicas = new ArrayList<>();

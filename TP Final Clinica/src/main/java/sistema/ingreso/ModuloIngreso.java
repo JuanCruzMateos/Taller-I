@@ -1,5 +1,6 @@
 package sistema.ingreso;
 
+import sistema.excepciones.SalaDeEsperaVaciaException;
 import sistema.personas.pacientes.Paciente;
 import sistema.personas.pacientes.PacienteFactory;
 
@@ -17,6 +18,10 @@ public class ModuloIngreso {
     private ArrayList<Paciente> listaPacientesEnPatio = new ArrayList<>();
     private Paciente salaVip;
 
+    public ModuloIngreso() {
+
+    }
+
     public static int getNroOrden() {
         return nroOrden;
     }
@@ -29,21 +34,23 @@ public class ModuloIngreso {
      * Busca al paciente en el registro historico.<br>
      * Si lo encuentra devuelve su referencia.<br>
      * Si no, lo crea, lo agrega al registro historico y devuelve su referencia.<br>
-     * <b>Pre:</b> nombre, apellido, direccion, ciudad y rangoEtario diferentes de null;  dni y telefono enteros positivos.<br>
-     * <b>Post:</b> Devuelve referencia a un paciente o null si rangoEtario no existe. <br>
      *
-     * @param nombre      Nombre del paciente. Debe ser distinto de null y no vacio.<br>
-     * @param apellido    Apellido del paciente. Debe ser distinto de null y no vacio<br>
-     * @param direccion   Direccion del paciente. Debe ser distinto de null y no vacio<br>
-     * @param ciudad      Ciudad del paciente. Debe ser distinto de null y no vacio<br>
-     * @param telefono    Telefono del paciente. Debe ser distinto de null y no vacio<br>
-     * @param dni         DNI del paciente. Debe ser un entero positivo.<br>
-     * @param rangoEtario Rango etario de paciente. Debe ser distinto de null y no vacio<br>
-     * @return referencia al paciente.
+     * <b>Pre: </b> nombre, apellido, direccion, ciudad, teñetono, rangoEtario distinto de null y no vacio; dni entero positivo.<br>
+     * <b>Post:</b> Devuelve referencia a un paciente o null si el paciente no se encuentra registrado y el rango
+     * etario es distinto de "joven", "nino" o "mayor". <br>
+     *
+     * @param nombre      distinto de null y no vacio
+     * @param apellido    distinto de null y no vacio
+     * @param direccion   distinto de null y no vacio
+     * @param ciudad      distinto de null y no vacio
+     * @param telefono    distinto de null y no vacio
+     * @param dni         entero positivo
+     * @param rangoEtario distinto de null y no vacio
+     * @return referencia al paciente o null si el paciente no se encuentra registrado y el rango
+     * etario es distinto de "joven", "nino" o "mayor". <br>
      */
     public Paciente altaPaciente(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, String rangoEtario) {
         Paciente paciente;
-
         if (this.registroDePacientes.containsKey(dni)) {
             return this.registroDePacientes.get(dni);
         } else {
@@ -54,8 +61,11 @@ public class ModuloIngreso {
     }
 
     /**
-     * Ingresa paciente para atencion, si ya no se encuentra presente en la lista, otorgadole un numero de orden y ubicandolo en sala vip o patio segun corresponda.<br>
-     * Si el paciente ya esta presente el metodo no tiene efecto.<br>
+     * Ingresa paciente para atencion, si no se encuentra presente en la lista, otorgadole un numero de orden y
+     * ubicandolo en sala vip o patio segun corresponda.<br>
+     * <p>
+     * Si el paciente ya esta presente en la lista de espera el metodo no tiene efecto.<br>
+     *
      * <b>Pre: </b> paciente distinto de null.<br>
      * <b>Post: </b> se asigna al paciente un numero de orden y se lo ubica en la sala de espera o en el patio.<br>
      *
@@ -80,15 +90,15 @@ public class ModuloIngreso {
     }
 
     /**
-     * Devuelve el proximo paciente de la cola para atender.<br>
+     * Devuelve el proximo paciente en espera de la cola para atender.<br>
      *
-     * @return null, si no hay pacientes en sala de espera, o proximo paciente a atender en el orden que le corresponde.<br>
+     * @return proximo paciente a atender en el orden que le corresponde.<br>
+     * @throws SalaDeEsperaVaciaException si no hay pacientes en sala de espera.<br>
      */
-    public Paciente getPacienteParaAtender() {
+    public Paciente getPacienteParaAtender() throws SalaDeEsperaVaciaException {
 
         if (this.listaDeEspera.isEmpty())
-            // podria ir una excepcion -> SalaDeEsperaVaciaException
-            return null;
+            throw new SalaDeEsperaVaciaException("Sala de espera vacia");
         else {
             Paciente paciente = this.listaDeEspera.remove();
             if (paciente == this.salaVip)
@@ -122,6 +132,10 @@ public class ModuloIngreso {
      */
     public boolean salaVipOcupada() {
         return this.salaVip != null;
+    }
+
+    public boolean pacienteRegistrado(Paciente paciente) {
+        return this.registroDePacientes.containsKey(paciente.getDni());
     }
 
     public HashMap<Integer, Paciente> getRegistroDePacientes() {

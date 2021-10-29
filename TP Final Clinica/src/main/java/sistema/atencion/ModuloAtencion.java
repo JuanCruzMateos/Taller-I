@@ -15,8 +15,9 @@ public class ModuloAtencion {
 
     /**
      * Agrega al paciente a la lista de pacientes en atencion.<br>
-     * <b>Pre: </b> paciente distinto de  null.<br>
-     * <b>Post: </b> Si el paciente no se encontraba previamente en la lista de atencion se lo agrega, sino no tiene efecto.<br>
+     * <b>Pre: </b> paciente distinto de null.<br>
+     * <b>Post: </b> Si el paciente no se encontraba previamente en la lista de atencion se lo agrega,
+     * sino no tiene efecto.<br>
      *
      * @param paciente Paciente a agregar a la lista de atencion.<br>
      */
@@ -81,19 +82,34 @@ public class ModuloAtencion {
         return this.historiasClinicas.entrySet();
     }
 
+    /**
+     * Comprueba si el paciente tiene asociada una hisotia clinica<br>
+     * <b>pre: </b> paciente distinto de null.<br>
+     *
+     * @return true si el paciente posee una historia clinica, false de lo contrario.<br>
+     */
     public boolean existeHistoriaClinicaDePaciente(Paciente paciente) {
         return this.historiasClinicas.containsKey(paciente);
     }
 
+    /**
+     * Genera una nueva historia clinica para el paciente.<br>
+     * <b>pre: </b> paciente distinto de null.<br>
+     * <b>post: </b> se genera una nueva historia clinica vacia para el paciente.<br>
+     *
+     * @param paciente paciente a generar nueva historia clinica; distinto de null.<br>
+     */
     public void nuevaHistoriaClinica(Paciente paciente) {
         this.historiasClinicas.put(paciente, new HistoriaClinica(paciente.getNroHistoriaClinica()));
     }
 
     /**
-     * TODO
+     * Agregar Internacion a historia clinica de paciente.<br>
+     * <b>pre: </b> paciente e internacion distintos de null.<br>
+     * <b>post: la historia clinica del paciente tiene una nueva internacion.</b>
      *
-     * @param paciente
-     * @param internacion
+     * @param paciente    paciente a agregar internacion; distinto de null.<br>
+     * @param internacion internacion; distinto de null.<br>
      */
     public void agregarInternacionPaciente(Paciente paciente, Internacion internacion) {
         HistoriaClinica historiaClinica = this.historiasClinicas.get(paciente);
@@ -101,18 +117,26 @@ public class ModuloAtencion {
     }
 
     /**
-     * TODO
+     * Agregar consulta medica a historia clinica de paciente.<br>
+     * <b>pre: </b> paciente y consultaMedica distintos de null.<br>
+     * <b>post: la historia clinica del paciente tiene una nueva consulta medica.</b>
      *
-     * @param paciente
-     * @param consultaMedica
+     * @param paciente       paciente a agregar consulta medica; distinto de null.<br>
+     * @param consultaMedica consultaMedica; distinto de null.<br>
      */
     public void agregarConsultaMedicaPaciente(Paciente paciente, ConsultaMedica consultaMedica) {
         HistoriaClinica historiaClinia = this.historiasClinicas.get(paciente);
         historiaClinia.agregarConsultaMedica(consultaMedica);
     }
 
+    /**
+     * <b>pre: </b> paciente distinto de null.<br>
+     *
+     * @param paciente distinto de null.<br>
+     * @return historia clinica del paciente o null en caso de no encontrarse.<br>
+     */
     public HistoriaClinica getHistoriaClinicaPaciente(Paciente paciente) {
-        return this.historiasClinicas.get(paciente);
+        return this.historiasClinicas.getOrDefault(paciente, null);
     }
 
     @Override
