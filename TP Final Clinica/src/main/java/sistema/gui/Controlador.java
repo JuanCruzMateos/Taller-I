@@ -1,6 +1,7 @@
 package sistema.gui;
 
 import sistema.clinica.Clinica;
+import sistema.persistencia.AccesoDatos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,7 +14,7 @@ public class Controlador implements ActionListener, WindowListener {
     private Clinica clinica;
 
     private Controlador() {
-
+    	
     }
 
     public static Controlador getInstance() {
@@ -45,7 +46,6 @@ public class Controlador implements ActionListener, WindowListener {
 
     @Override
     public void windowOpened(WindowEvent e) {
-
     }
 
     @Override

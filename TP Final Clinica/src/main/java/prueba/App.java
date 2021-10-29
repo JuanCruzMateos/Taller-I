@@ -20,6 +20,7 @@ public class App {
         Controlador controlador = Controlador.getInstance();
         controlador.setVentana(new Ventana());
         controlador.setClinica(Clinica.getInstance());
+        controlador.init();
 
     }
 }
