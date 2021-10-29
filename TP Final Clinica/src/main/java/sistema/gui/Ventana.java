@@ -1,22 +1,35 @@
 package sistema.gui;
 
-import sistema.habitaciones.Habitacion;
-import sistema.personas.medicos.IMedico;
-import sistema.personas.pacientes.Paciente;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.util.Iterator;
 
-import javax.swing.*;
+import javax.swing.DefaultListModel;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.util.Iterator;
 
+import sistema.Util.Mensaje;
+import sistema.habitaciones.Habitacion;
+import sistema.personas.medicos.IMedico;
+import sistema.personas.pacientes.Paciente;
 /**
  * Ventana del modelo MVC.<br>
  */
-public class Ventana extends JFrame implements ListSelectionListener, IVista {
+public class Ventana extends JFrame implements ListSelectionListener, IVista{
     private JPanel contentPane;
     private JPanel panelLista;
     private JPanel panelMuestra;
@@ -62,7 +75,7 @@ public class Ventana extends JFrame implements ListSelectionListener, IVista {
         PanelListaPacientes.add(PanelBotonInicioFactura, BorderLayout.SOUTH);
         PanelBotonInicioFactura.setLayout(null);
 
-        JButton BotonComenzarFactura = new JButton("Comenzar Factura");
+        JButton BotonComenzarFactura = new JButton(Mensaje.COMENZARFACTURA.getValor());
         BotonComenzarFactura.setActionCommand("ComenzarFactura");            //cambiar action command  desde avan
         BotonComenzarFactura.setFont(new Font("Tahoma", Font.PLAIN, 12));
         BotonComenzarFactura.setBounds(160, 10, 137, 40);
@@ -75,7 +88,7 @@ public class Ventana extends JFrame implements ListSelectionListener, IVista {
 
         //LISTA PACIENTES FACTURACION
         this.listaPacientesFacturacion = new JList<>();
-        listaPacientesFacturacion.setBorder(new TitledBorder(null, "Pacientes en Atencion", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+        listaPacientesFacturacion.setBorder(new TitledBorder(null, Mensaje.PACIENTESATENCION.getValor(), TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panelLista.add(listaPacientesFacturacion);
         listaPacientesFacturacion.addListSelectionListener(this);
         this.modeloListaPacientesFacturacion = new DefaultListModel<>();   //agrego el modelo
@@ -90,7 +103,7 @@ public class Ventana extends JFrame implements ListSelectionListener, IVista {
         PanelIngreso.add(PanelBotonFinFactura, BorderLayout.SOUTH);
         PanelBotonFinFactura.setLayout(null);
 
-        botonFinalizarFactura = new JButton("Finalizar Factura");
+        botonFinalizarFactura = new JButton(Mensaje.FINALIZARFACTURA.getValor());
         botonFinalizarFactura.setActionCommand("FinalizarFactura");           //cambiar action command desde avan
         botonFinalizarFactura.setFont(new Font("Tahoma", Font.PLAIN, 12));
         botonFinalizarFactura.setBounds(167, 10, 137, 40);
@@ -112,7 +125,7 @@ public class Ventana extends JFrame implements ListSelectionListener, IVista {
         PanelConsultas.add(numeroConsultas);
         numeroConsultas.setColumns(10);
 
-        JLabel LabelMedico = new JLabel("Medico");
+        JLabel LabelMedico = new JLabel(Mensaje.MEDICO.getValor());
         LabelMedico.setFont(new Font("Tahoma", Font.PLAIN, 14));
         LabelMedico.setBounds(28, 46, 69, 28);
         PanelConsultas.add(LabelMedico);
@@ -122,12 +135,12 @@ public class Ventana extends JFrame implements ListSelectionListener, IVista {
         medico.setBounds(93, 49, 217, 23);
         PanelConsultas.add(medico);
 
-        JLabel LabelNumeroConsultas = new JLabel("Numero Consultas");
+        JLabel LabelNumeroConsultas = new JLabel(Mensaje.NUMEROCONSULTAS.getValor());
         LabelNumeroConsultas.setFont(new Font("Tahoma", Font.PLAIN, 14));
         LabelNumeroConsultas.setBounds(28, 96, 122, 28);
         PanelConsultas.add(LabelNumeroConsultas);
 
-        botonAñadirConsulta = new JButton("Añadir Consulta");
+        botonAñadirConsulta = new JButton(Mensaje.ACEPTARCONSULTA.getValor());
         botonAñadirConsulta.setActionCommand("AñadirConsulta");           //cambiar action command desde avan
         botonAñadirConsulta.setFont(new Font("Tahoma", Font.PLAIN, 12));
         botonAñadirConsulta.setBounds(174, 163, 130, 33);
@@ -145,7 +158,7 @@ public class Ventana extends JFrame implements ListSelectionListener, IVista {
         diasInternacion.setBounds(155, 101, 135, 23);
         PanelInternaciones.add(diasInternacion);
 
-        JLabel LabelHabitacion = new JLabel("Habitacion");
+        JLabel LabelHabitacion = new JLabel(Mensaje.HABITACION.getValor());
         LabelHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
         LabelHabitacion.setBounds(28, 46, 69, 28);
         PanelInternaciones.add(LabelHabitacion);
@@ -155,12 +168,12 @@ public class Ventana extends JFrame implements ListSelectionListener, IVista {
         tipoHabitacion.setBounds(155, 49, 135, 23);
         PanelInternaciones.add(tipoHabitacion);
 
-        JLabel LabelDiasInternacion = new JLabel("Dias Internacion");
+        JLabel LabelDiasInternacion = new JLabel(Mensaje.DIASINTERNACION.getValor());
         LabelDiasInternacion.setFont(new Font("Tahoma", Font.PLAIN, 14));
         LabelDiasInternacion.setBounds(28, 96, 122, 28);
         PanelInternaciones.add(LabelDiasInternacion);
 
-        botonAñadirInternacion = new JButton("Añadir Internacion");
+        botonAñadirInternacion = new JButton(Mensaje.ACEPTARINTERNACION.getValor());
         botonAñadirInternacion.setActionCommand("AñadirInternacion");             //cambiar action command  desde avan
         botonAñadirInternacion.setFont(new Font("Tahoma", Font.PLAIN, 12));
         botonAñadirInternacion.setBounds(174, 163, 130, 33);
@@ -174,6 +187,18 @@ public class Ventana extends JFrame implements ListSelectionListener, IVista {
 
         textoFactura = new JTextPane();
         panelMuestra.add(textoFactura, BorderLayout.CENTER);
+        
+        
+        /*private JTextField diasInternacion;
+        numeroConsultas.setN;
+        private JTextPane textoFactura;
+        private JComboBox<IMedico> medico;
+        private JComboBox<Habitacion> tipoHabitacion;
+        private JList<Paciente> listaPacientesFacturacion;
+        private DefaultListModel<Paciente> modeloListaPacientesFacturacion;
+        private JButton botonAñadirConsulta;
+        private JButton botonAñadirInternacion;
+        private JButton botonFinalizarFactura;*/
 
         this.setMinimumSize(new Dimension(900, 600));
         this.setVisible(true);
