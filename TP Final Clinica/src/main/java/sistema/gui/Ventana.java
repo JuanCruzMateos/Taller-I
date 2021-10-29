@@ -213,7 +213,8 @@ public class Ventana extends JFrame implements ListSelectionListener, IVista, Ke
 	public Paciente getPacienteFacturacion() {
 		return this.listaPacientesFacturacion.getSelectedValue();
 	}
-
+	
+	 
 	@Override
 	public IMedico getMedicoFacturacion() {
 		return (IMedico) this.medico.getSelectedItem();
