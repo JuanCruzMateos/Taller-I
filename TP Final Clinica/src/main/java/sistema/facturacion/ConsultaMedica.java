@@ -8,7 +8,7 @@ import java.util.Objects;
  * Clase que modela una consulta medica.<br>
  * Tiene informacion del medico, la cantidad de consultas realizadas y el valor de la consulta.<br>
  */
-public class ConsultaMedica {
+public class ConsultaMedica implements Facturable {
     private static double incremento = 0.2;
     private IMedico medico;
     private int cantidadConsultas;
@@ -87,10 +87,12 @@ public class ConsultaMedica {
         this.valorConsulta = valorConsulta;
     }
 
+    @Override
     public boolean isFacturada() {
         return facturada;
     }
 
+    @Override
     public void setFacturada(boolean facturada) {
         this.facturada = facturada;
     }

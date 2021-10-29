@@ -8,7 +8,7 @@ import java.util.Objects;
  * Clase que modela una internacion.<br>
  * Contiene informacion sobre la habitacion, la cantidad de dias internado, el costo de la habitacion y el subtotal.<br>
  */
-public class Internacion {
+public class Internacion implements Facturable {
     private String habitacion;
     private int diasInternado;
     private double costoHabitacion;
@@ -102,10 +102,12 @@ public class Internacion {
         this.diasInternado = diasInternado;
     }
 
+    @Override
     public boolean isFacturada() {
         return facturada;
     }
 
+    @Override
     public void setFacturada(boolean facturada) {
         this.facturada = facturada;
     }

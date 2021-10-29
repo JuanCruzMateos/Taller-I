@@ -8,10 +8,18 @@ import java.util.*;
 
 /**
  * Clase que modela el modulo de atencion de la clinica.<br>
+ * <b>Invariante: </b> historiasClinicas y pacientesEnAtencion distintos de null.<br>
  */
 public class ModuloAtencion {
     private HashMap<Paciente, HistoriaClinica> historiasClinicas = new HashMap<>();
     private ArrayList<Paciente> pacientesEnAtencion = new ArrayList<>();
+
+    /**
+     * Costructor vacio.<br>
+     */
+    public ModuloAtencion() {
+
+    }
 
     /**
      * Agrega al paciente a la lista de pacientes en atencion.<br>
