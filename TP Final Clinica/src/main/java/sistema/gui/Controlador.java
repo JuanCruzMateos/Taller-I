@@ -1,20 +1,31 @@
 package sistema.gui;
 
 import sistema.clinica.Clinica;
+import sistema.excepciones.PacienteInexistenteException;
+import sistema.facturacion.ConsultaMedica;
+import sistema.facturacion.Internacion;
+import sistema.habitaciones.Habitacion;
 import sistema.persistencia.AccesoDatos;
+import sistema.persistencia.dto.ClinicaDTO;
+import sistema.persistencia.dto.DTOConverter;
+import sistema.personas.medicos.IMedico;
+import sistema.personas.pacientes.Paciente;
+import sistema.util.Mensaje;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.IOException;
 
 public class Controlador implements ActionListener, WindowListener {
     private static Controlador instance = null;
+    private InterfazOptionPane optionPane = new PopUp();
     private IVista ventana;
     private Clinica clinica;
 
     private Controlador() {
-    	
+
     }
 
     public static Controlador getInstance() {
@@ -25,62 +36,112 @@ public class Controlador implements ActionListener, WindowListener {
 
     public void setVentana(IVista ventana) {
         this.ventana = ventana;
-        this.ventana.addActionListener(this);
-        this.ventana.addWindowListener(this);
     }
 
     public void setClinica(Clinica clinica) {
         this.clinica = clinica;
     }
 
+    public InterfazOptionPane getOptionPane() {
+        return optionPane;
+    }
+
+    public void setOptionPane(InterfazOptionPane optionPane) {
+        this.optionPane = optionPane;
+    }
+
     public void init() {
-        this.ventana.actualizarComboHabitacionesFacturacion(this.clinica.getHabitacionesIterator());
-        this.ventana.actualizarComboMedicosFacturacion(this.clinica.getMedicosIterator());
+        this.ventana.actualizarComboHabitaciones(this.clinica.getHabitacionesIterator());
+        this.ventana.actualizarComboMedicos(this.clinica.getMedicosIterator());
         this.ventana.actualizarListaPacientesAtencion(this.clinica.getPacientesEnAtencionIterator());
+        this.ventana.resetFileds();
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    	if(e.getActionCommand().equals("ComenzarFactura")) {
-    		//TODO
-    		System.out.println("Comenzar Factura");
-    	}
-    	if(e.getActionCommand().equals("FinalizarFactura")) {
-    		//TODO
-    		System.out.println("Finalizar faactura");
-    	}
-    	if(e.getActionCommand().equals("AñadirConsulta")) {
-    		//TODO
-    		System.out.println("Añadir Consulta");
-    	}
-    	if(e.getActionCommand().equals("AñadirInternacion")) {
-    		//TODO
-    		System.out.println("Añadir Internacion");
-    	}
+        String actionCommand = e.getActionCommand();
+        switch (actionCommand) {
+            case "anadirInternacion" -> this.anadirInternacion(this.ventana.getPaciente(), this.ventana.getHabitacion(), this.ventana.getCantidadDiasInternacion());
+            case "anadirConsulta" -> this.anadirConsultaMedica(this.ventana.getPaciente(), this.ventana.getMedico(), this.ventana.getCantidadConsultas());
+        }
+    }
+
+    private void anadirInternacion(Paciente paciente, Habitacion habitacion, int dias) {
+        if (paciente == null)
+            this.optionPane.showMessageDialog(null, Mensaje.ERROR_PACIENTE_NO_SELECCIONADO.getValor());
+        else if (habitacion == null)
+            this.optionPane.showMessageDialog(null, Mensaje.ERROR_HABITACION_NO_SELECCIONADO.getValor());
+        else {
+            try {
+                this.clinica.agregarInternacionPaciente(paciente, new Internacion(habitacion, dias));
+                this.ventana.resetFileds();
+                this.ventana.disableButtons();
+            } catch (PacienteInexistenteException e) {
+                e.printStackTrace();
+            }
+            this.optionPane.showMessageDialog(null, Mensaje.ANADIRINTERNACION_OK.getValor());
+        }
+    }
+
+    private void anadirConsultaMedica(Paciente paciente, IMedico medico, int cantidad) {
+        if (paciente == null)
+            this.optionPane.showMessageDialog(null, Mensaje.ERROR_PACIENTE_NO_SELECCIONADO.getValor());
+        else if (medico == null)
+            this.optionPane.showMessageDialog(null, Mensaje.ERROR_MEDICO_NO_SELECCIONADO.getValor());
+        else {
+            try {
+                this.clinica.agregarConsultaMedicaPaciente(paciente, new ConsultaMedica(medico, cantidad));
+                this.ventana.resetFileds();
+                this.ventana.disableButtons();
+            } catch (PacienteInexistenteException e) {
+                e.printStackTrace();
+            }
+            this.optionPane.showMessageDialog(null, Mensaje.ANADIRCONSULTA_OK.getValor());
+        }
     }
 
     @Override
     public void windowOpened(WindowEvent e) {
+        try {
+            ClinicaDTO dto = AccesoDatos.despersistirClinica();
+            DTOConverter.ClinicaFromClinicaDTO(dto);
+        } catch (IOException ex) {
+            AccesoDatos.initClinica();
+        }
+        this.ventana.actualizarComboHabitaciones(this.clinica.getHabitacionesIterator());
+        this.ventana.actualizarComboMedicos(this.clinica.getMedicosIterator());
+        this.ventana.actualizarListaPacientesAtencion(this.clinica.getPacientesEnAtencionIterator());
+        this.ventana.resetFileds();
     }
 
     @Override
     public void windowClosing(WindowEvent e) {
-
+        ClinicaDTO dto = DTOConverter.ClinicaDTOFromClinica();
+        try {
+            AccesoDatos.persistirClinica(dto);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
     public void windowClosed(WindowEvent e) {
-
+        ClinicaDTO dto = DTOConverter.ClinicaDTOFromClinica();
+        try {
+            AccesoDatos.persistirClinica(dto);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
     public void windowIconified(WindowEvent e) {
-
+        // empty
     }
 
     @Override
     public void windowDeiconified(WindowEvent e) {
-
+        // empty
     }
 
     @Override

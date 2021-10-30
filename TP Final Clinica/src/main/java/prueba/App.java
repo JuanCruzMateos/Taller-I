@@ -3,8 +3,6 @@ package prueba;
 import sistema.clinica.Clinica;
 import sistema.gui.Controlador;
 import sistema.gui.Ventana;
-import sistema.persistencia.AccesoDatos;
-import sistema.persistencia.dto.DTOConverter;
 
 import java.io.IOException;
 
@@ -14,13 +12,10 @@ import java.io.IOException;
  */
 public class App {
     public static void main(String[] args) throws IOException {
-        AccesoDatos.initClinica();
-        AccesoDatos.persistirClinica(DTOConverter.ClinicaDTOFromClinica());
 
         Controlador controlador = Controlador.getInstance();
         controlador.setVentana(new Ventana());
         controlador.setClinica(Clinica.getInstance());
         controlador.init();
-
     }
 }

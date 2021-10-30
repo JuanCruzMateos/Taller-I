@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="15.0.2" class="java.beans.XMLDecoder">
+<java version="16.0.2" class="java.beans.XMLDecoder">
  <object class="sistema.persistencia.dto.ClinicaDTO" id="ClinicaDTO0">
+  <void property="aumentoCirujano">
+   <double>0.1</double>
+  </void>
+  <void property="aumentoClinico">
+   <double>0.05</double>
+  </void>
+  <void property="aumentoDoctor">
+   <double>0.1</double>
+  </void>
+  <void property="aumentoMagister">
+   <double>0.05</double>
+  </void>
+  <void property="aumentoPediatra">
+   <double>0.07</double>
+  </void>
+  <void property="aumentoPermanente">
+   <double>0.1</double>
+  </void>
+  <void property="aumentoTemporario">
+   <double>0.05</double>
+  </void>
   <void property="ciudad">
    <string>Mar del Plata</string>
   </void>
@@ -22,7 +43,7 @@
   <void property="medicos">
    <void method="put">
     <int>1</int>
-    <object class="sistema.personas.medicos.decorators.DecoratorPermanente" id="DecoratorPermanente0">
+    <object class="sistema.personas.medicos.decorators.DecoratorPermanente">
      <void property="encapsulado">
       <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
        <void property="encapsulado">
@@ -56,7 +77,7 @@
    </void>
    <void method="put">
     <int>2</int>
-    <object class="sistema.personas.medicos.decorators.DecoratorPermanente" id="DecoratorPermanente1">
+    <object class="sistema.personas.medicos.decorators.DecoratorPermanente">
      <void property="encapsulado">
       <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
        <void property="encapsulado">
@@ -90,7 +111,7 @@
    </void>
    <void method="put">
     <int>3</int>
-    <object class="sistema.personas.medicos.decorators.DecoratorTemporario" id="DecoratorTemporario0">
+    <object class="sistema.personas.medicos.decorators.DecoratorTemporario">
      <void property="encapsulado">
       <object class="sistema.personas.medicos.decorators.DecoratorMagister">
        <void property="encapsulado">
@@ -124,7 +145,7 @@
    </void>
    <void method="put">
     <int>4</int>
-    <object class="sistema.personas.medicos.decorators.DecoratorTemporario" id="DecoratorTemporario1">
+    <object class="sistema.personas.medicos.decorators.DecoratorTemporario">
      <void property="encapsulado">
       <object class="sistema.personas.medicos.decorators.DecoratorMagister">
        <void property="encapsulado">
@@ -158,7 +179,7 @@
    </void>
    <void method="put">
     <int>5</int>
-    <object class="sistema.personas.medicos.decorators.DecoratorTemporario" id="DecoratorTemporario2">
+    <object class="sistema.personas.medicos.decorators.DecoratorTemporario">
      <void property="encapsulado">
       <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
        <void property="encapsulado">
@@ -192,7 +213,7 @@
    </void>
    <void method="put">
     <int>6</int>
-    <object class="sistema.personas.medicos.decorators.DecoratorPermanente" id="DecoratorPermanente2">
+    <object class="sistema.personas.medicos.decorators.DecoratorPermanente">
      <void property="encapsulado">
       <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
        <void property="encapsulado">
@@ -228,39 +249,6 @@
   <void id="ModuloAtencion0" property="moduloAtencion">
    <void property="historiasClinicas">
     <void method="put">
-     <object class="sistema.personas.pacientes.PacienteMayor" id="PacienteMayor0">
-      <void property="apellido">
-       <string>Argento</string>
-      </void>
-      <void property="ciudad">
-       <string>Buenos Aires</string>
-      </void>
-      <void property="direccion">
-       <string>Flores 1234</string>
-      </void>
-      <void property="dni">
-       <int>325863</int>
-      </void>
-      <void property="nombre">
-       <string>Pepe</string>
-      </void>
-      <void property="nroHistoriaClinica">
-       <int>8</int>
-      </void>
-      <void property="nroOrden">
-       <int>8</int>
-      </void>
-      <void property="telefono">
-       <string>123654</string>
-      </void>
-     </object>
-     <object class="sistema.atencion.HistoriaClinica">
-      <void property="numero">
-       <int>8</int>
-      </void>
-     </object>
-    </void>
-    <void method="put">
      <object class="sistema.personas.pacientes.PacienteNino" id="PacienteNino0">
       <void property="apellido">
        <string>Ramos</string>
@@ -287,63 +275,14 @@
        <string>105</string>
       </void>
      </object>
-     <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica0">
-      <void property="consultaMedicas">
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica0">
-         <void property="cantidadConsultas">
-          <int>2</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorPermanente1"/>
-         </void>
-        </object>
-       </void>
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica1">
-         <void property="cantidadConsultas">
-          <int>1</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorPermanente2"/>
-         </void>
-        </object>
-       </void>
-      </void>
-      <void property="internaciones">
-       <void method="add">
-        <object class="sistema.facturacion.Internacion" id="Internacion0">
-         <void property="costoHabitacion">
-          <double>20.0</double>
-         </void>
-         <void property="diasInternado">
-          <int>10</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="habitacion">
-          <string>Hab. Privada</string>
-         </void>
-         <void property="subtotal">
-          <double>500.0</double>
-         </void>
-        </object>
-       </void>
-      </void>
+     <object class="sistema.atencion.HistoriaClinica">
       <void property="numero">
        <int>5</int>
       </void>
      </object>
     </void>
     <void method="put">
-     <object class="sistema.personas.pacientes.PacienteMayor" id="PacienteMayor1">
+     <object class="sistema.personas.pacientes.PacienteMayor" id="PacienteMayor0">
       <void property="apellido">
        <string>Echeverria</string>
       </void>
@@ -369,56 +308,7 @@
        <string>103</string>
       </void>
      </object>
-     <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica1">
-      <void property="consultaMedicas">
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica2">
-         <void property="cantidadConsultas">
-          <int>1</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorPermanente1"/>
-         </void>
-        </object>
-       </void>
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica3">
-         <void property="cantidadConsultas">
-          <int>4</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorPermanente2"/>
-         </void>
-        </object>
-       </void>
-      </void>
-      <void property="internaciones">
-       <void method="add">
-        <object class="sistema.facturacion.Internacion" id="Internacion1">
-         <void property="costoHabitacion">
-          <double>30.0</double>
-         </void>
-         <void property="diasInternado">
-          <int>3</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="habitacion">
-          <string>Hab. T. Intensiva</string>
-         </void>
-         <void property="subtotal">
-          <double>27100.0</double>
-         </void>
-        </object>
-       </void>
-      </void>
+     <object class="sistema.atencion.HistoriaClinica">
       <void property="numero">
        <int>3</int>
       </void>
@@ -451,75 +341,7 @@
        <string>104</string>
       </void>
      </object>
-     <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica2">
-      <void property="consultaMedicas">
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica4">
-         <void property="cantidadConsultas">
-          <int>2</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorTemporario2"/>
-         </void>
-        </object>
-       </void>
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica5">
-         <void property="cantidadConsultas">
-          <int>3</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorTemporario0"/>
-         </void>
-        </object>
-       </void>
-      </void>
-      <void property="internaciones">
-       <void method="add">
-        <object class="sistema.facturacion.Internacion" id="Internacion2">
-         <void property="costoHabitacion">
-          <double>20.0</double>
-         </void>
-         <void property="diasInternado">
-          <int>5</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="habitacion">
-          <string>Hab. Privada</string>
-         </void>
-         <void property="subtotal">
-          <double>230.0</double>
-         </void>
-        </object>
-       </void>
-       <void method="add">
-        <object class="sistema.facturacion.Internacion" id="Internacion3">
-         <void property="costoHabitacion">
-          <double>30.0</double>
-         </void>
-         <void property="diasInternado">
-          <int>1</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="habitacion">
-          <string>Hab. T. Intensiva</string>
-         </void>
-         <void property="subtotal">
-          <double>130.0</double>
-         </void>
-        </object>
-       </void>
-      </void>
+     <object class="sistema.atencion.HistoriaClinica">
       <void property="numero">
        <int>4</int>
       </void>
@@ -527,39 +349,6 @@
     </void>
     <void method="put">
      <object class="sistema.personas.pacientes.PacienteNino" id="PacienteNino1">
-      <void property="apellido">
-       <string>Argento</string>
-      </void>
-      <void property="ciudad">
-       <string>Buenos Aires</string>
-      </void>
-      <void property="direccion">
-       <string>Flores 1234</string>
-      </void>
-      <void property="dni">
-       <int>159327258</int>
-      </void>
-      <void property="nombre">
-       <string>Paola</string>
-      </void>
-      <void property="nroHistoriaClinica">
-       <int>9</int>
-      </void>
-      <void property="nroOrden">
-       <int>9</int>
-      </void>
-      <void property="telefono">
-       <string>123654</string>
-      </void>
-     </object>
-     <object class="sistema.atencion.HistoriaClinica">
-      <void property="numero">
-       <int>9</int>
-      </void>
-     </object>
-    </void>
-    <void method="put">
-     <object class="sistema.personas.pacientes.PacienteNino" id="PacienteNino2">
       <void property="apellido">
        <string>Ezama</string>
       </void>
@@ -585,75 +374,7 @@
        <string>102</string>
       </void>
      </object>
-     <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica3">
-      <void property="consultaMedicas">
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica6">
-         <void property="cantidadConsultas">
-          <int>2</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorPermanente1"/>
-         </void>
-        </object>
-       </void>
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica7">
-         <void property="cantidadConsultas">
-          <int>1</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorTemporario1"/>
-         </void>
-        </object>
-       </void>
-      </void>
-      <void property="internaciones">
-       <void method="add">
-        <object class="sistema.facturacion.Internacion" id="Internacion4">
-         <void property="costoHabitacion">
-          <double>20.0</double>
-         </void>
-         <void property="diasInternado">
-          <int>1</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="habitacion">
-          <string>Hab. Privada</string>
-         </void>
-         <void property="subtotal">
-          <double>120.0</double>
-         </void>
-        </object>
-       </void>
-       <void method="add">
-        <object class="sistema.facturacion.Internacion" id="Internacion5">
-         <void property="costoHabitacion">
-          <double>30.0</double>
-         </void>
-         <void property="diasInternado">
-          <int>1</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="habitacion">
-          <string>Hab. T. Intensiva</string>
-         </void>
-         <void property="subtotal">
-          <double>130.0</double>
-         </void>
-        </object>
-       </void>
-      </void>
+     <object class="sistema.atencion.HistoriaClinica">
       <void property="numero">
        <int>2</int>
       </void>
@@ -686,25 +407,7 @@
        <string>107</string>
       </void>
      </object>
-     <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica4">
-      <void property="internaciones">
-       <void method="add">
-        <object class="sistema.facturacion.Internacion">
-         <void property="costoHabitacion">
-          <double>20.0</double>
-         </void>
-         <void property="diasInternado">
-          <int>15</int>
-         </void>
-         <void property="habitacion">
-          <string>Hab. Privada</string>
-         </void>
-         <void property="subtotal">
-          <double>700.0</double>
-         </void>
-        </object>
-       </void>
-      </void>
+     <object class="sistema.atencion.HistoriaClinica">
       <void property="numero">
        <int>7</int>
       </void>
@@ -737,101 +440,14 @@
        <string>101</string>
       </void>
      </object>
-     <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica5">
-      <void property="consultaMedicas">
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica8">
-         <void property="cantidadConsultas">
-          <int>3</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorTemporario0"/>
-         </void>
-        </object>
-       </void>
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica9">
-         <void property="cantidadConsultas">
-          <int>2</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorPermanente0"/>
-         </void>
-        </object>
-       </void>
-      </void>
-      <void property="internaciones">
-       <void method="add">
-        <object class="sistema.facturacion.Internacion" id="Internacion6">
-         <void property="costoHabitacion">
-          <double>10.0</double>
-         </void>
-         <void property="diasInternado">
-          <int>3</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="habitacion">
-          <string>Hab. Compartida</string>
-         </void>
-         <void property="subtotal">
-          <double>130.0</double>
-         </void>
-        </object>
-       </void>
-       <void method="add">
-        <object class="sistema.facturacion.Internacion" id="Internacion7">
-         <void property="costoHabitacion">
-          <double>20.0</double>
-         </void>
-         <void property="diasInternado">
-          <int>1</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="habitacion">
-          <string>Hab. Privada</string>
-         </void>
-         <void property="subtotal">
-          <double>120.0</double>
-         </void>
-        </object>
-       </void>
-       <void method="add">
-        <object class="sistema.facturacion.Internacion" id="Internacion8">
-         <void property="costoHabitacion">
-          <double>30.0</double>
-         </void>
-         <void property="diasInternado">
-          <int>1</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="habitacion">
-          <string>Hab. T. Intensiva</string>
-         </void>
-         <void property="subtotal">
-          <double>130.0</double>
-         </void>
-        </object>
-       </void>
-      </void>
+     <object class="sistema.atencion.HistoriaClinica">
       <void property="numero">
        <int>1</int>
       </void>
      </object>
     </void>
     <void method="put">
-     <object class="sistema.personas.pacientes.PacienteMayor" id="PacienteMayor2">
+     <object class="sistema.personas.pacientes.PacienteMayor" id="PacienteMayor1">
       <void property="apellido">
        <string>Jimenez</string>
       </void>
@@ -857,56 +473,7 @@
        <string>106</string>
       </void>
      </object>
-     <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica6">
-      <void property="consultaMedicas">
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica10">
-         <void property="cantidadConsultas">
-          <int>1</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorPermanente1"/>
-         </void>
-        </object>
-       </void>
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica" id="ConsultaMedica11">
-         <void property="cantidadConsultas">
-          <int>4</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorPermanente2"/>
-         </void>
-        </object>
-       </void>
-      </void>
-      <void property="internaciones">
-       <void method="add">
-        <object class="sistema.facturacion.Internacion" id="Internacion9">
-         <void property="costoHabitacion">
-          <double>30.0</double>
-         </void>
-         <void property="diasInternado">
-          <int>2</int>
-         </void>
-         <void property="facturada">
-          <boolean>true</boolean>
-         </void>
-         <void property="habitacion">
-          <string>Hab. T. Intensiva</string>
-         </void>
-         <void property="subtotal">
-          <double>1000.0</double>
-         </void>
-        </object>
-       </void>
-      </void>
+     <object class="sistema.atencion.HistoriaClinica">
       <void property="numero">
        <int>6</int>
       </void>
@@ -915,246 +482,39 @@
    </void>
    <void property="pacientesEnAtencion">
     <void method="add">
-     <object idref="PacienteMayor0"/>
+     <object idref="PacienteJoven2"/>
     </void>
     <void method="add">
      <object idref="PacienteNino1"/>
     </void>
-   </void>
-  </void>
-  <void id="ModuloEgreso0" property="moduloEgreso">
-   <void property="facturas">
     <void method="add">
-     <object class="sistema.facturacion.Factura">
-      <void property="consultasConMedicos">
-       <object class="java.util.ArrayList">
-        <void method="add">
-         <object idref="ConsultaMedica8"/>
-        </void>
-        <void method="add">
-         <object idref="ConsultaMedica9"/>
-        </void>
-       </object>
-      </void>
-      <void property="fecha">
-       <object class="java.util.GregorianCalendar">
-        <void property="time">
-         <object class="java.util.Date">
-          <long>1521255600000</long>
-         </object>
-        </void>
-       </object>
-      </void>
-      <void property="internaciones">
-       <object class="java.util.ArrayList">
-        <void method="add">
-         <object idref="Internacion6"/>
-        </void>
-        <void method="add">
-         <object idref="Internacion7"/>
-        </void>
-        <void method="add">
-         <object idref="Internacion8"/>
-        </void>
-       </object>
-      </void>
-      <void property="nroFactura">
-       <int>1</int>
-      </void>
-      <void property="paciente">
-       <object idref="PacienteJoven2"/>
-      </void>
-     </object>
+     <object idref="PacienteMayor0"/>
     </void>
     <void method="add">
-     <object class="sistema.facturacion.Factura">
-      <void property="consultasConMedicos">
-       <object class="java.util.ArrayList">
-        <void method="add">
-         <object idref="ConsultaMedica6"/>
-        </void>
-        <void method="add">
-         <object idref="ConsultaMedica7"/>
-        </void>
-       </object>
-      </void>
-      <void property="fecha">
-       <object class="java.util.GregorianCalendar">
-        <void property="time">
-         <object class="java.util.Date">
-          <long>1555297200000</long>
-         </object>
-        </void>
-       </object>
-      </void>
-      <void property="internaciones">
-       <object class="java.util.ArrayList">
-        <void method="add">
-         <object idref="Internacion4"/>
-        </void>
-        <void method="add">
-         <object idref="Internacion5"/>
-        </void>
-       </object>
-      </void>
-      <void property="nroFactura">
-       <int>2</int>
-      </void>
-      <void property="paciente">
-       <object idref="PacienteNino2"/>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="sistema.facturacion.Factura">
-      <void property="consultasConMedicos">
-       <object class="java.util.ArrayList">
-        <void method="add">
-         <object idref="ConsultaMedica2"/>
-        </void>
-        <void method="add">
-         <object idref="ConsultaMedica3"/>
-        </void>
-       </object>
-      </void>
-      <void property="fecha">
-       <object class="java.util.GregorianCalendar">
-        <void property="time">
-         <object class="java.util.Date">
-          <long>1590202800000</long>
-         </object>
-        </void>
-       </object>
-      </void>
-      <void property="internaciones">
-       <object class="java.util.ArrayList">
-        <void method="add">
-         <object idref="Internacion1"/>
-        </void>
-       </object>
-      </void>
-      <void property="nroFactura">
-       <int>3</int>
-      </void>
-      <void property="paciente">
-       <object idref="PacienteMayor1"/>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="sistema.facturacion.Factura">
-      <void property="consultasConMedicos">
-       <object class="java.util.ArrayList">
-        <void method="add">
-         <object idref="ConsultaMedica4"/>
-        </void>
-        <void method="add">
-         <object idref="ConsultaMedica5"/>
-        </void>
-       </object>
-      </void>
-      <void property="fecha">
-       <object class="java.util.GregorianCalendar">
-        <void property="time">
-         <object class="java.util.Date">
-          <long>1626058800000</long>
-         </object>
-        </void>
-       </object>
-      </void>
-      <void property="internaciones">
-       <object class="java.util.ArrayList">
-        <void method="add">
-         <object idref="Internacion2"/>
-        </void>
-        <void method="add">
-         <object idref="Internacion3"/>
-        </void>
-       </object>
-      </void>
-      <void property="nroFactura">
-       <int>4</int>
-      </void>
-      <void property="paciente">
-       <object idref="PacienteJoven0"/>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="sistema.facturacion.Factura">
-      <void property="consultasConMedicos">
-       <object class="java.util.ArrayList">
-        <void method="add">
-         <object idref="ConsultaMedica0"/>
-        </void>
-        <void method="add">
-         <object idref="ConsultaMedica1"/>
-        </void>
-       </object>
-      </void>
-      <void property="fecha">
-       <object class="java.util.GregorianCalendar">
-        <void property="time">
-         <object class="java.util.Date">
-          <long>1629946800000</long>
-         </object>
-        </void>
-       </object>
-      </void>
-      <void property="internaciones">
-       <object class="java.util.ArrayList">
-        <void method="add">
-         <object idref="Internacion0"/>
-        </void>
-       </object>
-      </void>
-      <void property="nroFactura">
-       <int>5</int>
-      </void>
-      <void property="paciente">
-       <object idref="PacienteNino0"/>
-      </void>
-     </object>
-    </void>
-    <void method="add">
-     <object class="sistema.facturacion.Factura">
-      <void property="consultasConMedicos">
-       <object class="java.util.ArrayList">
-        <void method="add">
-         <object idref="ConsultaMedica10"/>
-        </void>
-        <void method="add">
-         <object idref="ConsultaMedica11"/>
-        </void>
-       </object>
-      </void>
-      <void property="fecha">
-       <object class="java.util.GregorianCalendar">
-        <void property="time">
-         <object class="java.util.Date">
-          <long>1635303600000</long>
-         </object>
-        </void>
-       </object>
-      </void>
-      <void property="internaciones">
-       <object class="java.util.ArrayList">
-        <void method="add">
-         <object idref="Internacion9"/>
-        </void>
-       </object>
-      </void>
-      <void property="nroFactura">
-       <int>6</int>
-      </void>
-      <void property="paciente">
-       <object idref="PacienteMayor2"/>
-      </void>
-     </object>
+     <object idref="PacienteJoven0"/>
     </void>
    </void>
   </void>
   <void id="ModuloIngreso0" property="moduloIngreso">
+   <void property="listaDeEspera">
+    <void method="add">
+     <object idref="PacienteNino0"/>
+    </void>
+    <void method="add">
+     <object idref="PacienteMayor1"/>
+    </void>
+    <void method="add">
+     <object idref="PacienteJoven1"/>
+    </void>
+   </void>
+   <void property="listaPacientesEnPatio">
+    <void method="add">
+     <object idref="PacienteNino0"/>
+    </void>
+    <void method="add">
+     <object idref="PacienteMayor1"/>
+    </void>
+   </void>
    <void property="registroDePacientes">
     <void method="put">
      <int>1</int>
@@ -1162,14 +522,10 @@
     </void>
     <void method="put">
      <int>2</int>
-     <object idref="PacienteNino2"/>
+     <object idref="PacienteNino1"/>
     </void>
     <void method="put">
      <int>3</int>
-     <object idref="PacienteMayor1"/>
-    </void>
-    <void method="put">
-     <int>325863</int>
      <object idref="PacienteMayor0"/>
     </void>
     <void method="put">
@@ -1181,30 +537,29 @@
      <object idref="PacienteNino0"/>
     </void>
     <void method="put">
-     <int>159327258</int>
-     <object idref="PacienteNino1"/>
-    </void>
-    <void method="put">
      <int>6</int>
-     <object idref="PacienteMayor2"/>
+     <object idref="PacienteMayor1"/>
     </void>
     <void method="put">
      <int>7</int>
      <object idref="PacienteJoven1"/>
     </void>
    </void>
+   <void property="salaVip">
+    <object idref="PacienteJoven1"/>
+   </void>
   </void>
   <void property="nombre">
    <string>HIGA</string>
   </void>
   <void property="nroHistoriaClinica">
-   <int>9</int>
+   <int>7</int>
   </void>
   <void property="nroOrden">
-   <int>9</int>
+   <int>7</int>
   </void>
-  <void property="sigNroFactura">
-   <int>6</int>
+  <void property="sueldoBasico">
+   <double>100.0</double>
   </void>
   <void property="telefono">
    <long>4827593</long>

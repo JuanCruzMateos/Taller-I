@@ -10,6 +10,7 @@ import java.util.*;
  * Clase que modela el modulo de ingreso de la clinica.<br>
  * Se ocupa se asignar numero de orden al ingresar un paciente en la espera ( vip o patio).<br>
  * Si ya esta registrado, alta solo devuelve la ref y al ingresar lo pisa con una nuevo valor.<br>
+ * <b>Invariante: </b> registro de pacientes, listaDeEspera y lista de pacientesEnPatio distinto de null.<br>
  */
 public class ModuloIngreso {
     private static int nroOrden = 0;

@@ -17,6 +17,7 @@ import java.util.Objects;
 
 /**
  * Clase que modela el modulo de egreso de la clinica.<br>
+ * <b>Invariante: </b> facturas distinto de null.<br>
  */
 public class ModuloEgreso implements Serializable {
     private ArrayList<Factura> facturas = new ArrayList<>();

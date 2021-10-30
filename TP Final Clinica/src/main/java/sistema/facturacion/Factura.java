@@ -122,7 +122,7 @@ public class Factura implements Comparable<Factura> {
         stringBuilder.append("***** Factura ********************************************************\n");
         stringBuilder.append(" - Numero de Factura: ").append(this.nroFactura).append(".\n");
         stringBuilder.append(" - Fecha: ").append(formatter.format(this.fecha.getTime())).append(".\n");
-        stringBuilder.append(" - Paciente : ").append(this.paciente.getNombre() + " " + this.paciente.getApellido()).append(".\n");
+        stringBuilder.append(" - Paciente : ").append(this.paciente.getNombre()).append(" ").append(this.paciente.getApellido()).append(".\n");
         stringBuilder.append("Prestacion                 Valor        Cantidad            Subtotal\n");
         for (ConsultaMedica consulta : this.consultasConMedicos) {
             stringBuilder.append(consulta.toString());

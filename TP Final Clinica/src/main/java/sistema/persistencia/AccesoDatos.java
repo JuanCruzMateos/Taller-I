@@ -2,19 +2,14 @@ package sistema.persistencia;
 
 import sistema.clinica.Clinica;
 import sistema.excepciones.*;
-import sistema.facturacion.ConsultaMedica;
-import sistema.facturacion.Internacion;
 import sistema.habitaciones.Habitacion;
 import sistema.habitaciones.HabitacionCompartida;
 import sistema.habitaciones.HabitacionPrivada;
 import sistema.habitaciones.HabitacionTerapiaIntensiva;
 import sistema.persistencia.dto.ClinicaDTO;
-import sistema.personas.medicos.IMedico;
 import sistema.personas.pacientes.Paciente;
 
 import java.io.IOException;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 /**
  * Clase encargada de la pesistencia de los datos.<br>
@@ -22,10 +17,19 @@ import java.util.GregorianCalendar;
 public class AccesoDatos {
     private static final String FILENAME = "clinica.xml";
 
+    /**
+     * @return nombre del archivo XML.
+     */
     public static String getFILENAME() {
         return FILENAME;
     }
 
+    /**
+     * Despersistir clinica.<br>
+     *
+     * @return dto de clinica.
+     * @throws IOException si existe algun tipo de error asociado a la lectura del archivo.<br>
+     */
     public static ClinicaDTO despersistirClinica() throws IOException {
         PersistenciaXML io = new PersistenciaXML();
         ClinicaDTO dto;
@@ -36,6 +40,13 @@ public class AccesoDatos {
         return dto;
     }
 
+    /**
+     * Persistir clinica.<br>
+     * <b>pre:</b> clinicaDTO distinto de null.<br>
+     *
+     * @param clinicaDTO dto de clinica, distinto de null
+     * @throws IOException si existe algun tipo de error asociado a la escritura del archivo.<br>
+     */
     public static void persistirClinica(ClinicaDTO clinicaDTO) throws IOException {
         PersistenciaXML persistenciaXML = new PersistenciaXML();
 
@@ -44,6 +55,15 @@ public class AccesoDatos {
         persistenciaXML.closeOutput();
     }
 
+    /**
+     * Metodo auxiliar para inicilizar la clinica con medicos y pacientes por defecto.
+     *
+     * Estado de la clinica:
+     * Pacientes en sala de espera: 4
+     *    - en patio: 3
+     *    - en sala vip: 1
+     * Pacientes en atencion: 3
+     */
     public static void initClinica() {
         Habitacion.setCostoAsignacion(100);
         HabitacionCompartida.getInstance().setCostoHabCompartida(10);
@@ -55,8 +75,8 @@ public class AccesoDatos {
         clinica.setCiudad("Mar del Plata");
         clinica.setDireccion("Juan B. Justo 10000");
         clinica.setTelefono(4827593);
-        System.out.println(clinica);
-        System.out.println("*************************************************************************************");
+//        System.out.println(clinica);
+//        System.out.println("*************************************************************************************");
 
         try {
             clinica.agregarMedico("clinica", "doctor", "permanente", "Rene", "Favaloro", "Alverar 3101", "Buenos Aires", "369258", 8125936, 1);
@@ -75,30 +95,30 @@ public class AccesoDatos {
             System.out.println(e.getMessage() + " Contratacion Invalida = " + e.getContratacionInvalida());
         }
 
-        IMedico medico1 = null;
-        IMedico medico2 = null;
-        IMedico medico3 = null;
-        IMedico medico4 = null;
-        IMedico medico5 = null;
-        IMedico medico6 = null;
-        try {
-            medico1 = clinica.getMedico(1);
-            medico2 = clinica.getMedico(2);
-            medico3 = clinica.getMedico(3);
-            medico4 = clinica.getMedico(4);
-            medico5 = clinica.getMedico(5);
-            medico6 = clinica.getMedico(6);
-        } catch (MatriculaIncorrectaException e) {
-            e.printStackTrace();
-        }
+//        IMedico medico1 = null;
+//        IMedico medico2 = null;
+//        IMedico medico3 = null;
+//        IMedico medico4 = null;
+//        IMedico medico5 = null;
+//        IMedico medico6 = null;
+//        try {
+//            medico1 = clinica.getMedico(1);
+//            medico2 = clinica.getMedico(2);
+//            medico3 = clinica.getMedico(3);
+//            medico4 = clinica.getMedico(4);
+//            medico5 = clinica.getMedico(5);
+//            medico6 = clinica.getMedico(6);
+//        } catch (MatriculaIncorrectaException e) {
+//            e.printStackTrace();
+//        }
 
-        System.out.println(medico1);
-        System.out.println(medico2);
-        System.out.println(medico3);
-        System.out.println(medico4);
-        System.out.println(medico5);
-        System.out.println(medico6);
-        System.out.println("*************************************************************************************");
+//        System.out.println(medico1);
+//        System.out.println(medico2);
+//        System.out.println(medico3);
+//        System.out.println(medico4);
+//        System.out.println(medico5);
+//        System.out.println(medico6);
+//        System.out.println("*************************************************************************************");
 
         Paciente paciente1 = null;
         Paciente paciente2 = null;
@@ -122,16 +142,16 @@ public class AccesoDatos {
         } catch (InformacionPersonalNoValidaException e) {
             e.printStackTrace();
         }
-        System.out.println(paciente1);
-        System.out.println(paciente2);
-        System.out.println(paciente3);
-        System.out.println(paciente4);
-        System.out.println(paciente5);
-        System.out.println(paciente6);
-        System.out.println(paciente7);
-        System.out.println(paciente8);
-        System.out.println("Paciente 4 == Paciente 8: " + (paciente4 == paciente8)); // no permite duplicados
-        System.out.println("*************************************************************************************");
+//        System.out.println(paciente1);
+//        System.out.println(paciente2);
+//        System.out.println(paciente3);
+//        System.out.println(paciente4);
+//        System.out.println(paciente5);
+//        System.out.println(paciente6);
+//        System.out.println(paciente7);
+//        System.out.println(paciente8);
+//        System.out.println("Paciente 4 == Paciente 8: " + (paciente4 == paciente8)); // no permite duplicados
+//        System.out.println("*************************************************************************************");
 
         clinica.ingresarPaciente(paciente1);
         clinica.ingresarPaciente(paciente2);
@@ -141,17 +161,17 @@ public class AccesoDatos {
         clinica.ingresarPaciente(paciente6);
         clinica.ingresarPaciente(paciente7);
         clinica.ingresarPaciente(paciente8); // no se agrega (~ clon)
-        System.out.println(clinica.cantidadDePacientesEnSalaEspera());
-        System.out.println(clinica.cantidadDePacientesEnAtencion());
-        System.out.println("*************************************************************************************");
-        System.out.println(clinica.estadoDeLaClinica());
-        System.out.println(paciente1);
-        System.out.println(paciente2);
-        System.out.println(paciente3);
-        System.out.println(paciente4);
-        System.out.println(paciente5);
-        System.out.println(paciente6);
-        System.out.println(paciente7);
+//        System.out.println(clinica.cantidadDePacientesEnSalaEspera());
+//        System.out.println(clinica.cantidadDePacientesEnAtencion());
+//        System.out.println("*************************************************************************************");
+//        System.out.println(clinica.estadoDeLaClinica());
+//        System.out.println(paciente1);
+//        System.out.println(paciente2);
+//        System.out.println(paciente3);
+//        System.out.println(paciente4);
+//        System.out.println(paciente5);
+//        System.out.println(paciente6);
+//        System.out.println(paciente7);
 /*
 Estado de la clinica:
 Pacientes en sala de espera: 7
@@ -163,12 +183,13 @@ Pacientes en atencion: 0
             clinica.atenderSiguentePaciente();
             clinica.atenderSiguentePaciente();
             clinica.atenderSiguentePaciente();
+            clinica.atenderSiguentePaciente();
         } catch (SalaDeEsperaVaciaException e) {
             e.printStackTrace();
-        }
-        System.out.println("*************************************************************************************");
+//        }
+//        System.out.println("*************************************************************************************");
         System.out.println(clinica.estadoDeLaClinica());
-        System.out.println("*************************************************************************************");
+//        System.out.println("*************************************************************************************");
 /*
 Estado de la clinica:
 Pacientes en sala de espera: 4
@@ -177,14 +198,14 @@ Pacientes en sala de espera: 4
 Pacientes en atencion: 3
 */
 
-        try {
-            paciente1 = clinica.egresoPaciente(1);
-            paciente2 = clinica.egresoPaciente(2);
-            paciente3 = clinica.egresoPaciente(3);
-        } catch (PacienteInexistenteException e) {
-            e.printStackTrace();
-        }
-        System.out.println(clinica.estadoDeLaClinica());
+//        try {
+//            paciente1 = clinica.egresoPaciente(1);
+//            paciente2 = clinica.egresoPaciente(2);
+//            paciente3 = clinica.egresoPaciente(3);
+//        } catch (PacienteInexistenteException pacienteInexistenteException) {
+//            pacienteInexistenteException.printStackTrace();
+//        }
+//        System.out.println(clinica.estadoDeLaClinica());
 /*
 Estado de la clinica:
 Pacientes en sala de espera: 4
@@ -192,176 +213,177 @@ Pacientes en sala de espera: 4
    - en sala vip: 1
 Pacientes en atencion: 0
 * */
-        System.out.println(paciente1);
-        System.out.println(paciente2);
-        System.out.println(paciente3);
+//        System.out.println(paciente1);
+//        System.out.println(paciente2);
+//        System.out.println(paciente3);
 
 //        System.out.println(paciente1.getNombre());
 //        HistoriaClinica hc = Clinica.getInstance().getModuloAtencion().getHistoriaClinicaPaciente(paciente1);
 //        System.out.println(hc);
 //
 //         intervenciones #1
-        try {
-            clinica.agregarConsultaMedicaPaciente(paciente1, new ConsultaMedica(medico3, 3));
-            clinica.agregarConsultaMedicaPaciente(paciente1, new ConsultaMedica(medico1, 2));
-            clinica.agregarInternacionPaciente(paciente1, new Internacion(HabitacionCompartida.getInstance(), 3));
-            clinica.agregarInternacionPaciente(paciente1, new Internacion(HabitacionPrivada.getInstance(), 1));
-            clinica.agregarInternacionPaciente(paciente1, new Internacion(HabitacionTerapiaIntensiva.getInstance(), 1));
-            clinica.facturar(paciente1, new GregorianCalendar(2018, Calendar.MARCH, 17));
-            System.out.println(clinica.getDetalleUltimaFactura());
-        } catch (PacienteInexistenteException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            clinica.agregarConsultaMedicaPaciente(paciente1, new ConsultaMedica(medico3, 3));
+//            clinica.agregarConsultaMedicaPaciente(paciente1, new ConsultaMedica(medico1, 2));
+//            clinica.agregarInternacionPaciente(paciente1, new Internacion(HabitacionCompartida.getInstance(), 3));
+//            clinica.agregarInternacionPaciente(paciente1, new Internacion(HabitacionPrivada.getInstance(), 1));
+//            clinica.agregarInternacionPaciente(paciente1, new Internacion(HabitacionTerapiaIntensiva.getInstance(), 1));
+//            clinica.facturar(paciente1, new GregorianCalendar(2018, Calendar.MARCH, 17));
+//            System.out.println(clinica.getDetalleUltimaFactura());
+//        } catch (PacienteInexistenteException e) {
+//            e.printStackTrace();
+//        }
 
 //        for (Map.Entry<Paciente, HistoriaClinica> entry : Clinica.getInstance().getHistoriasClinicasIterator()) {
 //            System.out.println(entry.getKey().getNombre() + ", dni=" + entry.getKey().getDni());
 //            System.out.println(entry.getValue());
 //        }
 ////         intervenciones #2
-        try {
-            clinica.agregarConsultaMedicaPaciente(paciente2, new ConsultaMedica(medico2, 2));
-            clinica.agregarConsultaMedicaPaciente(paciente2, new ConsultaMedica(medico4, 1));
-            clinica.agregarInternacionPaciente(paciente2, new Internacion(HabitacionPrivada.getInstance(), 1));
-            clinica.agregarInternacionPaciente(paciente2, new Internacion(HabitacionTerapiaIntensiva.getInstance(), 1));
-            clinica.facturar(paciente2, new GregorianCalendar(2019, Calendar.APRIL, 15));
-            System.out.println(clinica.getDetalleUltimaFactura());
-        } catch (PacienteInexistenteException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            clinica.agregarConsultaMedicaPaciente(paciente2, new ConsultaMedica(medico2, 2));
+//            clinica.agregarConsultaMedicaPaciente(paciente2, new ConsultaMedica(medico4, 1));
+//            clinica.agregarInternacionPaciente(paciente2, new Internacion(HabitacionPrivada.getInstance(), 1));
+//            clinica.agregarInternacionPaciente(paciente2, new Internacion(HabitacionTerapiaIntensiva.getInstance(), 1));
+//            clinica.facturar(paciente2, new GregorianCalendar(2019, Calendar.APRIL, 15));
+//            System.out.println(clinica.getDetalleUltimaFactura());
+//        } catch (PacienteInexistenteException e) {
+//            e.printStackTrace();
+//        }
+//
+////        intervenciones #3
+//        try {
+//            clinica.agregarConsultaMedicaPaciente(paciente3, new ConsultaMedica(medico2, 1));
+//            clinica.agregarConsultaMedicaPaciente(paciente3, new ConsultaMedica(medico6, 4));
+//            clinica.agregarInternacionPaciente(paciente3, new Internacion(HabitacionTerapiaIntensiva.getInstance(), 3));
+//            clinica.facturar(paciente3, new GregorianCalendar(2020, Calendar.MAY, 23));
+//        } catch (PacienteInexistenteException e) {
+//            e.printStackTrace();
+//        }
 
-//        intervenciones #3
-        try {
-            clinica.agregarConsultaMedicaPaciente(paciente3, new ConsultaMedica(medico2, 1));
-            clinica.agregarConsultaMedicaPaciente(paciente3, new ConsultaMedica(medico6, 4));
-            clinica.agregarInternacionPaciente(paciente3, new Internacion(HabitacionTerapiaIntensiva.getInstance(), 3));
-            clinica.facturar(paciente3, new GregorianCalendar(2020, Calendar.MAY, 23));
-        } catch (PacienteInexistenteException e) {
-            e.printStackTrace();
+//        System.out.println(clinica.getDetalleFactura(1));
+//        System.out.println(clinica.getDetalleFactura(2));
+//        System.out.println(clinica.getDetalleFactura(3));
+//
+//        System.out.println(clinica.getReporteMedico(medico1, new GregorianCalendar(2015, Calendar.FEBRUARY, 1), new GregorianCalendar()));
+//        System.out.println(clinica.getReporteMedico(medico2, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
+//        System.out.println(clinica.getReporteMedico(medico3, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
+//        System.out.println(clinica.getReporteMedico(medico4, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
+//        System.out.println(clinica.getReporteMedico(medico5, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
+//        System.out.println(clinica.getReporteMedico(medico6, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
+//
+//        System.out.println(clinica.estadoDeLaClinica());
+//        try {
+//            clinica.atenderSiguentePaciente();
+//            clinica.atenderSiguentePaciente();
+//            clinica.atenderSiguentePaciente();
+//            clinica.atenderSiguentePaciente();
+//        } catch (SalaDeEsperaVaciaException salaDeEsperaVaciaException) {
+//            salaDeEsperaVaciaException.printStackTrace();
+//        }
+////        clinica.atenderPaciente(); // no tiene efecto
+//
+//        Paciente pepe = null;
+//        try {
+//            pepe = clinica.altaPaciente("Pepe", "Argento", "Flores 1234", "Buenos Aires", "123654", 325863, "Mayor");
+//        } catch (InformacionPersonalNoValidaException e) {
+//            e.printStackTrace();
+//        }
+//        clinica.ingresarPaciente(pepe);
+//        System.out.println(clinica.estadoDeLaClinica());
+//
+//        try {
+//            paciente4 = clinica.egresoPaciente(4);
+//        } catch (PacienteInexistenteException ex) {
+//            ex.printStackTrace();
+//        }
+//        try {
+//            paciente5 = clinica.egresoPaciente(5);
+//        } catch (PacienteInexistenteException ee) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            paciente6 = clinica.egresoPaciente(6);
+//        } catch (PacienteInexistenteException e) {
+//            e.printStackTrace();
+//        }
+//
+//        System.out.println(clinica.estadoDeLaClinica());
+//
+////        // intervenciones #4
+//        try {
+//            clinica.agregarConsultaMedicaPaciente(paciente4, new ConsultaMedica(medico5, 2));
+//            clinica.agregarConsultaMedicaPaciente(paciente4, new ConsultaMedica(medico3, 3));
+//            clinica.agregarInternacionPaciente(paciente4, new Internacion(HabitacionPrivada.getInstance(), 5));
+//            clinica.agregarInternacionPaciente(paciente4, new Internacion(HabitacionTerapiaIntensiva.getInstance(), 1));
+//            clinica.facturar(paciente4, new GregorianCalendar(2021, Calendar.JULY, 12));
+//        } catch (PacienteInexistenteException e) {
+//            e.printStackTrace();
+//        }
+//
+////        // intervenciones #5
+//
+//        try {
+//            clinica.agregarConsultaMedicaPaciente(paciente5, new ConsultaMedica(medico2, 2));
+//            clinica.agregarConsultaMedicaPaciente(paciente5, new ConsultaMedica(medico6, 1));
+//            clinica.agregarInternacionPaciente(paciente5, new Internacion(HabitacionPrivada.getInstance(), 10));
+//            clinica.facturar(paciente5, new GregorianCalendar(2021, Calendar.AUGUST, 26));
+//        } catch (PacienteInexistenteException e) {
+//            e.printStackTrace();
+//        }
+//
+////        // intervenciones #6
+//        try {
+//            clinica.agregarConsultaMedicaPaciente(paciente6, new ConsultaMedica(medico2, 1));
+//            clinica.agregarConsultaMedicaPaciente(paciente6, new ConsultaMedica(medico6, 4));
+//            clinica.agregarInternacionPaciente(paciente6, new Internacion(HabitacionTerapiaIntensiva.getInstance(), 2));
+//            clinica.facturar(paciente6, new GregorianCalendar(2021, Calendar.OCTOBER, 27));
+//        } catch (PacienteInexistenteException pacienteInexistenteException) {
+//            pacienteInexistenteException.printStackTrace();
+//        }
+//
+//        System.out.println(clinica.getDetalleFactura(4));
+//        System.out.println(clinica.getDetalleFactura(5));
+//        System.out.println(clinica.getDetalleFactura(6));
+//
+//        System.out.println(clinica.getReporteMedico(medico1, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
+//        System.out.println(clinica.getReporteMedico(medico2, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
+//        System.out.println(clinica.getReporteMedico(medico3, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
+//        System.out.println(clinica.getReporteMedico(medico4, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
+//        System.out.println(clinica.getReporteMedico(medico5, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
+//        System.out.println(clinica.getReporteMedico(medico6, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
+//
+//        System.out.println(clinica.estadoDeLaClinica());
+//        Paciente paola = null;
+//        try {
+//            paola = clinica.altaPaciente("Paola", "Argento", "Flores 1234", "Buenos Aires", "123654", 159327258, "Nino");
+//        } catch (InformacionPersonalNoValidaException informacionPersonalNoValidaException) {
+//            informacionPersonalNoValidaException.printStackTrace();
+//        }
+//        clinica.ingresarPaciente(paola);
+//        try {
+//            clinica.atenderSiguentePaciente();
+//        } catch (SalaDeEsperaVaciaException e) {
+//            e.printStackTrace();
+//        }
+//        Paciente paciente9 = null;
+//        try {
+//            paciente9 = clinica.egresoPaciente(7);
+//        } catch (PacienteInexistenteException e) {
+//            e.printStackTrace();
+//        }
+//
+//        try {
+//            clinica.agregarInternacionPaciente(paciente9, new Internacion(HabitacionPrivada.getInstance(), 15));
+//        } catch (PacienteInexistenteException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(clinica.estadoDeLaClinica());
+//        try {
+//            clinica.atenderSiguentePaciente();
+//        } catch (SalaDeEsperaVaciaException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println(clinica.estadoDeLaClinica());
         }
-
-        System.out.println(clinica.getDetalleFactura(1));
-        System.out.println(clinica.getDetalleFactura(2));
-        System.out.println(clinica.getDetalleFactura(3));
-
-        System.out.println(clinica.getReporteMedico(medico1, new GregorianCalendar(2015, Calendar.FEBRUARY, 1), new GregorianCalendar()));
-        System.out.println(clinica.getReporteMedico(medico2, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
-        System.out.println(clinica.getReporteMedico(medico3, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
-        System.out.println(clinica.getReporteMedico(medico4, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
-        System.out.println(clinica.getReporteMedico(medico5, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
-        System.out.println(clinica.getReporteMedico(medico6, new GregorianCalendar(2020, Calendar.FEBRUARY, 1), new GregorianCalendar()));
-
-        System.out.println(clinica.estadoDeLaClinica());
-        try {
-            clinica.atenderSiguentePaciente();
-            clinica.atenderSiguentePaciente();
-            clinica.atenderSiguentePaciente();
-            clinica.atenderSiguentePaciente();
-        } catch (SalaDeEsperaVaciaException e) {
-            e.printStackTrace();
-        }
-//        clinica.atenderPaciente(); // no tiene efecto
-
-        Paciente pepe = null;
-        try {
-            pepe = clinica.altaPaciente("Pepe", "Argento", "Flores 1234", "Buenos Aires", "123654", 325863, "Mayor");
-        } catch (InformacionPersonalNoValidaException e) {
-            e.printStackTrace();
-        }
-        clinica.ingresarPaciente(pepe);
-        System.out.println(clinica.estadoDeLaClinica());
-
-        try {
-            paciente4 = clinica.egresoPaciente(4);
-        } catch (PacienteInexistenteException e) {
-            e.printStackTrace();
-        }
-        try {
-            paciente5 = clinica.egresoPaciente(5);
-        } catch (PacienteInexistenteException e) {
-            e.printStackTrace();
-        }
-        try {
-            paciente6 = clinica.egresoPaciente(6);
-        } catch (PacienteInexistenteException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(clinica.estadoDeLaClinica());
-
-//        // intervenciones #4
-        try {
-            clinica.agregarConsultaMedicaPaciente(paciente4, new ConsultaMedica(medico5, 2));
-            clinica.agregarConsultaMedicaPaciente(paciente4, new ConsultaMedica(medico3, 3));
-            clinica.agregarInternacionPaciente(paciente4, new Internacion(HabitacionPrivada.getInstance(), 5));
-            clinica.agregarInternacionPaciente(paciente4, new Internacion(HabitacionTerapiaIntensiva.getInstance(), 1));
-            clinica.facturar(paciente4, new GregorianCalendar(2021, Calendar.JULY, 12));
-        } catch (PacienteInexistenteException e) {
-            e.printStackTrace();
-        }
-
-//        // intervenciones #5
-
-        try {
-            clinica.agregarConsultaMedicaPaciente(paciente5, new ConsultaMedica(medico2, 2));
-            clinica.agregarConsultaMedicaPaciente(paciente5, new ConsultaMedica(medico6, 1));
-            clinica.agregarInternacionPaciente(paciente5, new Internacion(HabitacionPrivada.getInstance(), 10));
-            clinica.facturar(paciente5, new GregorianCalendar(2021, Calendar.AUGUST, 26));
-        } catch (PacienteInexistenteException e) {
-            e.printStackTrace();
-        }
-
-//        // intervenciones #6
-        try {
-            clinica.agregarConsultaMedicaPaciente(paciente6, new ConsultaMedica(medico2, 1));
-            clinica.agregarConsultaMedicaPaciente(paciente6, new ConsultaMedica(medico6, 4));
-            clinica.agregarInternacionPaciente(paciente6, new Internacion(HabitacionTerapiaIntensiva.getInstance(), 2));
-            clinica.facturar(paciente6, new GregorianCalendar(2021, Calendar.OCTOBER, 27));
-        } catch (PacienteInexistenteException e) {
-            e.printStackTrace();
-        }
-
-        System.out.println(clinica.getDetalleFactura(4));
-        System.out.println(clinica.getDetalleFactura(5));
-        System.out.println(clinica.getDetalleFactura(6));
-
-        System.out.println(clinica.getReporteMedico(medico1, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
-        System.out.println(clinica.getReporteMedico(medico2, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
-        System.out.println(clinica.getReporteMedico(medico3, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
-        System.out.println(clinica.getReporteMedico(medico4, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
-        System.out.println(clinica.getReporteMedico(medico5, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
-        System.out.println(clinica.getReporteMedico(medico6, new GregorianCalendar(2017, Calendar.FEBRUARY, 1), new GregorianCalendar(2021, Calendar.DECEMBER, 31)));
-
-        System.out.println(clinica.estadoDeLaClinica());
-        Paciente paola = null;
-        try {
-            paola = clinica.altaPaciente("Paola", "Argento", "Flores 1234", "Buenos Aires", "123654", 159327258, "Nino");
-        } catch (InformacionPersonalNoValidaException e) {
-            e.printStackTrace();
-        }
-        clinica.ingresarPaciente(paola);
-        try {
-            clinica.atenderSiguentePaciente();
-        } catch (SalaDeEsperaVaciaException e) {
-            e.printStackTrace();
-        }
-        Paciente paciente9 = null;
-        try {
-            paciente9 = clinica.egresoPaciente(7);
-        } catch (PacienteInexistenteException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            clinica.agregarInternacionPaciente(paciente9, new Internacion(HabitacionPrivada.getInstance(), 15));
-        } catch (PacienteInexistenteException e) {
-            e.printStackTrace();
-        }
-        System.out.println(clinica.estadoDeLaClinica());
-        try {
-            clinica.atenderSiguentePaciente();
-        } catch (SalaDeEsperaVaciaException e) {
-            e.printStackTrace();
-        }
-        System.out.println(clinica.estadoDeLaClinica());
     }
 }
