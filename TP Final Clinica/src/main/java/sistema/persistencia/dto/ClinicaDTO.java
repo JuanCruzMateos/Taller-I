@@ -14,7 +14,7 @@ public class ClinicaDTO implements Serializable {
     private String nombre;
     private String direccion;
     private String ciudad;
-    private long telefono;
+    private String telefono;
     private HashMap<Integer, IMedico> medicos = new HashMap<>();
     private ModuloIngreso moduloIngreso = new ModuloIngreso();
     private ModuloAtencion moduloAtencion = new ModuloAtencion();
@@ -160,11 +160,11 @@ public class ClinicaDTO implements Serializable {
         this.ciudad = ciudad;
     }
 
-    public Long getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Long telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

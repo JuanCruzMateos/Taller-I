@@ -12,10 +12,8 @@ import java.io.IOException;
  */
 public class App {
     public static void main(String[] args) throws IOException {
-
         Controlador controlador = Controlador.getInstance();
         controlador.setVentana(new Ventana());
         controlador.setClinica(Clinica.getInstance());
-        controlador.init();
     }
 }

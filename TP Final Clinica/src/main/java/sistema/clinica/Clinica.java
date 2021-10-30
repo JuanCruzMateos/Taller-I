@@ -31,7 +31,7 @@ public class Clinica {
     private String nombre;
     private String direccion;
     private String ciudad;
-    private long telefono;
+    private String telefono;
     private HashMap<Integer, IMedico> medicos = new HashMap<>();
     private ModuloIngreso moduloIngreso = new ModuloIngreso();
     private ModuloAtencion moduloAtencion = new ModuloAtencion();
@@ -249,7 +249,7 @@ public class Clinica {
      * @throws PacienteInexistenteException si el paciente no esta ingresado a la clinica.<br>
      */
     public HistoriaClinica getHistoriaClinicaPaciente(Paciente paciente) throws PacienteInexistenteException {
-        if (this.moduloIngreso.pacienteRegistrado(paciente))
+        if (!this.moduloIngreso.pacienteRegistrado(paciente))
             throw new PacienteInexistenteException("El paciente no pertenece a la clinica");
         return this.moduloAtencion.getHistoriaClinicaPaciente(paciente);
     }
@@ -403,16 +403,16 @@ public class Clinica {
         this.ciudad = ciudad;
     }
 
-    public long getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
     /**
      * Setea el telefono de la clinica.<br>
      *
-     * @param telefono (long) que almacena el telefono de la clinica.<br>
+     * @param telefono que almacena el telefono de la clinica.<br>
      */
-    public void setTelefono(long telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 

@@ -74,7 +74,7 @@ public class AccesoDatos {
         clinica.setNombre("HIGA");
         clinica.setCiudad("Mar del Plata");
         clinica.setDireccion("Juan B. Justo 10000");
-        clinica.setTelefono(4827593);
+        clinica.setTelefono("4827593");
 //        System.out.println(clinica);
 //        System.out.println("*************************************************************************************");
 
