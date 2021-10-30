@@ -523,10 +523,4 @@ public class Clinica {
     public Set<Map.Entry<Paciente, HistoriaClinica>> getHistoriasClinicasIterator() {
         return this.moduloAtencion.getHistoriasClinicasIterator();
     }
-
-    /**
-     * TODO:
-     *  1. agregar iterators a todo
-     *  2. validaciones en cadena de invocaciones
-     */
 }
