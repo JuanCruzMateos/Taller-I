@@ -1,5 +1,4 @@
 prueba
-sistema
 sistema.atencion
 sistema.clinica
 sistema.egreso
@@ -9,9 +8,11 @@ sistema.gui
 sistema.habitaciones
 sistema.ingreso
 sistema.persistencia
+sistema.persistencia.dto
 sistema.personas
 sistema.personas.medicos
 sistema.personas.medicos.decorators
 sistema.personas.medicos.especialidades
 sistema.personas.medicos.factory
 sistema.personas.pacientes
+sistema.util
