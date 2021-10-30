@@ -3,5 +3,5 @@ package sistema.gui;
 import java.awt.*;
 
 public interface InterfazOptionPane {
-    void showMessageDialog(Component parent, String message);
+    void showMessageDialog(Component parentComponent, Object message, String title, int messageType);
 }

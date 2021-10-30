@@ -12,6 +12,7 @@ import sistema.personas.medicos.IMedico;
 import sistema.personas.pacientes.Paciente;
 import sistema.util.Mensaje;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -68,9 +69,9 @@ public class Controlador implements ActionListener, WindowListener {
 
     private void anadirInternacion(Paciente paciente, Habitacion habitacion, int dias) {
         if (paciente == null)
-            this.optionPane.showMessageDialog(null, Mensaje.ERROR_PACIENTE_NO_SELECCIONADO.getValor());
+            this.optionPane.showMessageDialog(null, Mensaje.ERROR_PACIENTE_NO_SELECCIONADO.getValor(), "Error", JOptionPane.ERROR_MESSAGE);
         else if (habitacion == null)
-            this.optionPane.showMessageDialog(null, Mensaje.ERROR_HABITACION_NO_SELECCIONADO.getValor());
+            this.optionPane.showMessageDialog(null, Mensaje.ERROR_HABITACION_NO_SELECCIONADO.getValor(), "Error", JOptionPane.ERROR_MESSAGE);
         else {
             try {
                 this.clinica.agregarInternacionPaciente(paciente, new Internacion(habitacion, dias));
@@ -79,15 +80,15 @@ public class Controlador implements ActionListener, WindowListener {
             } catch (PacienteInexistenteException e) {
                 e.printStackTrace();
             }
-            this.optionPane.showMessageDialog(null, Mensaje.ANADIRINTERNACION_OK.getValor());
+            this.optionPane.showMessageDialog(null, Mensaje.ANADIRINTERNACION_OK.getValor(), "Operacion Exitosa", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
     private void anadirConsultaMedica(Paciente paciente, IMedico medico, int cantidad) {
         if (paciente == null)
-            this.optionPane.showMessageDialog(null, Mensaje.ERROR_PACIENTE_NO_SELECCIONADO.getValor());
+            this.optionPane.showMessageDialog(null, Mensaje.ERROR_PACIENTE_NO_SELECCIONADO.getValor(), "Error", JOptionPane.ERROR_MESSAGE);
         else if (medico == null)
-            this.optionPane.showMessageDialog(null, Mensaje.ERROR_MEDICO_NO_SELECCIONADO.getValor());
+            this.optionPane.showMessageDialog(null, Mensaje.ERROR_MEDICO_NO_SELECCIONADO.getValor(), "Error", JOptionPane.ERROR_MESSAGE);
         else {
             try {
                 this.clinica.agregarConsultaMedicaPaciente(paciente, new ConsultaMedica(medico, cantidad));
@@ -96,7 +97,7 @@ public class Controlador implements ActionListener, WindowListener {
             } catch (PacienteInexistenteException e) {
                 e.printStackTrace();
             }
-            this.optionPane.showMessageDialog(null, Mensaje.ANADIRCONSULTA_OK.getValor());
+            this.optionPane.showMessageDialog(null, Mensaje.ANADIRCONSULTA_OK.getValor(), "Operacion Exitosa", JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
