@@ -35,6 +35,7 @@ public class Ventana extends JFrame implements ListSelectionListener, IVista, Ke
     private JButton botonAnadirInternacion;
 
     public Ventana() {
+        this.setName("Sistema de Gestion de Clinica");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(100, 100, 1034, 591);
         contentPane = new JPanel();

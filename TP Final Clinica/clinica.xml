@@ -77,7 +77,7 @@
    </void>
    <void method="put">
     <int>2</int>
-    <object class="sistema.personas.medicos.decorators.DecoratorPermanente" id="DecoratorPermanente0">
+    <object class="sistema.personas.medicos.decorators.DecoratorPermanente">
      <void property="encapsulado">
       <object class="sistema.personas.medicos.decorators.DecoratorDoctor">
        <void property="encapsulado">
@@ -111,7 +111,7 @@
    </void>
    <void method="put">
     <int>3</int>
-    <object class="sistema.personas.medicos.decorators.DecoratorTemporario">
+    <object class="sistema.personas.medicos.decorators.DecoratorTemporario" id="DecoratorTemporario0">
      <void property="encapsulado">
       <object class="sistema.personas.medicos.decorators.DecoratorMagister">
        <void property="encapsulado">
@@ -308,7 +308,22 @@
        <string>103</string>
       </void>
      </object>
-     <object class="sistema.atencion.HistoriaClinica">
+     <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica0">
+      <void property="consultaMedicas">
+       <void method="add">
+        <object class="sistema.facturacion.ConsultaMedica">
+         <void property="cantidadConsultas">
+          <int>15</int>
+         </void>
+         <void property="medico">
+          <object idref="DecoratorTemporario0"/>
+         </void>
+         <void property="valorConsulta">
+          <double>138.915</double>
+         </void>
+        </object>
+       </void>
+      </void>
       <void property="numero">
        <int>3</int>
       </void>
@@ -341,25 +356,7 @@
        <string>104</string>
       </void>
      </object>
-     <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica0">
-      <void property="internaciones">
-       <void method="add">
-        <object class="sistema.facturacion.Internacion">
-         <void property="costoHabitacion">
-          <double>20.0</double>
-         </void>
-         <void property="diasInternado">
-          <int>15</int>
-         </void>
-         <void property="habitacion">
-          <string>Hab. Privada</string>
-         </void>
-         <void property="subtotal">
-          <double>700.0</double>
-         </void>
-        </object>
-       </void>
-      </void>
+     <object class="sistema.atencion.HistoriaClinica">
       <void property="numero">
        <int>4</int>
       </void>
@@ -392,22 +389,7 @@
        <string>102</string>
       </void>
      </object>
-     <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica1">
-      <void property="consultaMedicas">
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica">
-         <void property="cantidadConsultas">
-          <int>15</int>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorPermanente0"/>
-         </void>
-         <void property="valorConsulta">
-          <double>155.36400000000003</double>
-         </void>
-        </object>
-       </void>
-      </void>
+     <object class="sistema.atencion.HistoriaClinica">
       <void property="numero">
        <int>2</int>
       </void>
