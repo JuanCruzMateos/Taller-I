@@ -15,7 +15,7 @@ import sistema.personas.medicos.especialidades.Pediatra;
 
 /**
  * Clase MedicoFactory.<br>
- * <b>Pre:</b> Todos los medicos de la clinicatienen un titulo de posgrado.<br>
+ * <b>Pre:</b> Todos los medicos de la clinica tienen un titulo de posgrado.<br>
  * <b>Post:</b> Se crea un objeto de tipo medico con todos los decorators implementados. O lanza excepciones si se ingresan datos incorrectos.<br>
  * Implementa patron Factory para la creacion de un medico.<br>
  */

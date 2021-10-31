@@ -65,8 +65,13 @@ public interface IVista {
     void addActionListener(ActionListener actionListener);
 
     void addWindowListener(WindowListener windowListener);
-
+    /**
+     * Desactiva todos los botones de la ventana
+     */
     void disableButtons();
 
+    /**
+     * Resetea todos los textos de todos los campos
+     */
     void resetFileds();
 }

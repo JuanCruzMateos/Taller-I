@@ -114,6 +114,10 @@ public class ModuloEgreso implements Serializable {
         this.facturas = facturas;
     }
 
+    /**
+     * 
+     * @return la ultima factura agregada
+     */
     public String ultimaFacturaAgregada() {
         int numeroFactura = this.facturas.size();
         Iterator<Factura> it = this.facturas.iterator();

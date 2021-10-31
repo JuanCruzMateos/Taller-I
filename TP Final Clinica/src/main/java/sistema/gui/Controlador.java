@@ -67,6 +67,12 @@ public class Controlador implements ActionListener, WindowListener {
         }
     }
 
+    /**
+     * Permite agregar una internacion a un paciente
+     * @param paciente
+     * @param habitacion
+     * @param dias
+     */
     private void anadirInternacion(Paciente paciente, Habitacion habitacion, int dias) {
         if (paciente == null)
             this.optionPane.showMessageDialog(null, Mensaje.ERROR_PACIENTE_NO_SELECCIONADO.getValor(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -84,6 +90,12 @@ public class Controlador implements ActionListener, WindowListener {
         }
     }
 
+    /**
+     *  Permite agregar una internacion a un paciente
+     * @param paciente
+     * @param medico
+     * @param cantidad
+     */
     private void anadirConsultaMedica(Paciente paciente, IMedico medico, int cantidad) {
         if (paciente == null)
             this.optionPane.showMessageDialog(null, Mensaje.ERROR_PACIENTE_NO_SELECCIONADO.getValor(), "Error", JOptionPane.ERROR_MESSAGE);

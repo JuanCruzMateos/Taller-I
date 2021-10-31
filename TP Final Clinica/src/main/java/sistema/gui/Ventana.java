@@ -237,16 +237,7 @@ public class Ventana extends JFrame implements ListSelectionListener, IVista, Ke
 
     @Override
     public void keyTyped(KeyEvent e) {
-        try {
-            this.botonAnadirConsulta.setEnabled(this.getCantidadConsultas() != 0);
-        } catch (NumberFormatException ex) {
-            this.botonAnadirConsulta.setEnabled(false);
-        }
-        try {
-            this.botonAnadirInternacion.setEnabled(this.getCantidadDiasInternacion() != 0);
-        } catch (NumberFormatException ex) {
-            this.botonAnadirInternacion.setEnabled(false);
-        }
+        
     }
 
     @Override
@@ -256,6 +247,15 @@ public class Ventana extends JFrame implements ListSelectionListener, IVista, Ke
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+    	try {
+            this.botonAnadirConsulta.setEnabled(this.getCantidadConsultas() != 0);
+        } catch (NumberFormatException ex) {
+            this.botonAnadirConsulta.setEnabled(false);
+        }
+        try {
+            this.botonAnadirInternacion.setEnabled(this.getCantidadDiasInternacion() != 0);
+        } catch (NumberFormatException ex) {
+            this.botonAnadirInternacion.setEnabled(false);
+        }
     }
 }
