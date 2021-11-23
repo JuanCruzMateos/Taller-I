@@ -6,15 +6,15 @@ package medicos;
  */
 public class Magister extends DecoratorPosgrado {
 
-	public Magister(IMedico encapsulado) {
-		super(encapsulado);
-	}
+    public Magister(IMedico encapsulado) {
+        super(encapsulado);
+    }
 
-	@Override
-	public double calculaHonorario() {
-		return (this.encapsulado.calculaHonorario()*1.05);
-		
-	}
+    @Override
+    public double calculaHonorario() {
+        return (this.encapsulado.calculaHonorario() * 1.05);
+
+    }
 
 
 }

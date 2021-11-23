@@ -1,9 +1,9 @@
 package vista;
 
-import java.awt.Component;
+import java.awt.*;
 
 public interface InterfazOptionPanel {
 
-	 void ShowMessage(Component parent, String mensaje);
-	 
+    void ShowMessage(Component parent, String mensaje);
+
 }

@@ -7,19 +7,17 @@ package medicos;
 public class Clinico extends Medico {
 
 
-	public Clinico(String nomAp, String dni, String domicilio, String ciudad, String telefono, int numMatricula,
-			double honorario) {
-		super(nomAp, dni, domicilio, ciudad, telefono, numMatricula, honorario);
-		// TODO Auto-generated constructor stub
-	}
+    public Clinico(String nomAp, String dni, String domicilio, String ciudad, String telefono, int numMatricula,
+                   double honorario) {
+        super(nomAp, dni, domicilio, ciudad, telefono, numMatricula, honorario);
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public double calculaHonorario() {
-		
-		return (honorarioBase*1.05);
-	}
+    @Override
+    public double calculaHonorario() {
+
+        return (honorarioBase * 1.05);
+    }
 
 
-
-	
 }

@@ -6,21 +6,18 @@ package habitaciones;
  */
 public abstract class Habitacion implements IHabitacion {
 
-	protected double costoAsignacion;
-	
-
-	public Habitacion(double costoAsignacion) {
-		this.costoAsignacion = costoAsignacion;
-	}
+    protected double costoAsignacion;
 
 
-
-	@Override
-	public double getCostoAsignacion() {
-		return this.costoAsignacion;
-	}
+    public Habitacion(double costoAsignacion) {
+        this.costoAsignacion = costoAsignacion;
+    }
 
 
-	
-	
+    @Override
+    public double getCostoAsignacion() {
+        return this.costoAsignacion;
+    }
+
+
 }

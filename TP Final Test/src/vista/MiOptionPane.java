@@ -1,16 +1,15 @@
 package vista;
 
-import java.awt.Component;
-
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.awt.*;
 
 public class MiOptionPane implements InterfazOptionPanel {
 
-	public MiOptionPane() {
+    public MiOptionPane() {
         super();
     }
-	
-	public void ShowMessage(Component parent, String mensaje) {
+
+    public void ShowMessage(Component parent, String mensaje) {
         JOptionPane.showMessageDialog(parent, mensaje);
     }
 }

@@ -6,17 +6,17 @@ package medicos;
  */
 public class Doctorado extends DecoratorPosgrado {
 
-	public Doctorado(IMedico encapsulado) {
-		super(encapsulado);
-	}
+    public Doctorado(IMedico encapsulado) {
+        super(encapsulado);
+    }
 
-	@Override
-	public double calculaHonorario() {
-		return (this.encapsulado.calculaHonorario()*1.1);
-		
-	}
+    @Override
+    public double calculaHonorario() {
+        return (this.encapsulado.calculaHonorario() * 1.1);
 
-	
+    }
+
+
 }
 
 	
