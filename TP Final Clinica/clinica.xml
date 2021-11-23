@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="15.0.2" class="java.beans.XMLDecoder">
+<java version="16.0.2" class="java.beans.XMLDecoder">
  <object class="sistema.persistencia.dto.ClinicaDTO" id="ClinicaDTO0">
   <void property="aumentoCirujano">
    <double>0.1</double>
@@ -111,7 +111,7 @@
    </void>
    <void method="put">
     <int>3</int>
-    <object class="sistema.personas.medicos.decorators.DecoratorTemporario" id="DecoratorTemporario0">
+    <object class="sistema.personas.medicos.decorators.DecoratorTemporario">
      <void property="encapsulado">
       <object class="sistema.personas.medicos.decorators.DecoratorMagister">
        <void property="encapsulado">
@@ -308,22 +308,7 @@
        <string>103</string>
       </void>
      </object>
-     <object class="sistema.atencion.HistoriaClinica" id="HistoriaClinica0">
-      <void property="consultaMedicas">
-       <void method="add">
-        <object class="sistema.facturacion.ConsultaMedica">
-         <void property="cantidadConsultas">
-          <int>15</int>
-         </void>
-         <void property="medico">
-          <object idref="DecoratorTemporario0"/>
-         </void>
-         <void property="valorConsulta">
-          <double>138.915</double>
-         </void>
-        </object>
-       </void>
-      </void>
+     <object class="sistema.atencion.HistoriaClinica">
       <void property="numero">
        <int>3</int>
       </void>

@@ -53,7 +53,7 @@ public class Clinica {
         return Clinica.instance;
     }
 
-    private static boolean validarDatosPersona(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni) {
+    public static boolean validarDatosPersona(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni) {
         boolean sonValidos = true;
 
         sonValidos &= nombre != null && !nombre.equals("");
@@ -65,7 +65,7 @@ public class Clinica {
         return sonValidos;
     }
 
-    private static boolean validarDatosPaciente(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, String rangoEtario) {
+    public static boolean validarDatosPaciente(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, String rangoEtario) {
         boolean sonValidos = Clinica.validarDatosPersona(nombre, apellido, direccion, ciudad, telefono, dni);
 
         sonValidos &= rangoEtario != null && !rangoEtario.equals("") &&
@@ -75,7 +75,7 @@ public class Clinica {
         return sonValidos;
     }
 
-    private static boolean validarDatosMedico(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, int matricula) {
+    public static boolean validarDatosMedico(String nombre, String apellido, String direccion, String ciudad, String telefono, int dni, int matricula) {
         boolean sonValidos = Clinica.validarDatosPersona(nombre, apellido, direccion, ciudad, telefono, dni);
 
         sonValidos &= matricula > 0;

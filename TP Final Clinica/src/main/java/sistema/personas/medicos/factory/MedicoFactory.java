@@ -53,6 +53,5 @@ public class MedicoFactory {
             throw new ContratacionNoValidaException("El tipo de contratacion no es valido.", contratacion);
         // si no ocure ninguna exception devuelvo el medico creado con todos los campos
         return medicoConContratacion;
-
     }
 }
