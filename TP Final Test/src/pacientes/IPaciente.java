@@ -26,7 +26,7 @@ public interface IPaciente extends Comparable<IPaciente>, Serializable {
      *
      * @return retorna un boolean que determina si el IPaciente pasado como parametro en el metodo beats (IPaciente o) vence o no al nino
      */
-    boolean beatsNiño();
+    boolean beatsNino();
 
     /**
      * Metodo boolean que toma como parametro un objeto de tipo IPaciente para determinar<br>

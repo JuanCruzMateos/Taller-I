@@ -15,7 +15,7 @@ public class Mayor extends Paciente {
     }
 
     @Override
-    public boolean beatsNiño() {
+    public boolean beatsNino() {
         return false;
     }
 

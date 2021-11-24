@@ -27,7 +27,7 @@ public class PacienteFactory {
         IPaciente respuesta = null;
 
         if (rangoEtario == "Nino")
-            respuesta = new Niño(dni, nomAp, telefono, domicilio, ciudad, numHistoria);
+            respuesta = new Nino(dni, nomAp, telefono, domicilio, ciudad, numHistoria);
         else if (rangoEtario == "Joven")
             respuesta = new Joven(dni, nomAp, telefono, domicilio, ciudad, numHistoria);
         else if (rangoEtario == "Mayor")

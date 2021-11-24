@@ -17,7 +17,7 @@ public class Joven extends Paciente {
     }
 
     @Override
-    public boolean beatsNiño() {
+    public boolean beatsNino() {
         return true;
     }
 

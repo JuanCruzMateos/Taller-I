@@ -79,7 +79,7 @@ public class Ventana extends JFrame implements IVista {
     private JPanel panelContenedorTipoPersona;
     private JTextField txtFieldCiudad;
     private JTextField txtFieldHonorarioBase;
-    private JRadioButton RadioBTNNiño;
+    private JRadioButton RadioBTNNino;
     private JRadioButton RadioBTNJoven;
     private JRadioButton RadioBTNMayor;
     private JPanel panelContenedorAgElim;
@@ -279,9 +279,9 @@ public class Ventana extends JFrame implements IVista {
         this.panel_2.add(this.RadioBTNMayor);
         buttonGroup_4.add(this.RadioBTNMayor);
 
-        this.RadioBTNNiño = new JRadioButton("Niño");
-        this.panel_2.add(this.RadioBTNNiño);
-        buttonGroup_4.add(this.RadioBTNNiño);
+        this.RadioBTNNino = new JRadioButton("Nino");
+        this.panel_2.add(this.RadioBTNNino);
+        buttonGroup_4.add(this.RadioBTNNino);
 
         this.PanelMedioAnteUlt = new JPanel();
         this.panelCentro.add(this.PanelMedioAnteUlt);
@@ -439,7 +439,7 @@ public class Ventana extends JFrame implements IVista {
         this.RadioButtonPermanente.setName("RadioButtonPermanente");
         this.RadioBTNJoven.setName("RadioBTNJoven");
         this.RadioBTNMayor.setName("RadioBTNMayor");
-        this.RadioBTNNiño.setName("RadioBTNNiño");
+        this.RadioBTNNino.setName("RadioBTNNino");
         this.btnAgregar.setName("btnAgregar");
         this.btnEliminar.setName("btnEliminar");
         this.btnLlamarPaciente.setName("");
@@ -756,7 +756,7 @@ public class Ventana extends JFrame implements IVista {
     @Override
     public String getRangoEtario() throws SeleccionIncorrectaException {
         String rta = null;
-        if (this.RadioBTNNiño.isSelected())
+        if (this.RadioBTNNino.isSelected())
             rta = "Nino";
         else if (this.RadioBTNJoven.isSelected())
             rta = "Joven";
@@ -892,7 +892,7 @@ public class Ventana extends JFrame implements IVista {
         this.ListaMedicos.clearSelection();
         this.RadioBTNJoven.setSelected(false);
         this.RadioBTNMayor.setSelected(false);
-        this.RadioBTNNiño.setSelected(false);
+        this.RadioBTNNino.setSelected(false);
         this.RadioBTNMedico.setSelected(false);
         this.RadioBTNPaciente.setSelected(false);
         this.RadioButtonCirujano.setSelected(false);
@@ -933,7 +933,7 @@ public class Ventana extends JFrame implements IVista {
     public void deseleccionaBotonesMedico() {
         this.RadioBTNJoven.setEnabled(true);
         this.RadioBTNMayor.setEnabled(true);
-        this.RadioBTNNiño.setEnabled(true);
+        this.RadioBTNNino.setEnabled(true);
         this.RadioButtonCirujano.setEnabled(false);
         this.RadioButtonClinico.setEnabled(false);
         this.RadioButtonMagister.setEnabled(false);
@@ -953,7 +953,7 @@ public class Ventana extends JFrame implements IVista {
     public void deseleccionaBotonesPaciente() {
         this.RadioBTNJoven.setEnabled(false);
         this.RadioBTNMayor.setEnabled(false);
-        this.RadioBTNNiño.setEnabled(false);
+        this.RadioBTNNino.setEnabled(false);
         this.RadioButtonCirujano.setEnabled(true);
         this.RadioButtonClinico.setEnabled(true);
         this.RadioButtonMagister.setEnabled(true);
@@ -973,7 +973,7 @@ public class Ventana extends JFrame implements IVista {
     public void deseleccionarBotones() {
         this.RadioBTNJoven.setEnabled(false);
         this.RadioBTNMayor.setEnabled(false);
-        this.RadioBTNNiño.setEnabled(false);
+        this.RadioBTNNino.setEnabled(false);
         this.RadioButtonCirujano.setEnabled(false);
         this.RadioButtonClinico.setEnabled(false);
         this.RadioButtonMagister.setEnabled(false);
