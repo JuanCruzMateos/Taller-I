@@ -53,15 +53,7 @@ public class GuiTestCargaDatos {
     {	
 		
 		controlador = new ControladorMock(vista, "ClinicaVacia.bin", archivoPersistencia);		
-        controlador.setOptionpane(op);
-        JList pacientes = (JList) TestUtils.getComponentForName((Ventana)controlador.getVentana(), "ListaPacientes");
-        int numeroDeElementos = pacientes.getModel().getSize();
-        if (numeroDeElementos>0)
-        {
-        	pacientes.remove(numeroDeElementos-1);
-        	numeroDeElementos--;
-        }
-        
+        controlador.setOptionpane(op);        
         vista.setVisible(true);
         
     }
@@ -71,10 +63,8 @@ public class GuiTestCargaDatos {
     {       
 		File file = new File(archivoPersistencia);		
 		file.delete();
-		vista.setVisible(false);
-		
-        
-	
+		vista.setVisible(false);	
+        	
     }
 
 	
@@ -98,50 +88,38 @@ public class GuiTestCargaDatos {
         JTextField txtFieldDni  = (JTextField)TestUtils.getComponentForName((Ventana)controlador.getVentana(), "txtFieldDni");
         JTextField txtFieldDomicilio  = (JTextField)TestUtils.getComponentForName((Ventana)controlador.getVentana(), "txtFieldDomicilio");
         JTextField txtFieldCiudad  = (JTextField)TestUtils.getComponentForName((Ventana)controlador.getVentana(), "txtFieldCiudad");
-        //JTextField txtFieldHonorarioBase  = (JTextField)TestUtils.getComponentForName((Ventana)controlador.getVentana(), "txtFieldHonorarioBase");
-
-        // borraJTextField(JTextField jtextfield, Robot robot)
-        // tipeaTexto(String texto, Robot robot)
-        //clickComponent(Component component, Robot robot)
-        //robot.delay(250);
+        
         // Primero tengo que seleccionar el radioButton
-        TestUtils.clickComponent(radioBTNPaciente, robot);
-        //robot.delay(250);
+        TestUtils.clickComponent(radioBTNPaciente, robot);        
         
         // Nombre y Apellido
         TestUtils.clickComponent(txtFieldNombreAp, robot);
-        TestUtils.borraJTextField(txtFieldNombreAp, robot);
-        //robot.delay(250);
+        TestUtils.borraJTextField(txtFieldNombreAp, robot);        
         TestUtils.tipeaTexto(nombre, robot);
         
         // Telefono
         TestUtils.clickComponent(txtFieldTelefono, robot);
-        TestUtils.borraJTextField(txtFieldTelefono, robot);
-        //robot.delay(250);
+        TestUtils.borraJTextField(txtFieldTelefono, robot);        
         TestUtils.tipeaTexto(telefono, robot);
         
         // Historia clinica
         TestUtils.clickComponent(txtFieldHistoriamatricula, robot);
-        TestUtils.borraJTextField(txtFieldHistoriamatricula, robot);
-        //robot.delay(250);
+        TestUtils.borraJTextField(txtFieldHistoriamatricula, robot);        
         TestUtils.tipeaTexto(historiaClinica, robot);
         
         // DNI
         TestUtils.clickComponent(txtFieldDni, robot);
-        TestUtils.borraJTextField(txtFieldDni, robot);
-        //robot.delay(250);
+        TestUtils.borraJTextField(txtFieldDni, robot);        
         TestUtils.tipeaTexto(dni, robot);
      
         // Domicilio
         TestUtils.clickComponent(txtFieldDomicilio, robot);
-        TestUtils.borraJTextField(txtFieldDomicilio, robot);
-        //robot.delay(250);
+        TestUtils.borraJTextField(txtFieldDomicilio, robot);        
         TestUtils.tipeaTexto(domicilio, robot);
         
         // Ciudad
         TestUtils.clickComponent(txtFieldCiudad, robot);
-        TestUtils.borraJTextField(txtFieldCiudad, robot);
-        //robot.delay(250);
+        TestUtils.borraJTextField(txtFieldCiudad, robot);        
         TestUtils.tipeaTexto(ciudad, robot);
         
         if (rangoEtario.equalsIgnoreCase("joven"))
@@ -190,10 +168,63 @@ public class GuiTestCargaDatos {
 	{
 		agregaUnPaciente("Pedrito Ramirez", "223 1563322", "33456888", "11", "Elm Street 666", "Springwood", "mayor");
 		agregaUnPaciente("Pedrito Ramirez", "223 1563322", "33456888", "11", "Elm Street 666", "Springwood", "mayor");		
-		Assert.assertEquals("Mensaje incorrecto, deber�a decir "+Mensajes.Error_Paciente_Repetido.getValor(), Mensajes.Error_Paciente_Repetido.getValor(), op.getMensaje());
+		Assert.assertEquals("Mensaje incorrecto, deberia decir "+Mensajes.Error_Paciente_Repetido.getValor(), Mensajes.Error_Paciente_Repetido.getValor(), op.getMensaje());
+		if (Mensajes.Error_Paciente_Repetido.getValor() == op.getMensaje())
+		{
+			System.out.println("Ignorar ingresado, excepcion por paciente repetido");
+		}
+			
+	}
+	
+	@Test
+	public void presionarAgregarSinSeleccionarPacienteOMedico()
+	{
+		JButton botonAgregar = (JButton) TestUtils.getComponentForName((Ventana)controlador.getVentana(), "btnAgregar");
+		
+		// presiono agregar sin elegir si es un medico o un paciente
+		TestUtils.clickComponent(botonAgregar, robot);
+		robot.delay(1000);
+		Assert.assertEquals("Mensaje incorrecto, deberia decir "+Mensajes.Seleccione_MedicoOPaciente.getValor(), Mensajes.Seleccione_MedicoOPaciente.getValor(), op.getMensaje());
 		
 	}
+	
+	@Test
+	public void agregarPacienteSinElegirRangoEtario()
+	{
+		JButton botonAgregar = (JButton) TestUtils.getComponentForName((Ventana)controlador.getVentana(), "btnAgregar");
+		JRadioButton radioBTNPaciente = (JRadioButton) TestUtils.getComponentForName((Ventana)controlador.getVentana(), "RadioBTNPaciente");
+		
+		// hago click en el radio button de paciente
+		TestUtils.clickComponent(radioBTNPaciente, robot);
+		robot.delay(200);
+		// presiono el boton agregar sin haber seleccionado rango etario
+        TestUtils.clickComponent(botonAgregar, robot);
+        robot.delay(1000);
+        Assert.assertEquals("Mensaje incorrecto, deberia decir "+Mensajes.Error_Seleccionar_RanroEtario.getValor(), Mensajes.Error_Seleccionar_RanroEtario.getValor(), op.getMensaje());        
+        
+	}
 
+	@Test
+	public void agregarPacienteSinPonerDatos()
+	{
+		JButton botonAgregar = (JButton) TestUtils.getComponentForName((Ventana)controlador.getVentana(), "btnAgregar");
+		JRadioButton radioBTNPaciente = (JRadioButton) TestUtils.getComponentForName((Ventana)controlador.getVentana(), "RadioBTNPaciente");
+		JRadioButton radioBTNJoven = (JRadioButton) TestUtils.getComponentForName((Ventana)controlador.getVentana(), "RadioBTNJoven");
+        
+        
+		// hago click en el radio button de paciente
+		TestUtils.clickComponent(radioBTNPaciente, robot);
+		robot.delay(200);
+		// presiono el boton radioBTNJoven
+        TestUtils.clickComponent(radioBTNJoven, robot);
+        robot.delay(200);
+        // presiono el boton agregar sin seleccionar ningun dato
+        TestUtils.clickComponent(botonAgregar, robot);
+        robot.delay(1000);
+        
+        Assert.assertEquals("Mensaje incorrecto, deberia decir "+Mensajes.Error_Numero_HistoriaClinica.getValor(), Mensajes.Error_Numero_HistoriaClinica.getValor(), op.getMensaje());        
+        
+	}
 
 
 		
